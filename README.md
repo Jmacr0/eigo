@@ -58,6 +58,21 @@ THEN I am able to improve speaking Japanese
 
 ### Technologies ⚙
 
+The list of selected technologies comprise of some that I am comfortable with and others that are more challenging. This sets a limitation so that I do not get bogged down by all new technologies and hindering any progression.
+
+*⭐⭐⭐*
+
+* React
+
+*⭐⭐*
+
+* MongoDB / Mongoose
+* Passport
+
+*⭐*
+
+* Bootstrap
+
 ---
 
 ### Improvement / Future Plans 🔭

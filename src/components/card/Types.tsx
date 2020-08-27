@@ -5,5 +5,11 @@ export namespace CardTypes {
 		set: Set
 	}
 
-	export type Set = Object[];
+	export type Set = Array<Character>;
+
+	export interface Character {
+		[propName: string]: string
+	}
+
+	export type hiragana = string;
 }

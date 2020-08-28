@@ -18,7 +18,6 @@
 		"start": "node ./server/server.js",
 		"dev:fe": "react-scripts start",
 		"dev:be": "nodemon ./server/server.js",
-		"build": "cd client webpack",
 		"heroku-postbuild": "cd client && npm install && npm run build",
 		"test": "test --passWithNoTests"
 	},

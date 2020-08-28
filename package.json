@@ -36,6 +36,7 @@
 		"typescript": "^4.0.2"
 	},
 	"scripts": {
+		"start": "node ./server/server.js",
 		"start:fe": "react-scripts start",
 		"start:be": "nodemon ./server/server.js",
 		"build": "react-scripts build",

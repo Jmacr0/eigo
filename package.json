@@ -16,7 +16,8 @@
 	},
 	"scripts": {
 		"start": "node ./server/server.js",
-		"dev": "nodemon ./server/server.js && cd client react-scripts start",
+		"dev:fe": "react-scripts start",
+		"dev:be": "nodemon ./server/server.js",
 		"heroku-postbuild": "cd client && npm install && npm run build",
 		"test": "test --passWithNoTests"
 	},

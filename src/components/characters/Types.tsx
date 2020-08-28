@@ -1,4 +1,4 @@
-export namespace CardTypes {
+export namespace CharacterTypes {
 	export interface Props {
 		characterSet: CharacterSet
 	}
@@ -12,4 +12,13 @@ export namespace CardTypes {
 	export interface Syllables {
 		[english: string]: string
 	}
+	// export interface Props {
+	// 	set: Set
+	// }
+
+	// export type Set = CharacterSet[];
+
+	// export interface CharacterSet {
+	// 	[propName: string]: string
+	// }
 }

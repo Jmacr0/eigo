@@ -31,6 +31,13 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/eigoDB", { useN
 const api = require("./api");
 app.use('/api', api);
 
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static('client/build'));
+	app.get('*', (_req, res) => {
+		res.sendFile(path.join(__dirname, 'client', 'build', 'index.html')); //relative path  
+	})
+}
+
 app.listen(PORT, () => {
 	console.log(`App listening on PORT ${PORT}`);
 });

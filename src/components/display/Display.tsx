@@ -8,7 +8,7 @@ export const Display = React.memo((props: OwnTypes.Props) => {
 
 	useEffect(() => {
 		console.log(props.type)
-		const uri = `https://radiant-hamlet-12316.herokuapp.com/api/v1/${props.type}`;
+		const uri = `https://japaneseapi.herokuapp.com/api/v1/${props.type}`;
 		fetch(uri)
 			.then(res => res.json())
 			.then(res => {

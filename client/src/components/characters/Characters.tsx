@@ -14,17 +14,33 @@ export const Characters = React.memo((props: OwnTypes.Props): React.ReactElement
 	const selectRandom = (set: OwnTypes.CharacterSet) => {
 		if (set.length) {
 			const indexToSearchType = Math.floor(Math.random() * set.length);
-			const selectedLetterType = set[indexToSearchType]
-			const selectedLetterSyllablesKeyList = Object.keys(selectedLetterType.syllables);
-			const randomKey = (selectedLetterSyllablesKeyList[Math.floor(Math.random() * selectedLetterSyllablesKeyList.length)]);
-			const randomKeyValue = selectedLetterType.syllables[randomKey];
-			const selectedCharacter = {
-				english: randomKey,
-				japanese: randomKeyValue,
+			const selectedIndex = set[indexToSearchType]
+
+			if (props.type === 'hiragana' || props.type === 'katakana') {
+				const selectedLetterSyllablesKeyList = Object.keys(selectedIndex.syllables!);
+				const randomKey = (selectedLetterSyllablesKeyList[Math.floor(Math.random() * selectedLetterSyllablesKeyList.length)]);
+				const randomKeyValue = selectedIndex.syllables![randomKey];
+				const selectedCharacter = {
+					english: randomKey,
+					japanese: randomKeyValue,
+				}
+				setCurrentCharacter(selectedCharacter);
 			}
-			setCurrentCharacter(selectedCharacter);
+
+			if (props.type === 'greetings') {
+				const greetingKey = Object.keys(selectedIndex)[0];
+				const greetingKeyValue = selectedIndex[greetingKey];
+
+				const selectedGreeting = {
+					english: greetingKey,
+					japanese: greetingKeyValue,
+				}
+
+				setCurrentCharacter(selectedGreeting);
+			}
 		}
 	};
+
 	const handleShow = () => {
 		setReveal(true);
 	}
@@ -43,14 +59,14 @@ export const Characters = React.memo((props: OwnTypes.Props): React.ReactElement
 			{
 				!currentCharacter.english && !currentCharacter.japanese ?
 					<OwnStyles.Spinner /> :
-					<Japanese character={currentCharacter.japanese} />
+					<Japanese type={props.type} character={currentCharacter.japanese} />
 			}
 			<br />
 			<OwnStyles.HiddenAnswerCard
 				onClick={handleShow}
 			>
 				{reveal ?
-					<English character={currentCharacter.english} /> :
+					<English type={props.type} character={currentCharacter.english} /> :
 					"show"
 				}
 			</OwnStyles.HiddenAnswerCard>

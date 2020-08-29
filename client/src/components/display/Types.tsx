@@ -5,7 +5,8 @@ export namespace DisplayTypes {
 	}
 
 	enum Type {
-		hiragana,
-		katakana
+		hiragana = 'hiragana',
+		katakana = 'katakana',
+		greetings = 'greetings'
 	}
 }

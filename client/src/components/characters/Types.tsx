@@ -1,24 +1,22 @@
 export namespace CharacterTypes {
 	export interface Props {
+		type: Type
 		characterSet: CharacterSet
 	}
-
+	enum Type {
+		hiragana = 'hiragana',
+		katakana = 'katakana',
+		greetings = 'greetings'
+	}
 	export type CharacterSet = SingleSet[]
 	export interface SingleSet {
-		startingLetter: string,
-		syllables: Syllables
+		[key: string]: any
+		startingLetter?: string
+		syllables?: Syllables
 	}
+
 
 	export interface Syllables {
 		[english: string]: string
 	}
-	// export interface Props {
-	// 	set: Set
-	// }
-
-	// export type Set = CharacterSet[];
-
-	// export interface CharacterSet {
-	// 	[propName: string]: string
-	// }
 }

@@ -15,7 +15,7 @@ export const Card = React.memo((props: OwnTypes.Props) => {
 			xs={12}
 			sm={6}
 		>
-			<Characters characterSet={props.characterSet} />
+			<Characters type={props.type} characterSet={props.characterSet} />
 		</OwnStyles.CardDisplay>
 	);
 });

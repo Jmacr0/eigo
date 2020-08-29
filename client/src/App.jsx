@@ -27,6 +27,8 @@ function App() {
 				>
 					<button onClick={handleSelection} value="hiragana">hiragana</button>
 					<button onClick={handleSelection} value="katakana">katakana</button>
+					<br />
+					<button onClick={handleSelection} value="greetings">greetings</button>
 				</OwnStyles.ButtonDisplay>
 			}
 			{type &&

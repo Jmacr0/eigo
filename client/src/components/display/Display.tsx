@@ -7,7 +7,6 @@ export const Display = React.memo((props: OwnTypes.Props) => {
 	const [characterSet, setCharacterSet] = useState([]);
 
 	useEffect(() => {
-		console.log(props.type)
 		const uri = `https://japaneseapi.herokuapp.com/api/v1/${props.type}`;
 		fetch(uri)
 			.then(res => res.json())
@@ -19,7 +18,7 @@ export const Display = React.memo((props: OwnTypes.Props) => {
 	return (
 		<>
 			<OwnStyles.Title
-				variant="h2"
+				variant="h3"
 				align="center"
 			>
 				{props.type}
@@ -30,7 +29,7 @@ export const Display = React.memo((props: OwnTypes.Props) => {
 				justify="center"
 				alignItems="center"
 			>
-				<Card characterSet={characterSet} />
+				<Card type={props.type} characterSet={characterSet} />
 			</OwnStyles.MainDisplay>
 			<OwnStyles.BackButton
 				color="secondary"

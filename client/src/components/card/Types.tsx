@@ -1,6 +1,13 @@
 export namespace CardTypes {
 	export interface Props {
+		type: Type
 		characterSet: CharacterSet
+	}
+
+	enum Type {
+		hiragana = 'hiragana',
+		katakana = 'katakana',
+		greetings = 'greetings'
 	}
 
 	export type CharacterSet = SingleSet[]

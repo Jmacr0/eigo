@@ -6,7 +6,7 @@ export const Spinner = styled(CircularProgress)`
 `;
 
 export const RandomButton = styled(Button)`
-
+		min-width: 200px;
 `;
 
 export const HiddenAnswerCard = styled(Card)`
@@ -18,4 +18,9 @@ export const HiddenAnswerCard = styled(Card)`
 		flex-direction: column;
 		justify-content: center;
 		text-align: center;
+		cursor: pointer;
+		&:hover {
+			background-color: #bbbbbb;
+			transition: 0.2s;
+		}
 `;

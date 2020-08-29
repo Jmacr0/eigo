@@ -1,10 +1,11 @@
 const express = require('express');
+const path = require('path');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const app = express();
-const PORT = process.env.PLACEHOLDER || 3001;
+const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -30,6 +31,13 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/eigoDB", { useN
 
 const api = require("./api");
 app.use('/api', api);
+
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static('client/build'));
+	app.get('*', (_req, res) => {
+		res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html')); //relative path  
+	})
+}
 
 app.listen(PORT, () => {
 	console.log(`App listening on PORT ${PORT}`);

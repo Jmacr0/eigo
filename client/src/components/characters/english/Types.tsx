@@ -6,6 +6,7 @@ export namespace EnglishTypes {
 	enum Type {
 		hiragana = 'hiragana',
 		katakana = 'katakana',
-		greetings = 'greetings'
+		greetings = 'greetings',
+		verbs = 'verbs'
 	}
 }

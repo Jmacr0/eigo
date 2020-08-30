@@ -7,7 +7,8 @@ export namespace CardTypes {
 	enum Type {
 		hiragana = 'hiragana',
 		katakana = 'katakana',
-		greetings = 'greetings'
+		greetings = 'greetings',
+		verbs = 'verbs'
 	}
 
 	export type CharacterSet = SingleSet[]

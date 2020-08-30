@@ -38,6 +38,23 @@ export const Characters = React.memo((props: OwnTypes.Props): React.ReactElement
 
 				setCurrentCharacter(selectedGreeting);
 			}
+
+			if (props.type === 'verbs') {
+				const selectedVerbsKeyList = Object.keys(selectedIndex.verbs!);
+				const randomVerbTypeKey = (selectedVerbsKeyList[Math.floor(Math.random() * selectedVerbsKeyList.length)]);
+				const randomVerbTypeKeyValue = selectedIndex.verbs![randomVerbTypeKey];
+
+				const selectedVerbTypeKeyList = Object.keys(randomVerbTypeKeyValue);
+				const randomVerbKey = (selectedVerbTypeKeyList[Math.floor(Math.random() * selectedVerbTypeKeyList.length)]);
+				const randomVerbKeyValue = randomVerbTypeKeyValue[randomVerbKey];
+
+				const selectedGreeting = {
+					english: randomVerbKey,
+					japanese: randomVerbKeyValue,
+				}
+
+				setCurrentCharacter(selectedGreeting);
+			}
 		}
 	};
 

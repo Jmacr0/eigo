@@ -16,20 +16,29 @@ function App() {
 			<h1
 				style={{ textAlign: "center" }}
 			>
-				Eigo Jap App
+				Eigo Japanese App
 			</h1>
 			{!type &&
-				<OwnStyles.ButtonDisplay
-					container
-					direction="row"
-					justify="center"
-					alignItems="center"
-				>
-					<button onClick={handleSelection} value="hiragana">hiragana</button>
-					<button onClick={handleSelection} value="katakana">katakana</button>
-					<br />
-					<button onClick={handleSelection} value="greetings">greetings</button>
-				</OwnStyles.ButtonDisplay>
+				<>
+					<OwnStyles.ButtonDisplay
+						container
+						direction="row"
+						justify="center"
+						alignItems="center"
+					>
+						<button onClick={handleSelection} value="hiragana">hiragana</button>
+						<button onClick={handleSelection} value="katakana">katakana</button>
+					</OwnStyles.ButtonDisplay>
+					<OwnStyles.ButtonDisplay
+						container
+						direction="row"
+						justify="center"
+						alignItems="center"
+					>
+						<button onClick={handleSelection} value="greetings">greetings</button>
+						<button onClick={handleSelection} value="verbs">verbs</button>
+					</OwnStyles.ButtonDisplay>
+				</>
 			}
 			{type &&
 				<OwnStyles.MainDisplayWrapper

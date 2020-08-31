@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Japanese } from './japanese/Japanese';
 import { CharacterTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
+import './index.css';
 import { English } from './english/English';
+import { TransitionGroup } from 'react-transition-group';
 
 export const Characters = React.memo((props: OwnTypes.Props): React.ReactElement => {
 	const [reveal, setReveal] = useState(false);
@@ -68,14 +70,21 @@ export const Characters = React.memo((props: OwnTypes.Props): React.ReactElement
 	}
 
 	useEffect(() => {
-		selectRandom(props.characterSet);
+		setTimeout(() => {
+			selectRandom(props.characterSet);
+		}, 1500);
 	}, [props.characterSet]);
 
 	return (
 		<>
 			{
 				!currentCharacter.english && !currentCharacter.japanese ?
-					<OwnStyles.Spinner /> :
+					<OwnStyles.LoaderContainer>
+						<OwnStyles.Loader height={30} width={200} />
+						<OwnStyles.Loader height={30} width={200} animation={false} />
+						<OwnStyles.Loader height={30} width={200} animation="wave" />
+					</OwnStyles.LoaderContainer>
+					:
 					<Japanese type={props.type} character={currentCharacter.japanese} />
 			}
 			<br />

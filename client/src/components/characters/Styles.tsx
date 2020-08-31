@@ -1,9 +1,15 @@
 import styled from 'styled-components';
-import { CircularProgress, Button, Card } from '@material-ui/core';
+import { Grid, Button, Card } from '@material-ui/core';
+import { Skeleton } from '@material-ui/lab';
+import { CSSTransition } from 'react-transition-group';
 
-export const Spinner = styled(CircularProgress)`
+export const LoaderTransition = styled(CSSTransition)``;
 
+export const LoaderContainer = styled(Grid)`
+		max-height: 100px;
+		min-height: 100px;
 `;
+export const Loader = styled(Skeleton)``;
 
 export const RandomButton = styled(Button)`
 		min-width: 200px;

@@ -5,7 +5,7 @@ import * as OwnStyles from './Styles';
 function App() {
 	const [type, setType] = useState();
 	const handleSelection = (event) => {
-		setType(event.target.value);
+		setType(event.currentTarget.value);
 	};
 	const handleReset = () => {
 		setType();
@@ -26,8 +26,8 @@ function App() {
 						justify="center"
 						alignItems="center"
 					>
-						<button onClick={handleSelection} value="hiragana">hiragana</button>
-						<button onClick={handleSelection} value="katakana">katakana</button>
+						<OwnStyles.SelectButton disableElevation variant="contained" onClick={handleSelection} value="hiragana">hiragana</OwnStyles.SelectButton>
+						<OwnStyles.SelectButton disableElevation variant="contained" onClick={handleSelection} value="katakana">katakana</OwnStyles.SelectButton>
 					</OwnStyles.ButtonDisplay>
 					<OwnStyles.ButtonDisplay
 						container
@@ -35,8 +35,8 @@ function App() {
 						justify="center"
 						alignItems="center"
 					>
-						<button onClick={handleSelection} value="greetings">greetings</button>
-						<button onClick={handleSelection} value="verbs">verbs</button>
+						<OwnStyles.SelectButton disableElevation variant="contained" onClick={handleSelection} value="greetings">greetings</OwnStyles.SelectButton>
+						<OwnStyles.SelectButton disableElevation variant="contained" onClick={handleSelection} value="verbs">verbs</OwnStyles.SelectButton>
 					</OwnStyles.ButtonDisplay>
 				</>
 			}

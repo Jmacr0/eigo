@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 import { Grid, Button, Card } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
-import { CSSTransition } from 'react-transition-group';
-
-export const LoaderTransition = styled(CSSTransition)``;
 
 export const LoaderContainer = styled(Grid)`
 		max-height: 100px;

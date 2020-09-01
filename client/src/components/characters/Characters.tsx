@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Japanese } from './japanese/Japanese';
 import { CharacterTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
-import './index.css';
 import { English } from './english/English';
-import { TransitionGroup } from 'react-transition-group';
 
 export const Characters = React.memo((props: OwnTypes.Props): React.ReactElement => {
 	const [reveal, setReveal] = useState(false);
+	const [verbList, setVerbList] = useState({} as OwnTypes.VerbTypes);
 	const [currentCharacter, setCurrentCharacter] = useState({
 		english: '',
 		japanese: '',
@@ -32,23 +31,19 @@ export const Characters = React.memo((props: OwnTypes.Props): React.ReactElement
 			if (props.type === 'greetings') {
 				const greetingKey = Object.keys(selectedIndex)[0];
 				const greetingKeyValue = selectedIndex[greetingKey];
-
 				const selectedGreeting = {
 					english: greetingKey,
 					japanese: greetingKeyValue,
 				}
-
 				setCurrentCharacter(selectedGreeting);
 			}
 
-			if (props.type === 'verbs') {
-				const selectedVerbsKeyList = Object.keys(selectedIndex.verbs!);
-				const randomVerbTypeKey = (selectedVerbsKeyList[Math.floor(Math.random() * selectedVerbsKeyList.length)]);
-				const randomVerbTypeKeyValue = selectedIndex.verbs![randomVerbTypeKey];
+			if (props.type === 'verbs' && Object.keys(verbList).length) {
+				console.log('verblesefsdf', verbList)
 
-				const selectedVerbTypeKeyList = Object.keys(randomVerbTypeKeyValue);
-				const randomVerbKey = (selectedVerbTypeKeyList[Math.floor(Math.random() * selectedVerbTypeKeyList.length)]);
-				const randomVerbKeyValue = randomVerbTypeKeyValue[randomVerbKey];
+				const verbKeyList = Object.keys(verbList);
+				const randomVerbKey = (verbKeyList[Math.floor(Math.random() * verbKeyList.length)]);
+				const randomVerbKeyValue = verbList[randomVerbKey];
 
 				const selectedGreeting = {
 					english: randomVerbKey,
@@ -69,11 +64,29 @@ export const Characters = React.memo((props: OwnTypes.Props): React.ReactElement
 		selectRandom(props.characterSet);
 	}
 
+	const populateVerbs = (set: OwnTypes.CharacterSet) => {
+		let allVerbs = verbList;
+		set.forEach((verbGroup): void => {
+			console.log(verbGroup);
+			const uVerbs = verbGroup.verbs!.u;
+			const ruVerbs = verbGroup.verbs!.ru;
+			const irregularVerbs = verbGroup.verbs!.irregular;
+
+			const allVerbTypes = { ...uVerbs, ...ruVerbs, ...irregularVerbs };
+			allVerbs = { ...allVerbs, ...allVerbTypes };
+		})
+		console.log('all verbs!', allVerbs)
+		setVerbList(allVerbs);
+	};
+
+	const verbListLength = Object.keys(verbList).length;
+
 	useEffect(() => {
+		populateVerbs(props.characterSet);
 		setTimeout(() => {
 			selectRandom(props.characterSet);
 		}, 1500);
-	}, [props.characterSet]);
+	}, [props.characterSet, verbListLength]);
 
 	return (
 		<>

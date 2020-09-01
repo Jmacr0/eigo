@@ -38,8 +38,8 @@ export const Characters = React.memo((props: OwnTypes.Props): React.ReactElement
 				setCurrentCharacter(selectedGreeting);
 			}
 
+
 			if (props.type === 'verbs' && Object.keys(verbList).length) {
-				console.log('verblesefsdf', verbList)
 
 				const verbKeyList = Object.keys(verbList);
 				const randomVerbKey = (verbKeyList[Math.floor(Math.random() * verbKeyList.length)]);
@@ -65,18 +65,18 @@ export const Characters = React.memo((props: OwnTypes.Props): React.ReactElement
 	}
 
 	const populateVerbs = (set: OwnTypes.CharacterSet) => {
-		let allVerbs = verbList;
-		set.forEach((verbGroup): void => {
-			console.log(verbGroup);
-			const uVerbs = verbGroup.verbs!.u;
-			const ruVerbs = verbGroup.verbs!.ru;
-			const irregularVerbs = verbGroup.verbs!.irregular;
+		if (props.type === 'verbs') {
+			let allVerbs = verbList;
+			set.forEach((verbGroup): void => {
+				const uVerbs = verbGroup.verbs!.u;
+				const ruVerbs = verbGroup.verbs!.ru;
+				const irregularVerbs = verbGroup.verbs!.irregular;
 
-			const allVerbTypes = { ...uVerbs, ...ruVerbs, ...irregularVerbs };
-			allVerbs = { ...allVerbs, ...allVerbTypes };
-		})
-		console.log('all verbs!', allVerbs)
-		setVerbList(allVerbs);
+				const allVerbTypes = { ...uVerbs, ...ruVerbs, ...irregularVerbs };
+				allVerbs = { ...allVerbs, ...allVerbTypes };
+			})
+			setVerbList(allVerbs);
+		}
 	};
 
 	const verbListLength = Object.keys(verbList).length;

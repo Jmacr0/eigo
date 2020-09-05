@@ -1,6 +1,7 @@
 export namespace CardTypes {
 	export interface Props {
 		type: Type
+		option: string
 		characterSet: CharacterSet
 	}
 

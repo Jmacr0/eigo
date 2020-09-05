@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Typography } from '@material-ui/core';
+import { Typography, TextField, FormControl } from '@material-ui/core';
 
 export const JapaneseDisplay = styled(Typography)`
 		max-height: 100px;
@@ -9,4 +9,9 @@ export const JapaneseDisplay = styled(Typography)`
 		color: red;
 		text-align: center;
 	`;
+
+export const TestInput = styled(TextField)`
+	`;
+
+export const Control = styled(FormControl)``;
 

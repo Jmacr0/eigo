@@ -5,6 +5,12 @@ import * as OwnStyles from './Styles';
 
 export const Display = React.memo((props: OwnTypes.Props) => {
 	const [characterSet, setCharacterSet] = useState([]);
+	const [option, setOption] = useState('');
+
+	const handleSelection = (event: React.MouseEvent<HTMLButtonElement>) => {
+		const selection = event.currentTarget.value;
+		setOption(selection)
+	}
 
 	useEffect(() => {
 		const uri = `https://japaneseapi.herokuapp.com/api/v1/${props.type}`;
@@ -29,7 +35,23 @@ export const Display = React.memo((props: OwnTypes.Props) => {
 				justify="center"
 				alignItems="center"
 			>
-				<Card type={props.type} characterSet={characterSet} />
+				{!option ?
+					<>
+						<OwnStyles.SelectButton
+							onClick={handleSelection}
+							value="random"
+						>
+							random
+				</OwnStyles.SelectButton>
+						<OwnStyles.SelectButton
+							onClick={handleSelection}
+							value="test"
+						>
+							test
+				</OwnStyles.SelectButton>
+					</> :
+					<Card type={props.type} option={option} characterSet={characterSet} />
+				}
 			</OwnStyles.MainDisplay>
 			<OwnStyles.BackButton
 				color="secondary"

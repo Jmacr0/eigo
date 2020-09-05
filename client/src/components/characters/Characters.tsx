@@ -98,17 +98,22 @@ export const Characters = React.memo((props: OwnTypes.Props): React.ReactElement
 						<OwnStyles.Loader height={30} width={200} animation="wave" />
 					</OwnStyles.LoaderContainer>
 					:
-					<Japanese type={props.type} character={currentCharacter.japanese} />
+					<Japanese
+						reveal={reveal}
+						onClick={handleShow}
+						type={props.type}
+						option={props.option}
+						character={currentCharacter.japanese}
+					/>
 			}
 			<br />
-			<OwnStyles.HiddenAnswerCard
+			<English
+				reveal={reveal}
 				onClick={handleShow}
-			>
-				{reveal ?
-					<English type={props.type} character={currentCharacter.english} /> :
-					"show"
-				}
-			</OwnStyles.HiddenAnswerCard>
+				type={props.type}
+				option={props.option}
+				character={currentCharacter.english}
+			/>
 			<br />
 			<OwnStyles.RandomButton
 				variant="contained"

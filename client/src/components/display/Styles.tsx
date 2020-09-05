@@ -11,3 +11,8 @@ export const Title = styled(Typography)`
 
 export const BackButton = styled(Button)`
 `;
+
+export const SelectButton = styled(Button)`
+		min-width: 200px!important;
+		border-radius: 0px!important;
+`;

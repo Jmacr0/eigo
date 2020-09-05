@@ -3,12 +3,15 @@ import { Typography, TextField } from '@material-ui/core';
 import { CheckBox, Cancel } from '@material-ui/icons';
 
 export const JapaneseDisplay = styled(Typography)`
+		display: flex;
+		align-items: center;
 		max-height: 100px;
 		min-height: 100px;
 		max-width: 90vw;
 		font-weight: bold;
 		color: red;
 		text-align: center;
+		verticle-align: middle;
 	`;
 
 export const TestInput = styled(TextField)`

@@ -106,7 +106,6 @@ export const Characters = React.memo((props: OwnTypes.Props): React.ReactElement
 						character={currentCharacter.japanese}
 					/>
 			}
-			<br />
 			<English
 				reveal={reveal}
 				onClick={handleShow}

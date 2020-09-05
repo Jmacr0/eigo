@@ -3,7 +3,6 @@ import { JapaneseTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import { HiddenAnswerCard } from '../../hiddenAnswerCard/HiddenAnswerCard';
 import { InputAdornment } from '@material-ui/core';
-import { CheckBox, Block } from '@material-ui/icons';
 
 export const Japanese = React.memo((props: OwnTypes.Props) => {
 	const [typedAnswer, setTypedAnswer] = useState('');
@@ -12,7 +11,7 @@ export const Japanese = React.memo((props: OwnTypes.Props) => {
 	});
 
 	const adornment = React.useMemo(() => {
-		return inputProps.success ? <CheckBox /> : <Block />;
+		return inputProps.success ? <OwnStyles.TickMark /> : < OwnStyles.CrossMark />;
 	}, [inputProps.success]);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

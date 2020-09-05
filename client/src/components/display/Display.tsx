@@ -24,14 +24,13 @@ export const Display = React.memo((props: OwnTypes.Props) => {
 	return (
 		<>
 			<OwnStyles.Title
-				variant="h3"
-				align="center"
+				component="h3"
 			>
-				{props.type}
+				{(props.type).toUpperCase()}
 			</OwnStyles.Title>
 			<OwnStyles.MainDisplay
 				container
-				direction="row"
+				direction="column"
 				justify="center"
 				alignItems="center"
 			>

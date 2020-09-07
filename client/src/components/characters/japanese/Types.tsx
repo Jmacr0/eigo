@@ -10,6 +10,7 @@ export namespace JapaneseTypes {
 		hiragana = 'hiragana',
 		katakana = 'katakana',
 		greetings = 'greetings',
-		verbs = 'verbs'
+		verbs = 'verbs',
+		adjectives = 'adjectives'
 	}
 }

@@ -13,7 +13,8 @@ export namespace HiddenAnswerCardTypes {
 		hiragana = 'hiragana',
 		katakana = 'katakana',
 		greetings = 'greetings',
-		verbs = 'verbs'
+		verbs = 'verbs',
+		adjectives = 'adjectives'
 	}
 
 	export type CharacterSet = SingleSet[]

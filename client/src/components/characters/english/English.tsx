@@ -6,12 +6,6 @@ import { HiddenAnswerCard } from '../../hiddenAnswerCard/HiddenAnswerCard';
 export const English = React.memo((props: OwnTypes.Props) => {
 	return (
 		<>
-			{/* {props.option === ' test' || props.reveal ?
-				<OwnStyles.EnglishDisplay
-					variant={props.type === 'greetings' || props.type === 'verbs' ? "body1" : "h3"}
-				>
-					{props.character}
-				</OwnStyles.EnglishDisplay> : */}
 			<HiddenAnswerCard
 				reveal={props.reveal}
 				onClick={props.onClick}
@@ -20,7 +14,6 @@ export const English = React.memo((props: OwnTypes.Props) => {
 				language="english"
 				character={props.character}
 			/>
-			{/* } */}
 		</>
 	)
 });

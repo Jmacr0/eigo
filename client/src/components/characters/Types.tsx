@@ -8,7 +8,8 @@ export namespace CharacterTypes {
 		hiragana = 'hiragana',
 		katakana = 'katakana',
 		greetings = 'greetings',
-		verbs = 'verbs'
+		verbs = 'verbs',
+		adjectives = 'adjectives'
 	}
 
 	export type CharacterSet = SingleSet[]
@@ -29,6 +30,14 @@ export namespace CharacterTypes {
 	}
 
 	export interface VerbTypes {
+		[english: string]: string
+	}
+
+	export interface Adjectives {
+		[verbType: string]: AdjectiveTypes
+	}
+
+	export interface AdjectiveTypes {
 		[english: string]: string
 	}
 }

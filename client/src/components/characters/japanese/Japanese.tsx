@@ -64,7 +64,10 @@ export const Japanese = React.memo((props: OwnTypes.Props) => {
 			{
 				props.option !== 'test' ?
 					<OwnStyles.JapaneseDisplay
-						variant={props.type === 'greetings' || props.type === 'verbs' ? "h4" : "h1"}
+						variant={
+							props.type === 'greetings' ||
+								props.type === 'verbs' ||
+								props.type === 'adjectives' ? "h4" : "h1"}
 					>
 						{props.character}
 					</OwnStyles.JapaneseDisplay > : <></>

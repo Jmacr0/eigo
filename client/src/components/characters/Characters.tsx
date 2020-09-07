@@ -7,6 +7,7 @@ import { English } from './english/English';
 export const Characters = React.memo((props: OwnTypes.Props): React.ReactElement => {
 	const [reveal, setReveal] = useState(false);
 	const [verbList, setVerbList] = useState({} as OwnTypes.VerbTypes);
+	const [adjectiveList, setAdjectiveList] = useState({} as OwnTypes.AdjectiveTypes);
 	const [currentCharacter, setCurrentCharacter] = useState({
 		english: '',
 		japanese: '',
@@ -52,6 +53,20 @@ export const Characters = React.memo((props: OwnTypes.Props): React.ReactElement
 
 				setCurrentCharacter(selectedGreeting);
 			}
+
+			if (props.type === 'adjectives' && Object.keys(adjectiveList).length) {
+
+				const adjectiveKeyList = Object.keys(adjectiveList);
+				const randomAdjectiveKey = (adjectiveKeyList[Math.floor(Math.random() * adjectiveKeyList.length)]);
+				const randomAdjectiveKeyValue = adjectiveList[randomAdjectiveKey];
+
+				const selectedGreeting = {
+					english: randomAdjectiveKey,
+					japanese: randomAdjectiveKeyValue,
+				}
+
+				setCurrentCharacter(selectedGreeting);
+			}
 		}
 	};
 
@@ -64,7 +79,7 @@ export const Characters = React.memo((props: OwnTypes.Props): React.ReactElement
 		selectRandom(props.characterSet);
 	}
 
-	const populateVerbs = (set: OwnTypes.CharacterSet) => {
+	const populateList = (set: OwnTypes.CharacterSet) => {
 		if (props.type === 'verbs') {
 			let allVerbs = verbList;
 			set.forEach((verbGroup): void => {
@@ -76,17 +91,29 @@ export const Characters = React.memo((props: OwnTypes.Props): React.ReactElement
 				allVerbs = { ...allVerbs, ...allVerbTypes };
 			})
 			setVerbList(allVerbs);
+		};
+		if (props.type === 'adjectives') {
+			let allAdjectives = adjectiveList;
+			set.forEach((adjectiveGroup): void => {
+				const iAdjectives = adjectiveGroup.adjectives!.i;
+				const naAdjectives = adjectiveGroup.adjectives!.na;
+
+				const allAdjectiveTypes = { ...iAdjectives, ...naAdjectives };
+				allAdjectives = { ...allAdjectives, ...allAdjectiveTypes };
+			})
+			setAdjectiveList(allAdjectives);
 		}
 	};
 
 	const verbListLength = Object.keys(verbList).length;
+	const adjectiveListLength = Object.keys(adjectiveList).length;
 
 	useEffect(() => {
-		populateVerbs(props.characterSet);
+		populateList(props.characterSet);
 		setTimeout(() => {
 			selectRandom(props.characterSet);
 		}, 1500);
-	}, [props.characterSet, verbListLength]);
+	}, [props.characterSet, verbListLength, adjectiveListLength]);
 
 	return (
 		<>

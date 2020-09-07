@@ -10,10 +10,15 @@ export const HiddenAnswerCard = React.memo((props: OwnTypes.Props) => {
 		>
 			{props.reveal || props.option === 'test' && props.language === 'english' ?
 				<OwnStyles.RevealedText
-					component={props.type === 'greetings' || props.type === 'verbs' ? "p" : "h2"}
+					component={props.type === 'greetings' ||
+						props.type === 'verbs' ||
+						props.type === 'adjectives' ? "p" : "h2"}
 					color={props.option === 'test' && props.language === 'japanese' ? "green" : "black"}
 					fontWeight="bold"
-					fontSize={props.type === 'greetings' || props.type === 'verbs' ? (props.language === 'english' ? "1.2rem" : "1.5rem") : "3rem"}
+					fontSize={props.type === 'greetings' ||
+						props.type === 'verbs' ||
+						props.type === 'adjectives' ?
+						(props.language === 'english' ? "1.2rem" : "1.5rem") : "3rem"}
 				>{props.character}
 				</OwnStyles.RevealedText>
 				:

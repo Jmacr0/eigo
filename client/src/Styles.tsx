@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Button, Grid, Typography } from '@material-ui/core';
 
 export const ButtonDisplay = styled(Grid)`
-		margin-top: 50px!important;
+		margin-top: 100px!important;
 	`;
 
 export const SelectButton = styled(Button)`
@@ -15,4 +15,6 @@ export const Title = styled(Typography)`
 
 `;
 
-export const MainDisplayWrapper = styled(Grid)``;
+export const MainDisplayWrapper = styled(Grid)`
+		margin-top: 100px!important;
+`;

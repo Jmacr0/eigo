@@ -1,9 +1,6 @@
 import styled from 'styled-components';
-import { Card, Grid, Box } from '@material-ui/core';
-
-export const CardDisplay = styled(Grid)`
-	
-	`;
+import { Card, Box, Grid } from '@material-ui/core';
+import { Skeleton } from '@material-ui/lab';
 
 export const HiddenAnswerCard = styled(Card)`
 		padding: 5px;
@@ -25,3 +22,12 @@ export const HiddenAnswerCard = styled(Card)`
 
 export const RevealedText = styled(Box)``;
 
+export const LoadingTextWrapper =  styled(Grid)`
+container
+spacing={0}
+direction="column"
+alignItems="center"
+justify="center"`;
+
+export const LoadingText = styled(Skeleton)`
+	`;

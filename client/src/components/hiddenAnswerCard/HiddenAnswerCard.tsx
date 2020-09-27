@@ -4,9 +4,15 @@ import * as OwnStyles from './Styles';
 
 export const HiddenAnswerCard = React.memo((props: OwnTypes.Props) => {
 
+	const toggleCardClickable = React.useMemo(() => {
+		if (props.character) {
+			return props.onClick;
+		}
+	}, [props.character]);
+
 	return (
 		<OwnStyles.HiddenAnswerCard
-			onClick={props.onClick}
+			onClick={toggleCardClickable}
 		>
 			{props.reveal || props.option === 'test' && props.language === 'english' ?
 				<OwnStyles.RevealedText
@@ -22,11 +28,13 @@ export const HiddenAnswerCard = React.memo((props: OwnTypes.Props) => {
 				>{props.character}
 				</OwnStyles.RevealedText>
 				:
-				<span
-					style={{ color: "green" }}
-				>
-					answer
-				</span>
+				(props.character ?
+					<span
+						style={{ color: "green" }}
+					>
+						answer
+				</span> : <OwnStyles.LoadingText />
+				)
 			}
 		</OwnStyles.HiddenAnswerCard >
 	);

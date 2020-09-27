@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
+import { Drawer } from './components/drawer/Drawer';
 import { Display } from './components/display/Display';
 import * as OwnStyles from './Styles';
+import { Navbar } from './components/navbar/Navbar';
 
 function App() {
 	const [type, setType] = useState();
+	const [drawerStatus, setDrawerStatus] = useState(false);
+	const handleDrawerClick = () => {
+		console.log(drawerStatus)
+		const setStatus = drawerStatus ? false : true;
+		setDrawerStatus(setStatus);
+	}
 	const handleSelection = (event) => {
 		setType(event.currentTarget.value);
 	};
@@ -13,11 +21,13 @@ function App() {
 
 	return (
 		<>
-			<h1
-				style={{ textAlign: "center" }}
-			>
-				Eigo
-			</h1>
+			<Navbar
+				onDrawerClick={handleDrawerClick}
+			/>
+			<Drawer
+				drawerStatus={drawerStatus}
+				onDrawerClick={handleDrawerClick}
+			/>
 			{!type &&
 				<>
 					<OwnStyles.ButtonDisplay

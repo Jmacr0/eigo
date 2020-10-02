@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const db = require('../database/models/index');
+const db = require('../../../database/models/index');
 const passport = require('passport');
 
 router.get('/', ({ user }, res) => {
@@ -12,20 +12,7 @@ router.get('/', ({ user }, res) => {
 		authenticated: authenticated,
 		id: id
 	})
-
 })
-
-// router.get('/user/:id', (req, res) => {
-// 	const { id } = req.params;
-// 	db.User.findById(id)
-// 		.exec()
-// 		.then(user => {
-// 			res.status(200).json(user);
-// 		})
-// 		.catch(error => {
-// 			res.status(500).json(error);
-// 		});
-// })
 
 router.post('/user/new', (req, res) => {
 	const { username, email, password, passwordConfirm } = req.body;

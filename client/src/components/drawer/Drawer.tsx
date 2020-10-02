@@ -4,6 +4,7 @@ import { DrawerTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import googleButton from '../../assets/images/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png';
 import { GoogleOneTap } from '../googleOneTap/GoogleOneTap';
+import API from '../../utils/api';
 
 export const Drawer = React.memo((props: OwnTypes.Props) => {
 	const [toggleLogin, setToggleLogin] = useState(true);
@@ -45,6 +46,7 @@ export const Drawer = React.memo((props: OwnTypes.Props) => {
 			userInput.passwordCheck
 		) {
 			console.log('signing up', userInput);
+			API.user.createUser(userInput);
 		}
 	};
 	return (

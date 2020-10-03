@@ -1,41 +1,32 @@
 {
-	"name": "eigo",
-	"version": "0.1.0",
-	"private": true,
-	"proxy": "http://localhost:3001",
-	"dependencies": {
-		"axios": "^0.19.2",
-		"bcryptjs": "^2.4.3",
-		"bootstrap": "^4.4.1",
-		"cookie-parser": "^1.4.4",
-		"express": "^4.17.1",
-		"express-session": "^1.17.0",
-		"passport": "^0.4.1",
-		"passport-local": "^1.0.0"
-	},
-	"scripts": {
-		"start": "node ./server/server.js",
-		"dev:fe": "cd client && npm start",
-		"dev:be": "nodemon ./server/server.js",
-		"heroku-postbuild": "cd client && npm install && npm run build",
-		"test": "test --passWithNoTests"
-	},
-	"eslintConfig": {
-		"extends": "react-app"
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
-	},
-	"devDependencies": {
-		"nodemon": "^2.0.2"
-	}
+    "name": "eigo",
+    "version": "0.1.0",
+    "private": true,
+    "proxy": "http://localhost:3001",
+    "dependencies": {},
+    "scripts": {
+        "start": "node ./server/server.js",
+        "dev:fe": "cd client && npm start",
+        "dev:be": "cd server && npm run dev",
+        "heroku-postbuild": "cd client && npm install && npm run build",
+        "test": "test --passWithNoTests"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.2"
+    }
 }

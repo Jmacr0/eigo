@@ -1,0 +1,42 @@
+{
+	"name": "eigo",
+	"version": "0.1.0",
+	"private": true,
+	"proxy": "http://localhost:3001",
+	"dependencies": {
+		"axios": "^0.19.2",
+		"bcryptjs": "^2.4.3",
+		"bootstrap": "^4.4.1",
+		"cookie-parser": "^1.4.4",
+		"express": "^4.17.1",
+		"express-session": "^1.17.0",
+		"mysql2": "^2.2.5",
+		"passport": "^0.4.1",
+		"passport-local": "^1.0.0",
+		"sequelize": "^6.3.5",
+		"sequelize-cli": "^6.2.0"
+	},
+	"scripts": {
+		"dev": "nodemon server.js",
+		"test": "test --passWithNoTests"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"morgan": "^1.10.0",
+		"nodemon": "^2.0.2"
+	}
+}

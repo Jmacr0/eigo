@@ -42,8 +42,7 @@ export const Drawer = React.memo((props: OwnTypes.Props) => {
 		if (
 			!toggleLogin &&
 			userInput.username &&
-			userInput.password &&
-			userInput.passwordCheck
+			(userInput.password === userInput.passwordCheck)
 		) {
 			console.log('signing up', userInput);
 			API.user.createUser(userInput);

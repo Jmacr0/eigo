@@ -1,31 +1,65 @@
+const bcrypt = require('bcrypt');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const db = require('../database/models');
+const db = require('../models');
 
-passport.use(new LocalStrategy(
-	function (username, password, done) {
-		db.User.getUserByUsername(username, function (err, user) {
-			if (err) throw err;
-			if (!user) {
-				return done(null, false, { message: 'Unknown User' });
-			}
-			db.User.comparePassword(password, user.password, function (err, isMatch) {
-				if (err) throw err;
-				if (isMatch) {
-					return done(null, user);
-				} else {
-					return done(null, false, { message: 'Invalid password' });
+const authentication = () => {
+	passport.use('register', new LocalStrategy(
+		async (username, password, done) => {
+			const existingUser = await db.User.findOne({
+				where: {
+					username,
+				},
+			});
+			console.log(existingUser);
+			if (existingUser) {
+				done(null, false, { message: 'Username already exists.' });
+				return;
+			};
+			const hashedPassword = await bcrypt.hash(password, 10);
+			const user = await db.User.create({
+				username,
+				password: hashedPassword,
+			});
+			done(null, user);
+		}
+	));
+
+	passport.use('login', new LocalStrategy(
+		async (username, password, done) => {
+			const user = await db.User.findOne({
+				where: {
+					username,
 				}
 			});
-		});
-		passport.serializeUser(function (user, done) {
-			done(null, user.id);
-		});
+			if (user) {
+				console.log(user);
+				console.log('password', password, user.password)
+				const isMatch = await bcrypt.compare(password, user.password);
+				console.log(isMatch);
+				if (isMatch) {
+					done(null, user);
+				} else {
+					done(null, false, { message: 'Username or password incorrect.' });
+				}
+			} else {
+				done(null, false, { message: 'Username or password incorrect.' });
+			}
+		}
+	));
 
-		passport.deserializeUser(function (id, done) {
-			db.User.getUserById(id, function (err, user) {
-				done(err, user);
-			});
-		});
-	}
-));
+	passport.serializeUser((user, done) => {
+		done(null, user.id);
+	});
+
+	passport.deserializeUser(async (id, done) => {
+		try {
+			const user = await db.User.findByPk(id);
+			done(null, user);
+		} catch (err) {
+			done(err, false);
+		}
+	});
+};
+
+module.exports = authentication;

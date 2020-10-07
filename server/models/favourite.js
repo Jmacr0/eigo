@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-	const Favourites = sequelize.define('Favourites', {
+	const Favourite = sequelize.define('Favourite', {
 		// userId: {
 		// 	type: DataTypes.INTEGER,
 		// 	allowNull: false,
@@ -10,19 +10,19 @@ module.exports = (sequelize, DataTypes) => {
 		},
 	});
 
-	Favourites.associate = (models) => {
-		Favourites.belongsTo(models.Users, {
+	Favourite.associate = (models) => {
+		Favourite.belongsTo(models.User, {
 			foreignKey: {
 				// name: 'userId',
 				allowNull: false,
 			},
 		});
-		Favourites.hasMany(models.Verbs, {
+		Favourite.hasMany(models.Verb, {
 			foreignKey: {
 				name: 'verbId',
 				allowNull: false,
 			},
 		});
 	};
-	return Favourites;
+	return Favourite;
 };

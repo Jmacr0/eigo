@@ -7,17 +7,22 @@ import { Navbar } from './components/navbar/Navbar';
 function App() {
 	const [type, setType] = useState();
 	const [drawerStatus, setDrawerStatus] = useState(false);
+	const [loggedIn, setLoggedIn] = useState(false);
 	const handleDrawerClick = () => {
 		console.log(drawerStatus)
 		const setStatus = drawerStatus ? false : true;
 		setDrawerStatus(setStatus);
+	};
+	const handleLogin = () => {
+		const toggle = (loggedIn ? false : true);
+		setLoggedIn(toggle);
 	}
 	const handleSelection = (event) => {
 		setType(event.currentTarget.value);
 	};
 	const handleReset = () => {
 		setType();
-	}
+	};
 
 	return (
 		<>
@@ -25,8 +30,10 @@ function App() {
 				onDrawerClick={handleDrawerClick}
 			/>
 			<Drawer
+				loggedIn={loggedIn}
 				drawerStatus={drawerStatus}
 				onDrawerClick={handleDrawerClick}
+				onLogin={handleLogin}
 			/>
 			{!type &&
 				<>

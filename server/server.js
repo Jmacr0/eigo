@@ -6,13 +6,17 @@ const logger = require('morgan');
 const session = require('express-session');
 const passport = require('passport');
 const db = require('./models');
+const routes = require('./routes');
 
 const app = express();
+const authentication = require('./config/passport');
 const PORT = process.env.PORT || 3001;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+authentication();
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use(cookieParser('secret'));
 app.use(session({
@@ -21,11 +25,10 @@ app.use(session({
 	resave: false,
 }));
 
-// Passport init
-// require('./config/passport');
-// app.use(passport.initialize());
-// calls deserialize
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(routes);
 
 if (NODE_ENV === 'production') {
 	app.use(express.static('client/build'));

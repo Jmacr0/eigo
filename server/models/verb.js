@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-	const Verbs = sequelize.define('Verbs', {
+	const Verb = sequelize.define('Verb', {
 		startingLetter: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -16,13 +16,13 @@ module.exports = (sequelize, DataTypes) => {
 		},
 	});
 
-	Verbs.associate = (models) => {
-		Verbs.belongsTo(models.Favourites, {
+	Verb.associate = (models) => {
+		Verb.belongsTo(models.Favourite, {
 			foreignKey: {
 				name: 'favouriteId',
 				allowNull: false,
 			},
 		});
 	};
-	return Verbs;
+	return Verb;
 };

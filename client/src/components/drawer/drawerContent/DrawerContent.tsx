@@ -5,6 +5,11 @@ import * as OwnStyles from './Styles';
 import API from '../../../utils/api';
 
 export const DrawerContent = React.memo((props: OwnTypes.Props) => {
+
+	const handleClick = () => {
+		API.user.test();
+	};
+
 	return (
 		<>
 			<OwnStyles.DrawerList>
@@ -14,37 +19,14 @@ export const DrawerContent = React.memo((props: OwnTypes.Props) => {
 					<OwnStyles.DrawerListItemIcon>
 						<OwnStyles.StarredIcon />
 					</OwnStyles.DrawerListItemIcon>
-					<OwnStyles.DrawerListItemText primary="Starred" />
-				</OwnStyles.DrawerListItem>
-				<OwnStyles.DrawerListItem
-					button
-				>
-					<OwnStyles.DrawerListItemIcon>
-						<OwnStyles.StarredIcon />
-					</OwnStyles.DrawerListItemIcon>
-					<OwnStyles.DrawerListItemText primary="Starred" />
-				</OwnStyles.DrawerListItem>
-				<OwnStyles.DrawerListItem
-					button
-				>
-					<OwnStyles.DrawerListItemIcon>
-						<OwnStyles.StarredIcon />
-					</OwnStyles.DrawerListItemIcon>
-					<OwnStyles.DrawerListItemText primary="Starred" />
-				</OwnStyles.DrawerListItem>
-				<OwnStyles.DrawerListItem
-					button
-				>
-					<OwnStyles.DrawerListItemIcon>
-						<OwnStyles.StarredIcon />
-					</OwnStyles.DrawerListItemIcon>
-					<OwnStyles.DrawerListItemText primary="Starred" />
+					<OwnStyles.DrawerListItemText primary="Favourites" onClick={handleClick} />
 				</OwnStyles.DrawerListItem>
 				<OwnStyles.Break />
 				<OwnStyles.DrawerListItem
 					button
 				>
 					<OwnStyles.Input
+						disabled
 						autoComplete="off"
 						color="primary"
 						id="Search"

@@ -17,11 +17,8 @@ module.exports = (sequelize, DataTypes) => {
 	});
 
 	Verb.associate = (models) => {
-		Verb.belongsTo(models.Favourite, {
-			foreignKey: {
-				name: 'favouriteId',
-				allowNull: false,
-			},
+		Verb.belongsToMany(models.Favourite, {
+			through: 'FavouritedVerb',
 		});
 	};
 	return Verb;

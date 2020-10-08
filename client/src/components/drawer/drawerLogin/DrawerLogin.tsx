@@ -15,6 +15,7 @@ export const DrawerLogin = React.memo((props: OwnTypes.Props) => {
 		passwordCheck: '',
 	});
 	const handleClick = () => {
+		API.user.test();
 		const toggleGoogleOneTap = (showGoogleOneTap ? false : true);
 		setShowGoogleOneTap(toggleGoogleOneTap);
 	};

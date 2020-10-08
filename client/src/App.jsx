@@ -1,15 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Drawer } from './components/drawer/Drawer';
 import { Display } from './components/display/Display';
 import * as OwnStyles from './Styles';
 import { Navbar } from './components/navbar/Navbar';
+import API from './utils/api/';
 
 function App() {
 	const [type, setType] = useState();
 	const [drawerStatus, setDrawerStatus] = useState(false);
 	const [loggedIn, setLoggedIn] = useState(false);
+	const [user, setUser] = useState({});
+	const handleCheckIfLoggedIn = async () => {
+		const { success } = await API.user.checkIfLoggedIn();
+		setLoggedIn(success);
+	};
+	const handleGetUser = async () => {
+		if (loggedIn) {
+			console.log('get user', loggedIn);
+			const res = await API.user.findUser();
+			console.log(res);
+		};
+	};
 	const handleDrawerClick = () => {
-		console.log(drawerStatus)
 		const setStatus = drawerStatus ? false : true;
 		setDrawerStatus(setStatus);
 	};
@@ -23,6 +35,15 @@ function App() {
 	const handleReset = () => {
 		setType();
 	};
+
+	useEffect(() => {
+		handleCheckIfLoggedIn();
+	}, []);
+
+	useEffect(() => {
+		console.log('second useEffect');
+		handleGetUser();
+	}, [loggedIn]);
 
 	return (
 		<>

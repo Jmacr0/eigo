@@ -4,6 +4,37 @@ const db = require('../../models');
 const passport = require('passport');
 
 module.exports = {
+    current: (req, res, next) => {
+        if (req.user) {
+            res.send({
+                success: true,
+                message: 'User logged in.',
+            });
+        } else {
+            res.send({
+                success: false,
+                message: 'No user logged in.',
+            });
+        }
+    },
+    findUser: async (req, res, next) => {
+        console.log(req.user.id);
+        const user = await db.User.findOne({
+            where: {
+                username: req.user.username,
+            },
+            include: [
+                {
+                    model: db.Favourite,
+                    include: ['Verbs'],
+                },
+            ],
+        });
+        res.send({
+            success: true,
+            data: user,
+        });
+    },
     createUser: (req, res, next) => {
         console.log(req.body);
         passport.authenticate('register', (error, user, message) => {
@@ -80,5 +111,9 @@ module.exports = {
                 });
             });
         })(req, res, next);
+    },
+    test: (req, res, next) => {
+        console.log(req.user);
+        res.send(req.user);
     },
 }

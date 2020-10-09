@@ -3,7 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const passport = require('passport');
 const db = require('./models');
 const routes = require('./routes');
@@ -21,19 +21,12 @@ app.use(bodyParser.json());
 app.use(cookieParser('secret'));
 app.use(session({
 	secret: 'secret',
+	store: new SequelizeStore({
+		db: db.sequelize,
+	}),
 	saveUninitialized: true,
 	resave: false,
 }));
-
-app.use(
-	session({
-		store: new SequelizeStore({
-			db,
-		}),
-		resave: false, // we support the touch method so per the express-session docs this should be set to false
-		proxy: true, // if you do SSL outside of node.
-	})
-);
 
 app.use(passport.initialize());
 app.use(passport.session());

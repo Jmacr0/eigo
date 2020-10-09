@@ -21,6 +21,11 @@ export default {
         console.log(response.data)
         return response.data;
     },
+    logout: async () => {
+        const response = await axios.get('/api/user/authenticate');
+        console.log(response.data)
+        return response.data;
+    },
     test: async () => {
         const res = await axios.get('/api/user/test');
         console.log(res);

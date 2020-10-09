@@ -27,7 +27,11 @@ export const Drawer = React.memo((props: OwnTypes.Props) => {
 				</OwnStyles.Header>
 				<OwnStyles.Break />
 				{props.loggedIn ?
-					<DrawerContent />
+					<DrawerContent
+						user={props.user}
+						setUser={props.setUser}
+						onLogin={props.onLogin}
+					/>
 					:
 					<DrawerLogin
 						onLogin={props.onLogin}

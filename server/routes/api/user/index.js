@@ -9,6 +9,7 @@ router.route('/one')
     .post(controller.user.createUser);
 
 router.route('/authenticate')
+    .get(controller.user.logout)
     .post(controller.user.login);
 
 router.route('/test')

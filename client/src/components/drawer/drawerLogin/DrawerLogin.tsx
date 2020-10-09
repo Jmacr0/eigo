@@ -71,6 +71,7 @@ export const DrawerLogin = React.memo((props: OwnTypes.Props) => {
 			<OwnStyles.DrawerList>
 				<OwnStyles.DrawerListItem
 					button
+					disableRipple
 				>
 					<OwnStyles.Input
 						autoComplete="off"
@@ -91,6 +92,7 @@ export const DrawerLogin = React.memo((props: OwnTypes.Props) => {
 				</OwnStyles.DrawerListItem>
 				<OwnStyles.DrawerListItem
 					button
+					disableRipple
 				>
 					<OwnStyles.Input
 						color="primary"
@@ -112,6 +114,7 @@ export const DrawerLogin = React.memo((props: OwnTypes.Props) => {
 				{toggleLogin ? '' :
 					<OwnStyles.DrawerListItem
 						button
+						disableRipple
 					>
 						<OwnStyles.Input
 							color="primary"
@@ -133,6 +136,7 @@ export const DrawerLogin = React.memo((props: OwnTypes.Props) => {
 				}
 				<OwnStyles.DrawerListItem
 					button
+					disableRipple
 				>
 					<OwnStyles.UserButton
 						variant="contained"
@@ -151,6 +155,7 @@ export const DrawerLogin = React.memo((props: OwnTypes.Props) => {
 				<OwnStyles.Break />
 				<OwnStyles.DrawerListItem
 					button
+					disableRipple
 				>
 					<OwnStyles.DrawerListItemText>
 						<img src={googleButton} onClick={handleClick}></img>

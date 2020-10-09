@@ -9,7 +9,7 @@ function App() {
 	const [type, setType] = useState();
 	const [drawerStatus, setDrawerStatus] = useState(false);
 	const [loggedIn, setLoggedIn] = useState(false);
-	const [user, setUser] = useState({});
+	const [user, setUser] = useState();
 	const handleCheckIfLoggedIn = async () => {
 		const { success } = await API.user.checkIfLoggedIn();
 		setLoggedIn(success);
@@ -17,8 +17,10 @@ function App() {
 	const handleGetUser = async () => {
 		if (loggedIn) {
 			console.log('get user', loggedIn);
-			const res = await API.user.findUser();
-			console.log(res);
+			const { data } = await API.user.findUser();
+			setTimeout(() => {
+				setUser(data);
+			}, 1200);
 		};
 	};
 	const handleDrawerClick = () => {
@@ -28,7 +30,7 @@ function App() {
 	const handleLogin = () => {
 		const toggle = (loggedIn ? false : true);
 		setLoggedIn(toggle);
-	}
+	};
 	const handleSelection = (event) => {
 		setType(event.currentTarget.value);
 	};
@@ -52,6 +54,8 @@ function App() {
 			/>
 			<Drawer
 				loggedIn={loggedIn}
+				user={user}
+				setUser={setUser}
 				drawerStatus={drawerStatus}
 				onDrawerClick={handleDrawerClick}
 				onLogin={handleLogin}

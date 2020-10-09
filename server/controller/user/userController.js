@@ -112,6 +112,13 @@ module.exports = {
             });
         })(req, res, next);
     },
+    logout: (req, res, next) => {
+        console.log('backend logout')
+        req.logout();
+        res.send({
+            success: true,
+        });
+    },
     test: (req, res, next) => {
         console.log(req.user);
         res.send(req.user);

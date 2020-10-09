@@ -24,6 +24,16 @@ app.use(session({
 	resave: false,
 }));
 
+app.use(
+	session({
+		store: new SequelizeStore({
+			db: sequelize,
+		}),
+		resave: false, // we support the touch method so per the express-session docs this should be set to false
+		proxy: true, // if you do SSL outside of node.
+	})
+);
+
 app.use(passport.initialize());
 app.use(passport.session());
 

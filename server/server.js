@@ -3,6 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const passport = require('passport');
 const db = require('./models');
 const routes = require('./routes');

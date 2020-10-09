@@ -44,18 +44,21 @@ export const DrawerLogin = React.memo((props: OwnTypes.Props) => {
 			};
 			console.log('logging in', userLoginInput);
 			const res = await API.user.login(userLoginInput);
-			console.log(res.success);
-			props.onLogin();
-		}
+			if (res.success) {
+				props.onLogin();
+			};
+		};
 		if (
 			!toggleLogin &&
 			userInput.username &&
 			(userInput.password === userInput.passwordCheck)
 		) {
 			console.log('signing up', userInput);
-			API.user.createUser(userInput);
-			props.onLogin();
-		}
+			const res = await API.user.createUser(userInput);
+			if (res.success) {
+				props.onLogin();
+			};
+		};
 	};
 	return (
 		<>

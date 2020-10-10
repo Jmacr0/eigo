@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import { Drawer } from './components/drawer/Drawer';
 import { Display } from './components/display/Display';
 import * as OwnStyles from './Styles';
 import { Navbar } from './components/navbar/Navbar';
 import API from './utils/api/';
+import { HomePage } from './pages/home/HomePage';
+import { HomePageALPHA } from './pages/homeALPHA/HomePageALPHA';
 
 function App() {
-	const [type, setType] = useState();
 	const [drawerStatus, setDrawerStatus] = useState(false);
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [user, setUser] = useState();
@@ -31,13 +33,6 @@ function App() {
 		const toggle = (loggedIn ? false : true);
 		setLoggedIn(toggle);
 	};
-	const handleSelection = (event) => {
-		setType(event.currentTarget.value);
-	};
-	const handleReset = () => {
-		setType();
-	};
-
 	useEffect(() => {
 		handleCheckIfLoggedIn();
 	}, []);
@@ -48,7 +43,7 @@ function App() {
 	}, [loggedIn]);
 
 	return (
-		<>
+		<Router>
 			<Navbar
 				onDrawerClick={handleDrawerClick}
 			/>
@@ -60,32 +55,15 @@ function App() {
 				onDrawerClick={handleDrawerClick}
 				onLogin={handleLogin}
 			/>
-			{!type &&
-				<>
-					<OwnStyles.ButtonDisplay
-						container
-						direction="column"
-						justify="center"
-						alignItems="center"
-					>
-						<OwnStyles.SelectButton disableElevation variant="contained" onClick={handleSelection} value="hiragana">hiragana</OwnStyles.SelectButton>
-						<OwnStyles.SelectButton disableElevation variant="contained" onClick={handleSelection} value="katakana">katakana</OwnStyles.SelectButton>
-						<OwnStyles.SelectButton disableElevation variant="contained" onClick={handleSelection} value="greetings">greetings</OwnStyles.SelectButton>
-						<OwnStyles.SelectButton disableElevation variant="contained" onClick={handleSelection} value="verbs">verbs</OwnStyles.SelectButton>
-						<OwnStyles.SelectButton disableElevation variant="contained" onClick={handleSelection} value="adjectives">adjectives</OwnStyles.SelectButton>
-					</OwnStyles.ButtonDisplay>
-				</>
-			}
-			{type &&
-				<OwnStyles.MainDisplayWrapper
-					container
-					direction="column"
-					justify="center"
-					alignItems="center">
-					<Display type={type} onReset={handleReset} />
-				</OwnStyles.MainDisplayWrapper>
-			}
-		</>
+			<Switch>
+				<Route path="/ALPHA">
+					<HomePageALPHA />
+				</Route>
+				<Route path="/">
+					<HomePage />
+				</Route>
+			</Switch>
+		</Router>
 	);
 }
 

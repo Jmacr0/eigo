@@ -46,7 +46,7 @@ export const DrawerContent = React.memo((props: OwnTypes.Props) => {
 					</OwnStyles.DrawerListItemIcon>
 					<OwnStyles.DrawerListItemText primary="Favourites" onClick={handleClick} />
 				</OwnStyles.DrawerListItem>
-				<OwnStyles.DrawerListItem
+				<OwnStyles.LogoutListItem
 					button
 					disableRipple
 				>
@@ -72,7 +72,7 @@ export const DrawerContent = React.memo((props: OwnTypes.Props) => {
 							Cancel
 						</OwnStyles.LogoutButton>
 					}
-				</OwnStyles.DrawerListItem>
+				</OwnStyles.LogoutListItem>
 				<OwnStyles.Break />
 				<OwnStyles.DrawerListItem
 					button

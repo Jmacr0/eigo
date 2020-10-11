@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import {
-        Typography,
-        Divider,
-        List,
-        ListItem,
-        ListItemIcon,
-        ListItemText,
-        TextField,
-        Button,
+	Typography,
+	Divider,
+	List,
+	ListItem,
+	ListItemIcon,
+	ListItemText,
+	TextField,
+	Button,
 } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -28,6 +28,10 @@ export const Break = styled(Divider)``;
 
 export const DrawerList = styled(List)``;
 export const DrawerListItem = styled(ListItem)``;
+export const LogoutListItem = styled(ListItem)`
+		background-color: transparent!important;
+		cursor: auto!important;
+`;
 export const DrawerListItemIcon = styled(ListItemIcon)``;
 export const DrawerListItemText = styled(ListItemText)``;
 

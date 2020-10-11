@@ -1,8 +1,14 @@
 export namespace MessageTypes {
 	export interface Props {
-		text: string | undefined
-		severity: Severity
+		message: Message
+		onCloseMessage: () => void
 	}
+	export interface Message {
+		show: boolean
+		text: string | undefined,
+		severity: Severity,
+	}
+
 	enum Severity {
 		error = 'error',
 		warning = 'warning',

@@ -7,6 +7,7 @@ export const Message = React.memo((props: OwnTypes.Props) => {
 
 	const handleClose = () => {
 		setOpen(false);
+		props.onCloseMessage();
 	}
 
 	return (
@@ -20,9 +21,9 @@ export const Message = React.memo((props: OwnTypes.Props) => {
 			onClose={handleClose}
 		>
 			<OwnStyles.MessageContent
-				severity={props.severity}
+				severity={props.message.severity}
 			>
-				{props.text}
+				{props.message.text}
 			</OwnStyles.MessageContent>
 		</OwnStyles.MessageWrapper>
 	);

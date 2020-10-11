@@ -19,7 +19,13 @@ export const Drawer = React.memo((props: OwnTypes.Props) => {
 			text: newMessage.text!,
 			severity: newMessage.severity,
 		});
-	}
+	};
+	const handleCloseMessage = () => {
+		setMessage({
+			...message,
+			show: false,
+		});
+	};
 	return (
 		<>
 			<OwnStyles.SideDrawer
@@ -41,8 +47,8 @@ export const Drawer = React.memo((props: OwnTypes.Props) => {
 					<DrawerContent
 						user={props.user}
 						setUser={props.setUser}
-						onMessage={handleMessage}
 						onLogin={props.onLogin}
+						onMessage={handleMessage}
 					/>
 					:
 					<DrawerLogin
@@ -52,8 +58,8 @@ export const Drawer = React.memo((props: OwnTypes.Props) => {
 				}
 				{message.show &&
 					<Message
-						text={message.text}
-						severity={message.severity}
+						message={message}
+						onCloseMessage={handleCloseMessage}
 					/>
 				}
 			</OwnStyles.SideDrawer>

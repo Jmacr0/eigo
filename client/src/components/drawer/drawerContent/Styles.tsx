@@ -28,6 +28,10 @@ export const Break = styled(Divider)``;
 
 export const DrawerList = styled(List)``;
 export const DrawerListItem = styled(ListItem)``;
+export const UserListItem = styled(ListItem)`
+		background-color: transparent!important;
+		cursor: auto!important;
+`;
 export const LogoutListItem = styled(ListItem)`
 		background-color: transparent!important;
 		cursor: auto!important;

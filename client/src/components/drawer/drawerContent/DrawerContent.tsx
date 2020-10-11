@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { Card } from '../../card/Card';
+import { useHistory } from 'react-router-dom';
 import { DrawerContentTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import API from '../../../utils/api';
 
 export const DrawerContent = React.memo((props: OwnTypes.Props) => {
 	const [showConfirmLogout, setShowConfirmLogout] = useState(false);
+	const history = useHistory();
 	const handleLogout = async () => {
 		const res = await API.user.logout();
 		if (res) {
+			props.onMessage({
+				show: true,
+				text: 'Successfully logged out.',
+				severity: 'info' as OwnTypes.Severity,
+			});
 			props.onLogin();
 		};
 	};
 	const handleClick = () => {
 		API.user.test();
+		history.push('/favourites');
 	};
 
 	useEffect(() => {
@@ -23,7 +30,7 @@ export const DrawerContent = React.memo((props: OwnTypes.Props) => {
 		<>
 			<OwnStyles.DrawerList>
 
-				<OwnStyles.DrawerListItem
+				<OwnStyles.UserListItem
 					button
 					disableRipple
 				>
@@ -37,7 +44,7 @@ export const DrawerContent = React.memo((props: OwnTypes.Props) => {
 						:
 						<OwnStyles.Loader height={32} width={190} animation="wave" />
 					}
-				</OwnStyles.DrawerListItem>
+				</OwnStyles.UserListItem>
 				<OwnStyles.DrawerListItem
 					button
 				>

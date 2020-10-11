@@ -15,8 +15,10 @@ export const Navbar = React.memo((props: OwnTypes.Props) => {
 				>
 					<OwnStyles.Icon />
 				</OwnStyles.IconWrapper>
+				<OwnStyles.Redirect to="/">
 					Eigo
-				</OwnStyles.Nav>
+					</OwnStyles.Redirect>
+			</OwnStyles.Nav>
 		</OwnStyles.Navbar>
 	)
 });

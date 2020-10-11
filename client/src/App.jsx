@@ -6,6 +6,7 @@ import { Navbar } from './components/navbar/Navbar';
 import API from './utils/api/';
 import { HomePage } from './pages/home/HomePage';
 import { HomePageALPHA } from './pages/homeALPHA/HomePageALPHA';
+import { FavouritesPage } from './pages/favourites/FavouritesPage';
 
 function App() {
 	const [drawerStatus, setDrawerStatus] = useState(false);
@@ -57,6 +58,9 @@ function App() {
 			<Switch>
 				<Route path="/ALPHA">
 					<HomePageALPHA />
+				</Route>
+				<Route path="/favourites">
+					<FavouritesPage />
 				</Route>
 				<Route path="/">
 					<HomePage />

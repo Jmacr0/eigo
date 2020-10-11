@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Card } from '../card/Card';
 import { DisplayALPHATypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
+import API from '../../utils/api';
+import { CardALPHA } from '../cardALPHA/CardALPHA';
 
 export const DisplayALPHA = React.memo((props: OwnTypes.Props) => {
 	const [characterSet, setCharacterSet] = useState([]);
@@ -12,13 +13,29 @@ export const DisplayALPHA = React.memo((props: OwnTypes.Props) => {
 		setOption(selection)
 	}
 
+	const handleGetAllAPI = async () => {
+		switch (props.type) {
+			case 'verbs':
+				const res = await API.verb.findAll();
+				if (res.success) {
+					console.log(res.data);
+					setCharacterSet(res.data);
+				}
+				break;
+
+			default:
+				break;
+		}
+	};
+
 	useEffect(() => {
-		const uri = `https://japaneseapi.herokuapp.com/api/v1/${props.type}`;
-		fetch(uri)
-			.then(res => res.json())
-			.then(res => {
-				setCharacterSet(res);
-			})
+		handleGetAllAPI();
+		// const uri = `https://japaneseapi.herokuapp.com/api/v1/${props.type}`;
+		// fetch(uri)
+		// 	.then(res => res.json())
+		// 	.then(res => {
+		// 		setCharacterSet(res);
+		// 	})
 	}, [props.type]);
 
 	return (
@@ -49,7 +66,7 @@ export const DisplayALPHA = React.memo((props: OwnTypes.Props) => {
 							test
 				</OwnStyles.SelectButton>
 					</> :
-					<Card type={props.type} option={option} characterSet={characterSet} />
+					<CardALPHA type={props.type} option={option} characterSet={characterSet} />
 				}
 			</OwnStyles.MainDisplay>
 			<OwnStyles.BackButton

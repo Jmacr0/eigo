@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { HomePageALPHATypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
-import { Display } from '../../components/display/Display';
+import { DisplayALPHA } from '../../components/displayALPHA/DisplayALPHA';
 
 export const HomePageALPHA = React.memo((props: OwnTypes.Props) => {
 	const [type, setType] = useState('' as OwnTypes.Type);
@@ -75,7 +75,7 @@ export const HomePageALPHA = React.memo((props: OwnTypes.Props) => {
 					direction="column"
 					justify="center"
 					alignItems="center">
-					<Display type={type} onReset={handleReset} />
+					<DisplayALPHA type={type} onReset={handleReset} />
 				</OwnStyles.MainDisplayWrapper>
 			}
 		</>

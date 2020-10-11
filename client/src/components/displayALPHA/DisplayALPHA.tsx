@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from '../card/Card';
-import { DisplayTypes as OwnTypes } from './Types';
+import { DisplayALPHATypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 
-export const Display = React.memo((props: OwnTypes.Props) => {
+export const DisplayALPHA = React.memo((props: OwnTypes.Props) => {
 	const [characterSet, setCharacterSet] = useState([]);
 	const [option, setOption] = useState('');
 

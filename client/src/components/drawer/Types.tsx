@@ -15,4 +15,16 @@ export namespace DrawerTypes {
 		greetings = 'greetings',
 		verbs = 'verbs'
 	}
+
+	export enum Severity {
+		error = 'error',
+		warning = 'warning',
+		info = 'info',
+		success = 'success'
+	}
+	export interface Message {
+		show: boolean
+		text: string | undefined,
+		severity: Severity,
+	}
 }

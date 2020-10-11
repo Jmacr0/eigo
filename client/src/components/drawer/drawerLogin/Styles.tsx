@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import {
-        IconButton,
-        Typography,
-        Divider,
-        List,
-        ListItem,
-        ListItemIcon,
-        ListItemText,
-        TextField,
-        Button,
+	IconButton,
+	Typography,
+	Divider,
+	List,
+	ListItem,
+	ListItemIcon,
+	ListItemText,
+	TextField,
+	Button,
 } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
@@ -24,7 +24,10 @@ export const Text = styled(Typography)`
 export const Break = styled(Divider)``;
 
 export const DrawerList = styled(List)``;
-export const DrawerListItem = styled(ListItem)``;
+export const DrawerListItem = styled(ListItem)`
+		background-color: transparent!important;
+		cursor: auto!important;
+`;
 export const DrawerListItemIcon = styled(ListItemIcon)``;
 export const DrawerListItemText = styled(ListItemText)``;
 

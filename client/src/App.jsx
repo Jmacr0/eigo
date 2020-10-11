@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import { Drawer } from './components/drawer/Drawer';
-import { Display } from './components/display/Display';
 import * as OwnStyles from './Styles';
 import { Navbar } from './components/navbar/Navbar';
 import API from './utils/api/';

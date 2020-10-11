@@ -1,14 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { Card } from '../card/Card';
+import React, { useState } from 'react';
 import { DrawerTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import googleButton from '../../assets/images/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png';
 import { GoogleOneTap } from '../googleOneTap/GoogleOneTap';
-import API from '../../utils/api';
 import { DrawerLogin } from './drawerLogin/DrawerLogin';
 import { DrawerContent } from './drawerContent/DrawerContent';
+import { Message } from '../message/Message';
 
 export const Drawer = React.memo((props: OwnTypes.Props) => {
+	const [message, setMessage] = useState({
+		show: false,
+		text: '',
+		severity: '' as OwnTypes.Severity,
+	});
+	const handleMessage = (newMessage: OwnTypes.Message) => {
+		setMessage({
+			show: true,
+			text: newMessage.text!,
+			severity: newMessage.severity,
+		});
+	}
 	return (
 		<>
 			<OwnStyles.SideDrawer
@@ -30,11 +41,19 @@ export const Drawer = React.memo((props: OwnTypes.Props) => {
 					<DrawerContent
 						user={props.user}
 						setUser={props.setUser}
+						onMessage={handleMessage}
 						onLogin={props.onLogin}
 					/>
 					:
 					<DrawerLogin
 						onLogin={props.onLogin}
+						onMessage={handleMessage}
+					/>
+				}
+				{message.show &&
+					<Message
+						text={message.text}
+						severity={message.severity}
 					/>
 				}
 			</OwnStyles.SideDrawer>

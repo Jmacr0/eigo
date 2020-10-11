@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Card } from '../../card/Card';
+import React, { useState } from 'react';
 import { DrawerLoginTypes as OwnTypes } from './Types';
+import { DrawerTypes } from '../Types';
 import * as OwnStyles from './Styles';
 import googleButton from '../../../assets/images/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png';
 import { GoogleOneTap } from '../../googleOneTap/GoogleOneTap';
@@ -14,12 +14,15 @@ export const DrawerLogin = React.memo((props: OwnTypes.Props) => {
 		password: '',
 		passwordCheck: '',
 	});
+	const [inputError, setInputError] = useState(false);
+
 	const handleClick = () => {
 		API.user.test();
 		const toggleGoogleOneTap = (showGoogleOneTap ? false : true);
 		setShowGoogleOneTap(toggleGoogleOneTap);
 	};
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setInputError(false);
 		const input = event.currentTarget.value;
 		const key = event.currentTarget.id;
 		setUserInput({
@@ -31,8 +34,7 @@ export const DrawerLogin = React.memo((props: OwnTypes.Props) => {
 		const toggle = (toggleLogin ? false : true);
 		setToggleLogin(toggle);
 		setUserInput({
-			username: '',
-			password: '',
+			...userInput,
 			passwordCheck: '',
 		})
 	};
@@ -45,7 +47,19 @@ export const DrawerLogin = React.memo((props: OwnTypes.Props) => {
 			console.log('logging in', userLoginInput);
 			const res = await API.user.login(userLoginInput);
 			if (res.success) {
+				props.onMessage({
+					show: true,
+					text: 'Successfully logged in.',
+					severity: 'success' as OwnTypes.Severity,
+				});
 				props.onLogin();
+			} else {
+				setInputError(true);
+				props.onMessage({
+					show: true,
+					text: res.message.message,
+					severity: 'error' as OwnTypes.Severity,
+				});
 			};
 		};
 		if (
@@ -56,7 +70,19 @@ export const DrawerLogin = React.memo((props: OwnTypes.Props) => {
 			console.log('signing up', userInput);
 			const res = await API.user.createUser(userInput);
 			if (res.success) {
+				props.onMessage({
+					show: true,
+					text: 'Successfully created user.',
+					severity: 'success' as OwnTypes.Severity,
+				});
 				props.onLogin();
+			} else {
+				setInputError(true);
+				props.onMessage({
+					show: true,
+					text: res.message.message,
+					severity: 'error' as OwnTypes.Severity,
+				});
 			};
 		};
 	};
@@ -74,8 +100,10 @@ export const DrawerLogin = React.memo((props: OwnTypes.Props) => {
 					disableRipple
 				>
 					<OwnStyles.Input
+						error={inputError}
+						color={inputError ? "secondary" : "primary"}
+						// helperText={inputError ? "Incorrect combination." : ""}
 						autoComplete="off"
-						color="primary"
 						id="username"
 						label="Username"
 						variant="outlined"
@@ -95,7 +123,9 @@ export const DrawerLogin = React.memo((props: OwnTypes.Props) => {
 					disableRipple
 				>
 					<OwnStyles.Input
-						color="primary"
+						error={inputError}
+						color={inputError ? "secondary" : "primary"}
+						// helperText={inputError ? "Incorrect combination." : ""}
 						type="password"
 						id="password"
 						label="Password"

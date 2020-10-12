@@ -55,15 +55,9 @@ export const DisplayALPHA = React.memo((props: OwnTypes.Props) => {
 					<>
 						<OwnStyles.SelectButton
 							onClick={handleSelection}
-							value="random"
+							value="all"
 						>
-							random
-				</OwnStyles.SelectButton>
-						<OwnStyles.SelectButton
-							onClick={handleSelection}
-							value="test"
-						>
-							test
+							all
 				</OwnStyles.SelectButton>
 					</> :
 					<CardALPHA type={props.type} option={option} characterSet={characterSet} />

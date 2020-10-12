@@ -21,7 +21,7 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 		>
 			{props.characterSet.map((word, index) => {
 				return (
-					<div key={index}>{word.short}</div>
+					<div key={index}>{word.short} - {word.english}</div>
 				);
 			})}
 		</OwnStyles.CardDisplay>

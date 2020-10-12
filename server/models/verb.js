@@ -14,6 +14,13 @@ module.exports = (sequelize, DataTypes) => {
 				len: [1],
 			},
 		},
+		english: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			validate: {
+				len: [1],
+			},
+		},
 		short: {
 			type: DataTypes.STRING,
 			allowNull: false,

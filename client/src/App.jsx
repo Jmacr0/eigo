@@ -57,7 +57,9 @@ function App() {
 			/>
 			<Switch>
 				<Route path="/ALPHA">
-					<HomePageALPHA />
+					<HomePageALPHA
+						user={user}
+					/>
 				</Route>
 				<Route path="/favourites">
 					<FavouritesPage />

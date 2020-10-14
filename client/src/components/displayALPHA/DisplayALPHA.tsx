@@ -60,7 +60,11 @@ export const DisplayALPHA = React.memo((props: OwnTypes.Props) => {
 							all
 				</OwnStyles.SelectButton>
 					</> :
-					<CardALPHA type={props.type} option={option} characterSet={characterSet} />
+					<CardALPHA
+						type={props.type}
+						option={option}
+						user={props.user}
+						characterSet={characterSet} />
 				}
 			</OwnStyles.MainDisplay>
 			<OwnStyles.BackButton

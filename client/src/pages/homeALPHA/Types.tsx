@@ -1,6 +1,7 @@
 export namespace HomePageALPHATypes {
 	export interface Props {
 		type: Type
+		user: any
 	}
 
 	export enum Type {

@@ -4,6 +4,7 @@ export namespace DrawerContentTypes {
 		setUser: () => void
 		onLogin: () => void
 		onMessage: (newMessage: Message) => void
+		onDrawerClose: () => void
 	}
 	interface Message {
 		show: boolean

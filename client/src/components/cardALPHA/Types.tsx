@@ -3,6 +3,7 @@ export namespace CardALHPATypes {
 		type: Type
 		option: string
 		characterSet: CharacterSet
+		user: any
 	}
 
 	enum Type {

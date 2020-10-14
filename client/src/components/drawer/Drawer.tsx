@@ -49,6 +49,7 @@ export const Drawer = React.memo((props: OwnTypes.Props) => {
 						setUser={props.setUser}
 						onLogin={props.onLogin}
 						onMessage={handleMessage}
+						onDrawerClose={props.onDrawerClick}
 					/>
 					:
 					<DrawerLogin

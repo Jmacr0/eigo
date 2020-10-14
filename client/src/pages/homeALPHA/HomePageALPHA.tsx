@@ -75,7 +75,10 @@ export const HomePageALPHA = React.memo((props: OwnTypes.Props) => {
 					direction="column"
 					justify="center"
 					alignItems="center">
-					<DisplayALPHA type={type} onReset={handleReset} />
+					<DisplayALPHA
+						type={type}
+						user={props.user}
+						onReset={handleReset} />
 				</OwnStyles.MainDisplayWrapper>
 			}
 		</>

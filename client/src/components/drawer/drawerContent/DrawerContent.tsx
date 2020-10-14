@@ -21,6 +21,7 @@ export const DrawerContent = React.memo((props: OwnTypes.Props) => {
 	const handleClick = () => {
 		API.user.test();
 		history.push('/favourites');
+		props.onDrawerClose();
 	};
 
 	useEffect(() => {

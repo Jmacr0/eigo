@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { CardALHPATypes as OwnTypes } from './Types';
+import { CardALPHATypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
+import API from '../../utils/api';
+import { FavouriteMenu } from './favouriteMenu/FavouriteMenu';
 
 export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-	const [selectedWord, setSelectedWord] = useState('');
+	const [selectedWord, setSelectedWord] = useState({
+		id: '',
+		word: '',
+	});
 	const handleClose = () => {
 		setAnchorEl(null);
 	};
-	const handleAddToFavourite = (word: string) => (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
-		event.stopPropagation();;
+	const handleAddToFavourite = (word: OwnTypes.SelectedWord) => (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+		event.stopPropagation();
 		setSelectedWord(word);
 		setAnchorEl(event.currentTarget);
 	};
 
 	useEffect(() => {
 		console.log(props.characterSet);
-		console.log(props.user.Favourites[0].name);
-	}, []);
+	}, [props.user]);
 
 	return (
 		<OwnStyles.CardDisplay
@@ -36,13 +40,18 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 							expandIcon={<OwnStyles.ShowMoreIcon />}
 						>
 							{`${word.short}  -  ${word.english}`}
-							<OwnStyles.FavouriteButton
-								onClick={handleAddToFavourite(word.short)}
-								icon={<OwnStyles.FavouriteIcon />}
-								label="ADD"
-								aria-controls={word.short}
-								aria-haspopup="true"
-							/>
+							{props.user &&
+								<OwnStyles.FavouriteButton
+									onClick={handleAddToFavourite({
+										id: word.id,
+										word: word.short
+									})}
+									icon={<OwnStyles.FavouriteIcon />}
+									label="ADD"
+									aria-controls={word.short}
+									aria-haspopup="true"
+								/>
+							}
 						</OwnStyles.AccordionTitle>
 						<OwnStyles.AccordionBody>
 							<div>
@@ -145,22 +154,14 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 					</OwnStyles.AccordionGroup>
 				);
 			})}
-			<OwnStyles.FavouriteMenu
-				id={selectedWord}
-				anchorEl={anchorEl}
-				keepMounted
-				open={Boolean(anchorEl)}
-				onClose={handleClose}
-			>
-				{props.user.Favourites.map((favourites: any, index: number) => (
-					<OwnStyles.FavouriteMenuItem
-						onClick={handleClose}
-						key={index}
-					>
-						{favourites.name}
-					</OwnStyles.FavouriteMenuItem>
-				))}
-			</OwnStyles.FavouriteMenu>
-		</OwnStyles.CardDisplay>
+			{props.user &&
+				<FavouriteMenu
+					selectedWord={selectedWord}
+					anchorEl={anchorEl}
+					onClose={handleClose}
+					user={props.user}
+				/>
+			}
+		</OwnStyles.CardDisplay >
 	);
 });

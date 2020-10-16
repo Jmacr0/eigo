@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { DrawerLoginTypes as OwnTypes } from './Types';
-import { DrawerTypes } from '../Types';
 import * as OwnStyles from './Styles';
 import googleButton from '../../../assets/images/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png';
 import { GoogleOneTap } from '../../googleOneTap/GoogleOneTap';

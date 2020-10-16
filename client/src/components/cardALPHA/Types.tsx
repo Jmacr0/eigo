@@ -1,4 +1,4 @@
-export namespace CardALHPATypes {
+export namespace CardALPHATypes {
 	export interface Props {
 		type: Type
 		option: string
@@ -12,7 +12,10 @@ export namespace CardALHPATypes {
 		greetings = 'greetings',
 		verbs = 'verbs'
 	}
-
+	export interface SelectedWord {
+		id: string
+		word: string
+	}
 	export type CharacterSet = SingleSet[]
 	export interface SingleSet {
 		[english: string]: string

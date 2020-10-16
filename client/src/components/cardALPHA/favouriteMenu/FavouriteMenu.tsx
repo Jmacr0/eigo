@@ -8,7 +8,6 @@ import { FormCheck } from 'react-bootstrap';
 export const FavouriteMenu = React.memo((props: OwnTypes.Props) => {
 	const [newFavouriteName, setNewFavouriteName] = useState('');
 	const [favouriteIdsWithVerb, setFavouriteIdsWithVerb] = useState([] as number[]);
-
 	const handleCheckIfFavourited = async () => {
 		if (props.anchorEl) {
 			const favouriteListKeys: any[] = [];
@@ -24,7 +23,7 @@ export const FavouriteMenu = React.memo((props: OwnTypes.Props) => {
 				favouriteIds.push(favourite.id);
 			});
 			setFavouriteIdsWithVerb(favouriteIds);
-		};
+		}
 	};
 	const handleAddNewFavouriteChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setNewFavouriteName(event.currentTarget.value);
@@ -50,7 +49,7 @@ export const FavouriteMenu = React.memo((props: OwnTypes.Props) => {
 			API.favourite.updateFavouriteVerbs({
 				favouriteId: selectedFavouriteGroupId,
 				verbId: props.selectedWord.id,
-				isFavourited: false,
+				isFavourited: true,
 			});
 		} else {
 			setFavouriteIdsWithVerb([
@@ -60,7 +59,7 @@ export const FavouriteMenu = React.memo((props: OwnTypes.Props) => {
 			API.favourite.updateFavouriteVerbs({
 				favouriteId: selectedFavouriteGroupId,
 				verbId: props.selectedWord.id,
-				isFavourited: true,
+				isFavourited: false,
 			});
 		};
 	};

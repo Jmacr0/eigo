@@ -62,7 +62,9 @@ function App() {
 					/>
 				</Route>
 				<Route path="/favourites">
-					<FavouritesPage />
+					<FavouritesPage
+						user={user}
+					/>
 				</Route>
 				<Route path="/">
 					<HomePage />

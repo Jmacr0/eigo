@@ -66,9 +66,9 @@ module.exports = {
 			}],
 		});
 		if (req.body.isFavourited) {
-			updatedFavourite.addVerb(selectedVerb);
-		} else {
 			updatedFavourite.removeVerb(selectedVerb);
+		} else {
+			updatedFavourite.addVerb(selectedVerb);
 		};
 	},
 }

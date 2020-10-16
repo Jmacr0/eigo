@@ -1,6 +1,20 @@
 import styled from 'styled-components';
-import { Box } from '@material-ui/core';
+import { Box, Grid, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+
+export const Title = styled(Box)`
+                margin-top: 100px!important;
+		text-align: center;
+`;
+export const ButtonDisplay = styled(Grid)`
+		
+	`;
+
+export const SelectButton = styled(Button)`
+		min-height: 70px!important;
+		min-width: 200px!important;
+		border-radius: 0px!important;
+`;
 
 export const RedirectWrapper = styled(Box)`
         display: flex;

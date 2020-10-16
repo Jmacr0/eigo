@@ -65,7 +65,6 @@ export const HomePageALPHA = React.memo((props: OwnTypes.Props) => {
 						<OwnStyles.RedirectWrapper>
 							<OwnStyles.Redirect to="/">RETURN TO V1</OwnStyles.Redirect>
 						</OwnStyles.RedirectWrapper>
-
 					</OwnStyles.ButtonDisplay>
 				</>
 			}

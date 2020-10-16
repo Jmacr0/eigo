@@ -23,7 +23,7 @@ module.exports = {
 			});
 		};
 	},
-	findFavouriteVerb: async (req, res) => {
+	findFavouriteVerb: async (req, res, next) => {
 		console.log(req.body.favouriteId, req.body.verbId);
 		const favouritedVerb = await db.Verb.findOne({
 			where: {
@@ -38,9 +38,6 @@ module.exports = {
 				},
 			}],
 		});
-
-		console.log(favouritedVerb);
-		console.log('YOO', favouritedVerb.dataValues.Favourites);
 		if (favouritedVerb) {
 			res.send({
 				success: true,
@@ -51,6 +48,27 @@ module.exports = {
 				success: false,
 				message: 'Unable to find favourited verbs.',
 			});
+		};
+	},
+	updateFavouriteVerb: async (req, res, next) => {
+		console.log(req.body.favouriteId, req.body.verbId, req.body.isFavourited);
+		const selectedVerb = await db.Verb.findOne({
+			where: {
+				id: req.body.verbId,
+			},
+		});
+		const updatedFavourite = await db.Favourite.findOne({
+			where: {
+				id: req.body.favouriteId,
+			},
+			include: [{
+				model: db.Verb,
+			}],
+		});
+		if (req.body.isFavourited) {
+			updatedFavourite.addVerb(selectedVerb);
+		} else {
+			updatedFavourite.removeVerb(selectedVerb);
 		};
 	},
 }

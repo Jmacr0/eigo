@@ -19,16 +19,14 @@ export const FavouriteMenu = React.memo((props: OwnTypes.Props) => {
 				favouriteId: favouriteListKeys,
 				verbId: props.selectedWord.id,
 			});
-			console.log('favourited id verb', Favourites)
 			const favouriteIds: number[] = [];
 			await Favourites.forEach((favourite: any) => {
 				favouriteIds.push(favourite.id);
 			});
 			setFavouriteIdsWithVerb(favouriteIds);
-		}
+		};
 	};
 	const handleAddNewFavouriteChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		console.log(favouriteIdsWithVerb)
 		setNewFavouriteName(event.currentTarget.value);
 	};
 	const handleAddNewFavourite = async (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
@@ -45,19 +43,26 @@ export const FavouriteMenu = React.memo((props: OwnTypes.Props) => {
 		}
 	};
 	const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		console.log(event.currentTarget.getAttribute('data-favourite-id'))
 		const selectedFavouriteGroupId = parseInt(event.currentTarget.getAttribute('data-favourite-id') as string);
 		if (favouriteIdsWithVerb.includes(selectedFavouriteGroupId)) {
 			const newFavouriteIdsArray = [...favouriteIdsWithVerb].filter((id) => id != selectedFavouriteGroupId);
 			setFavouriteIdsWithVerb(newFavouriteIdsArray);
-		}
-		else {
+			API.favourite.updateFavouriteVerbs({
+				favouriteId: selectedFavouriteGroupId,
+				verbId: props.selectedWord.id,
+				isFavourited: false,
+			});
+		} else {
 			setFavouriteIdsWithVerb([
 				...favouriteIdsWithVerb,
 				selectedFavouriteGroupId,
 			]);
-		}
-		console.log(favouriteIdsWithVerb);
+			API.favourite.updateFavouriteVerbs({
+				favouriteId: selectedFavouriteGroupId,
+				verbId: props.selectedWord.id,
+				isFavourited: true,
+			});
+		};
 	};
 
 	useEffect(() => {

@@ -52,23 +52,34 @@ module.exports = {
 	},
 	updateFavouriteVerb: async (req, res, next) => {
 		console.log(req.body.favouriteId, req.body.verbId, req.body.isFavourited);
-		const selectedVerb = await db.Verb.findOne({
-			where: {
-				id: req.body.verbId,
-			},
-		});
-		const updatedFavourite = await db.Favourite.findOne({
-			where: {
-				id: req.body.favouriteId,
-			},
-			include: [{
-				model: db.Verb,
-			}],
-		});
-		if (req.body.isFavourited) {
-			updatedFavourite.removeVerb(selectedVerb);
-		} else {
-			updatedFavourite.addVerb(selectedVerb);
-		};
+		try {
+			const selectedVerb = await db.Verb.findOne({
+				where: {
+					id: req.body.verbId,
+				},
+			});
+			const updatedFavourite = await db.Favourite.findOne({
+				where: {
+					id: req.body.favouriteId,
+				},
+				include: [{
+					model: db.Verb,
+				}],
+			});
+			if (req.body.isFavourited) {
+				await updatedFavourite.removeVerb(selectedVerb);
+			} else {
+				await updatedFavourite.addVerb(selectedVerb);
+			};
+			res.send({
+				success: true,
+				data: updatedFavourite,
+			});
+		} catch (error) {
+			res.send({
+				success: false,
+				message: error,
+			});
+		}
 	},
 }

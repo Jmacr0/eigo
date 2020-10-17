@@ -64,6 +64,7 @@ function App() {
 				<Route path="/favourites">
 					<FavouritesPage
 						user={user}
+						onGetUser={handleGetUser}
 					/>
 				</Route>
 				<Route path="/">

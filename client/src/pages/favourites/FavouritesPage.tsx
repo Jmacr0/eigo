@@ -12,14 +12,14 @@ export const FavouritesPage = React.memo((props: OwnTypes.Props) => {
 	const handleSelection = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		console.log(event.currentTarget.value);
 		const favouriteName = event.currentTarget.value;
-		console.log(props.user.Favourites.find((favourite: any) => favourite.name === favouriteName))
-		const selectedFavourite = await props.user.Favourites.find((favourite: any) => favourite.name === favouriteName);
+		// console.log(props.user.Favourites.find((favourite: any) => favourite.name === favouriteName))
+		// const selectedFavourite = await props.user.Favourites.find((favourite: any) => favourite.name === favouriteName);
 		// setSelectedFavourite(selectedFavourite);
 		history.push(`${match.url}/${favouriteName}`);
 	};
 
 	useEffect(() => {
-		console.log(props.user)
+		props.onGetUser();
 	}, []);
 
 	return (

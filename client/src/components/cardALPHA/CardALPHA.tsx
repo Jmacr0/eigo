@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { CardALPHATypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import { FavouriteMenu } from './favouriteMenu/FavouriteMenu';
@@ -9,6 +10,7 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 		id: '',
 		word: '',
 	});
+	const location = useLocation();
 	const handleClose = () => {
 		setAnchorEl(null);
 	};
@@ -20,6 +22,7 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 
 	useEffect(() => {
 		console.log(props.characterSet);
+		console.log(location.pathname)
 	}, [props.user]);
 
 	return (
@@ -39,7 +42,7 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 							expandIcon={<OwnStyles.ShowMoreIcon />}
 						>
 							{`${word.short}  -  ${word.english}`}
-							{props.user &&
+							{props.user && location.pathname.indexOf('favourites') === -1 &&
 								<OwnStyles.FavouriteButton
 									onClick={handleAddToFavourite({
 										id: word.id,

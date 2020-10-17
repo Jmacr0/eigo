@@ -1,18 +1,11 @@
-export namespace CardTypes {
+export namespace FavouriteDisplayTypes {
 	export interface Props {
-	}
-
-	enum Type {
-		hiragana = 'hiragana',
-		katakana = 'katakana',
-		greetings = 'greetings',
-		verbs = 'verbs'
+		user: any
 	}
 
 	export type CharacterSet = SingleSet[]
 	export interface SingleSet {
-		startingLetter: string,
-		syllables: Syllables
+		[english: string]: string
 	}
 
 	export interface Syllables {

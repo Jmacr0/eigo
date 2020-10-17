@@ -5,12 +5,16 @@ import * as OwnStyles from './Styles';
 import { FavouriteDisplay } from '../../components/favouriteDisplay/FavouriteDisplay';
 
 export const FavouritesPage = React.memo((props: OwnTypes.Props) => {
+	// const [selectedFavourite, setSelectedFavourite] = useState({} as OwnTypes.Favourite);
 	const history = useHistory();
 	const match = useRouteMatch();
 	const location = useLocation();
-	const handleSelection = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+	const handleSelection = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		console.log(event.currentTarget.value);
 		const favouriteName = event.currentTarget.value;
+		console.log(props.user.Favourites.find((favourite: any) => favourite.name === favouriteName))
+		const selectedFavourite = await props.user.Favourites.find((favourite: any) => favourite.name === favouriteName);
+		// setSelectedFavourite(selectedFavourite);
 		history.push(`${match.url}/${favouriteName}`);
 	};
 
@@ -45,14 +49,13 @@ export const FavouritesPage = React.memo((props: OwnTypes.Props) => {
 				</OwnStyles.ButtonDisplay>
 			}
 			<Switch>
-				{props.user && props.user.Favourites.map((favourite: any, index: number) => (
-					<Route
-						key={index}
-						path={`${match.path}/${favourite.name}`}
-					>
-						<FavouriteDisplay />
-					</Route>
-				))}
+				<Route
+					path={`${match.path}/:selectedFavourite`}
+				>
+					<FavouriteDisplay
+						user={props.user}
+					/>
+				</Route>
 			</Switch>
 		</>
 	);

@@ -8,7 +8,6 @@ import { CardALPHA } from '../cardALPHA/CardALPHA';
 export const DisplayALPHA = React.memo((props: OwnTypes.Props) => {
 	const [type, setType] = useState('');
 	const [characterSet, setCharacterSet] = useState([]);
-	const [option, setOption] = useState('');
 	const history = useHistory();
 	const match = useRouteMatch();
 
@@ -20,7 +19,6 @@ export const DisplayALPHA = React.memo((props: OwnTypes.Props) => {
 	const handleSelection = (event: React.MouseEvent<HTMLButtonElement>) => {
 		console.log(match.path)
 		const selection = event.currentTarget.value;
-		setOption(selection);
 		history.push(`${type}/${selection}`);
 	};
 
@@ -71,8 +69,6 @@ export const DisplayALPHA = React.memo((props: OwnTypes.Props) => {
 				<Switch>
 					<Route path={`${match.path}/:option`}>
 						<CardALPHA
-							type={props.type}
-							option={option}
 							user={props.user}
 							characterSet={characterSet}
 						/>

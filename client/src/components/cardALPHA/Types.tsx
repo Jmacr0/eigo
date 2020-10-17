@@ -1,7 +1,5 @@
 export namespace CardALPHATypes {
 	export interface Props {
-		type: Type
-		option: string
 		characterSet: CharacterSet
 		user: any
 	}

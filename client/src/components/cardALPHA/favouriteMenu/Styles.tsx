@@ -11,6 +11,7 @@ import {
 	TextField,
 	InputAdornment,
 } from '@material-ui/core';
+import { Skeleton } from '@material-ui/lab';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import AddIcon from '@material-ui/icons/Add';
@@ -26,9 +27,9 @@ export const CardDisplay = styled(Grid)`
 	
 	`;
 
-export const FavouriteButton = styled(Chip)`
-		margin-left: auto!important;
-`;
+export const Loader = styled(Skeleton)`
+	margin: 9px;
+	`;
 export const FavouriteIcon = styled(AddIcon)``;
 export const FavouriteMenu = styled(Menu)`
 `;

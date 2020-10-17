@@ -1,22 +1,34 @@
 import React, { useState } from 'react';
+import { Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
 import { HomePageALPHATypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import { DisplayALPHA } from '../../components/displayALPHA/DisplayALPHA';
 
 export const HomePageALPHA = React.memo((props: OwnTypes.Props) => {
 	const [type, setType] = useState('' as OwnTypes.Type);
-
+	const history = useHistory();
+	const match = useRouteMatch();
 	const handleSelection = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		setType(event.currentTarget.value as OwnTypes.Type);
-	};
-	const handleReset = () => {
-		setType('' as OwnTypes.Type);
+		history.push(`${match.path}/${event.currentTarget.value}`);
 	};
 
 	return (
 		<>
-			{!type &&
-				<>
+			<Switch>
+				<Route path={`${match.path}/:type`}>
+					<OwnStyles.MainDisplayWrapper
+						container
+						direction="column"
+						justify="center"
+						alignItems="center">
+						<DisplayALPHA
+							type={type}
+							user={props.user}
+						/>
+					</OwnStyles.MainDisplayWrapper>
+				</Route>
+				<Route to={`${match.path}`}>
 					<OwnStyles.ButtonDisplay
 						container
 						direction="column"
@@ -66,20 +78,9 @@ export const HomePageALPHA = React.memo((props: OwnTypes.Props) => {
 							<OwnStyles.Redirect to="/">RETURN TO V1</OwnStyles.Redirect>
 						</OwnStyles.RedirectWrapper>
 					</OwnStyles.ButtonDisplay>
-				</>
-			}
-			{type &&
-				<OwnStyles.MainDisplayWrapper
-					container
-					direction="column"
-					justify="center"
-					alignItems="center">
-					<DisplayALPHA
-						type={type}
-						user={props.user}
-						onReset={handleReset} />
-				</OwnStyles.MainDisplayWrapper>
-			}
+				</Route>
+			</Switch>
+
 		</>
 	)
 });

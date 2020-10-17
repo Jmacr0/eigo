@@ -1,20 +1,31 @@
 import React, { useEffect, useState } from 'react';
+import { Switch, Route, useHistory, useRouteMatch } from 'react-router-dom';
 import { DisplayALPHATypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import API from '../../utils/api';
 import { CardALPHA } from '../cardALPHA/CardALPHA';
 
 export const DisplayALPHA = React.memo((props: OwnTypes.Props) => {
+	const [type, setType] = useState('');
 	const [characterSet, setCharacterSet] = useState([]);
 	const [option, setOption] = useState('');
+	const history = useHistory();
+	const match = useRouteMatch();
+
+	const handleTypeSelected = () => {
+		const { type } = match.params as any;
+		setType(type);
+	};
 
 	const handleSelection = (event: React.MouseEvent<HTMLButtonElement>) => {
+		console.log(match.path)
 		const selection = event.currentTarget.value;
-		setOption(selection)
-	}
+		setOption(selection);
+		history.push(`${type}/${selection}`);
+	};
 
 	const handleGetAllAPI = async () => {
-		switch (props.type) {
+		switch (type) {
 			case 'verbs':
 				const res = await API.verb.findAll();
 				if (res.success) {
@@ -28,7 +39,13 @@ export const DisplayALPHA = React.memo((props: OwnTypes.Props) => {
 		}
 	};
 
+	const handleGoBack = () => {
+		history.goBack();
+	};
+
 	useEffect(() => {
+		console.log(match.path)
+		handleTypeSelected();
 		handleGetAllAPI();
 		// const uri = `https://japaneseapi.herokuapp.com/api/v1/${props.type}`;
 		// fetch(uri)
@@ -36,14 +53,14 @@ export const DisplayALPHA = React.memo((props: OwnTypes.Props) => {
 		// 	.then(res => {
 		// 		setCharacterSet(res);
 		// 	})
-	}, [props.type]);
+	}, [type]);
 
 	return (
 		<>
 			<OwnStyles.Title
 				component="h3"
 			>
-				{(props.type).toUpperCase()}
+				{type.toUpperCase()}
 			</OwnStyles.Title>
 			<OwnStyles.MainDisplay
 				container
@@ -51,27 +68,32 @@ export const DisplayALPHA = React.memo((props: OwnTypes.Props) => {
 				justify="center"
 				alignItems="center"
 			>
-				{!option ?
-					<>
-						<OwnStyles.SelectButton
-							onClick={handleSelection}
-							value="all"
-						>
-							all
+				<Switch>
+					<Route path={`${match.path}/:option`}>
+						<CardALPHA
+							type={props.type}
+							option={option}
+							user={props.user}
+							characterSet={characterSet}
+						/>
+					</Route>
+					<Route path={`${match.path}`}>
+						<>
+							<OwnStyles.SelectButton
+								onClick={handleSelection}
+								value="all"
+							>
+								all
 				</OwnStyles.SelectButton>
-					</> :
-					<CardALPHA
-						type={props.type}
-						option={option}
-						user={props.user}
-						characterSet={characterSet} />
-				}
+						</>
+					</Route>
+				</Switch>
 			</OwnStyles.MainDisplay>
 			<OwnStyles.BackButton
 				color="secondary"
 				variant="text"
 				size="large"
-				onClick={props.onReset}
+				onClick={handleGoBack}
 			>
 				back
 			</OwnStyles.BackButton>

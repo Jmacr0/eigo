@@ -51,6 +51,7 @@ export const Input = styled(TextField)`
 `;
 
 export const AccordionGroup = styled(Accordion)`
+		min-height: 56px;
 		width: 100%;
 `;
 export const AccordionTitle = styled(AccordionSummary)``;

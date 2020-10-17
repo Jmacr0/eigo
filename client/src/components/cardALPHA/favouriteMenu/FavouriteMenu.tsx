@@ -6,9 +6,11 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { FormCheck } from 'react-bootstrap';
 
 export const FavouriteMenu = React.memo((props: OwnTypes.Props) => {
+	const [loadstate, setLoadstate] = useState(true);
 	const [newFavouriteName, setNewFavouriteName] = useState('');
 	const [favouriteIdsWithVerb, setFavouriteIdsWithVerb] = useState([] as number[]);
 	const handleCheckIfFavourited = async () => {
+		setLoadstate(true);
 		if (props.anchorEl) {
 			const favouriteListKeys: any[] = [];
 			await props.user.Favourites.forEach((favourite: any) => {
@@ -23,6 +25,7 @@ export const FavouriteMenu = React.memo((props: OwnTypes.Props) => {
 				favouriteIds.push(favourite.id);
 			});
 			setFavouriteIdsWithVerb(favouriteIds);
+			setLoadstate(false);
 		}
 	};
 	const handleAddNewFavouriteChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,14 +86,17 @@ export const FavouriteMenu = React.memo((props: OwnTypes.Props) => {
 					disableRipple
 					disableTouchRipple
 				>
-					<Checkbox
-						checked={favouriteIdsWithVerb.includes(favourites.id)}
-						onChange={handleCheckboxChange}
-						name={favourites.name}
-						inputProps={{
-							'data-favourite-id': favourites.id,
-						} as React.InputHTMLAttributes<HTMLInputElement>}
-					/>
+					{loadstate ?
+						<OwnStyles.Loader width={24} height={42} /> :
+						<Checkbox
+							checked={favouriteIdsWithVerb.includes(favourites.id)}
+							onChange={handleCheckboxChange}
+							name={favourites.name}
+							inputProps={{
+								'data-favourite-id': favourites.id,
+							} as React.InputHTMLAttributes<HTMLInputElement>}
+						/>
+					}
 					{favourites.name}
 				</OwnStyles.FavouriteMenuItem>
 			))}

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CardALPHATypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
-import API from '../../utils/api';
 import { FavouriteMenu } from './favouriteMenu/FavouriteMenu';
 
 export const CardALPHA = React.memo((props: OwnTypes.Props) => {

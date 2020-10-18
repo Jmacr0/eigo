@@ -23,6 +23,8 @@ function App() {
 			setTimeout(() => {
 				setUser(data);
 			}, 1200);
+		} else {
+			setUser();
 		};
 	};
 	const handleDrawerClick = () => {
@@ -39,6 +41,7 @@ function App() {
 
 	useEffect(() => {
 		console.log('second useEffect');
+		console.log(user)
 		handleGetUser();
 	}, [loggedIn]);
 

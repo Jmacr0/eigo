@@ -1,4 +1,6 @@
 const express = require('express');
+const https = require('https');
+const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -39,10 +41,22 @@ if (NODE_ENV === 'production') {
 		res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
 	})
 }
+
 db.sequelize.sync(
 	// { force: true }
 ).then(() => {
-	app.listen(PORT, () => {
-		console.log(`App listening on PORT ${PORT}`);
-	});
+	if (NODE_ENV === 'development') {
+		https.createServer({
+			key: fs.readFileSync('./../localhost.key'),
+			cert: fs.readFileSync('./../localhost.crt'),
+		}, app).listen(PORT, () => {
+			// eslint-disable-next-line no-console
+			console.log('Currently listening to SSL port', PORT);
+		});
+	} else {
+		app.listen(PORT, () => {
+			// eslint-disable-next-line no-console
+			console.log('Currently listening to Non-SSL port', PORT);
+		});
+	}
 });

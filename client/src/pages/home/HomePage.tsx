@@ -29,7 +29,9 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 						<OwnStyles.SelectButton disableElevation variant="contained" onClick={handleSelection} value="verbs">verbs</OwnStyles.SelectButton>
 						<OwnStyles.SelectButton disableElevation variant="contained" onClick={handleSelection} value="adjectives">adjectives</OwnStyles.SelectButton>
 						<OwnStyles.RedirectWrapper>
-							<OwnStyles.Redirect to="/ALPHA">TRY V2</OwnStyles.Redirect>
+							<OwnStyles.NewTag badgeContent={'new'} color="secondary">
+								<OwnStyles.Redirect to="/ALPHA">TRY V2</OwnStyles.Redirect>
+							</OwnStyles.NewTag>
 						</OwnStyles.RedirectWrapper>
 
 					</OwnStyles.ButtonDisplay>

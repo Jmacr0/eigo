@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Box, Button, Grid, Typography } from '@material-ui/core';
+import { Box, Button, Grid, Typography, Badge } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 export const ButtonDisplay = styled(Grid)`
@@ -31,4 +31,11 @@ export const RedirectWrapper = styled(Box)`
 
 export const Redirect = styled(Link)`
         text-decoration: none;
+`;
+
+export const NewTag = styled(Badge)`
+        .MuiBadge-anchorOriginTopRightRectangle {
+                top: -4px;
+                right: -12px;
+        }
 `;

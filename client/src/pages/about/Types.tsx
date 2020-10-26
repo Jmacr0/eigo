@@ -1,4 +1,4 @@
-export namespace HomePageTypes {
+export namespace AboutPageTypes {
 	export interface Props {
 		user: any
 		onGetUser: () => void

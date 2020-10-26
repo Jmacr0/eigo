@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
-import { HomePageALPHATypes as OwnTypes } from './Types';
+import { LibraryPageTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import { DisplayALPHA } from '../../components/displayALPHA/DisplayALPHA';
 
-export const HomePageALPHA = React.memo((props: OwnTypes.Props) => {
+export const LibraryPage = React.memo((props: OwnTypes.Props) => {
 	const [type, setType] = useState('' as OwnTypes.Type);
 	const history = useHistory();
 	const match = useRouteMatch();
@@ -74,9 +74,6 @@ export const HomePageALPHA = React.memo((props: OwnTypes.Props) => {
 							value="adjectives">
 							adjectives
 						</OwnStyles.SelectButton>
-						<OwnStyles.RedirectWrapper>
-							<OwnStyles.Redirect to="/">RETURN TO V1</OwnStyles.Redirect>
-						</OwnStyles.RedirectWrapper>
 					</OwnStyles.ButtonDisplay>
 				</Route>
 			</Switch>

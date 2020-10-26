@@ -4,9 +4,11 @@ import { Drawer } from './components/drawer/Drawer';
 import * as OwnStyles from './Styles';
 import { Navbar } from './components/navbar/Navbar';
 import API from './utils/api/';
-import { HomePage } from './pages/home/HomePage';
-import { HomePageALPHA } from './pages/homeALPHA/HomePageALPHA';
+import { ActivityPage } from './pages/activity/ActivityPage';
+import { LibraryPage } from './pages/library/LibraryPage';
 import { FavouritesPage } from './pages/favourites/FavouritesPage';
+import { AboutPage } from './pages/about/AboutPage';
+import { HomePage } from './pages/home/HomePage';
 
 function App() {
 	const [drawerStatus, setDrawerStatus] = useState(false);
@@ -59,8 +61,11 @@ function App() {
 				onLogin={handleLogin}
 			/>
 			<Switch>
-				<Route path="/ALPHA">
-					<HomePageALPHA
+				<Route path="/activity">
+					<ActivityPage />
+				</Route>
+				<Route path="/library">
+					<LibraryPage
 						user={user}
 					/>
 				</Route>
@@ -69,6 +74,9 @@ function App() {
 						user={user}
 						onGetUser={handleGetUser}
 					/>
+				</Route>
+				<Route path="/about">
+					<AboutPage />
 				</Route>
 				<Route path="/">
 					<HomePage />

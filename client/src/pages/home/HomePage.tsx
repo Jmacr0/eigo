@@ -1,51 +1,37 @@
 import React, { useEffect, useState } from 'react';
+import { Route, Switch, useHistory, useRouteMatch, useLocation } from 'react-router-dom';
 import { HomePageTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
-import { Display } from '../../components/display/Display';
+import { FavouriteDisplay } from '../../components/favouriteDisplay/FavouriteDisplay';
 
 export const HomePage = React.memo((props: OwnTypes.Props) => {
-	const [type, setType] = useState('' as OwnTypes.Type);
-
-	const handleSelection = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-		setType(event.currentTarget.value as OwnTypes.Type);
-	};
-	const handleReset = () => {
-		setType('' as OwnTypes.Type);
-	};
 
 	return (
 		<>
-			{!type &&
-				<>
-					<OwnStyles.ButtonDisplay
-						container
-						direction="column"
-						justify="center"
-						alignItems="center"
-					>
-						<OwnStyles.SelectButton disableElevation variant="contained" onClick={handleSelection} value="hiragana">hiragana</OwnStyles.SelectButton>
-						<OwnStyles.SelectButton disableElevation variant="contained" onClick={handleSelection} value="katakana">katakana</OwnStyles.SelectButton>
-						<OwnStyles.SelectButton disableElevation variant="contained" onClick={handleSelection} value="greetings">greetings</OwnStyles.SelectButton>
-						<OwnStyles.SelectButton disableElevation variant="contained" onClick={handleSelection} value="verbs">verbs</OwnStyles.SelectButton>
-						<OwnStyles.SelectButton disableElevation variant="contained" onClick={handleSelection} value="adjectives">adjectives</OwnStyles.SelectButton>
-						<OwnStyles.RedirectWrapper>
-							<OwnStyles.NewTag badgeContent={'new'} color="secondary">
-								<OwnStyles.Redirect to="/ALPHA">TRY V2</OwnStyles.Redirect>
-							</OwnStyles.NewTag>
-						</OwnStyles.RedirectWrapper>
-
-					</OwnStyles.ButtonDisplay>
-				</>
-			}
-			{type &&
-				<OwnStyles.MainDisplayWrapper
-					container
-					direction="column"
-					justify="center"
-					alignItems="center">
-					<Display type={type} onReset={handleReset} />
-				</OwnStyles.MainDisplayWrapper>
-			}
+			<div
+				style={{ textAlign: 'center', padding: '10px' }}
+			>
+				<br />
+				<br />
+				<br />
+				<br />
+				<h2>Home 🚧</h2>
+				<OwnStyles.TextWrapper>
+					Eigo is a Japanese language learning application. The Home page is currently under construction. Click links below to navigate existing features!
+					</OwnStyles.TextWrapper>
+				<OwnStyles.RedirectWrapper>
+					<OwnStyles.Redirect to="/activity">Activity</OwnStyles.Redirect>
+				</OwnStyles.RedirectWrapper>
+				<OwnStyles.TextWrapper>
+					Practice and test your knowledge with <em>Hiragana</em>, <em>Katakana</em>, <em>Verbs</em>, and <em>Adjectives</em>!
+					</OwnStyles.TextWrapper>
+				<OwnStyles.RedirectWrapper>
+					<OwnStyles.Redirect to="/library">Library</OwnStyles.Redirect>
+				</OwnStyles.RedirectWrapper>
+				<OwnStyles.TextWrapper>
+					Check out the library which is a repository for <em>Hiragana</em>, <em>Katakana</em>, <em>Verbs</em>, and <em>Adjectives</em>(only <em>Verbs</em> currently available.)
+				</OwnStyles.TextWrapper>
+			</div>
 		</>
-	)
+	);
 });

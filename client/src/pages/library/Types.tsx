@@ -1,4 +1,4 @@
-export namespace HomePageALPHATypes {
+export namespace LibraryPageTypes {
 	export interface Props {
 		type: Type
 		user: any

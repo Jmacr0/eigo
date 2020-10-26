@@ -1,23 +1,10 @@
 import styled from 'styled-components';
-import { Box, Button, Grid, Typography, Badge } from '@material-ui/core';
+import { Box, } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
-export const ButtonDisplay = styled(Grid)`
-		margin-top: 100px!important;
-	`;
-
-export const SelectButton = styled(Button)`
-		min-height: 70px!important;
-		min-width: 200px!important;
-		border-radius: 0px!important;
-`;
-
-export const Title = styled(Typography)`
-
-`;
-
-export const MainDisplayWrapper = styled(Grid)`
-		margin-top: 100px!important;
+export const TextWrapper = styled.p`
+        margin: auto;
+        max-width: 350px;
 `;
 
 export const RedirectWrapper = styled(Box)`
@@ -25,17 +12,10 @@ export const RedirectWrapper = styled(Box)`
         align-items: center;
         justify-content: center;
         min-height: 70px!important;
-		min-width: 200px!important;
+	min-width: 200px!important;
         border-radius: 0px!important;
         `;
 
 export const Redirect = styled(Link)`
         text-decoration: none;
-`;
-
-export const NewTag = styled(Badge)`
-        .MuiBadge-anchorOriginTopRightRectangle {
-                top: -4px;
-                right: -12px;
-        }
 `;

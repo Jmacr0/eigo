@@ -67,7 +67,6 @@ export const LibraryPage = React.memo((props: OwnTypes.Props) => {
 							verbs
 							</OwnStyles.SelectButton>
 						<OwnStyles.SelectButton
-							disabled
 							disableElevation
 							variant="contained"
 							onClick={handleSelection}

@@ -25,13 +25,19 @@ export const DisplayALPHA = React.memo((props: OwnTypes.Props) => {
 	const handleGetAllAPI = async () => {
 		switch (type) {
 			case 'verbs':
-				const res = await API.verb.findAll();
-				if (res.success) {
-					console.log(res.data);
-					setCharacterSet(res.data);
+				const verbs = await API.verb.findAll();
+				if (verbs.success) {
+					console.log(verbs.data);
+					setCharacterSet(verbs.data);
 				}
 				break;
-
+			case 'adjectives':
+				const adjectives = await API.adjective.findAll();
+				if (adjectives.success) {
+					console.log(adjectives.data);
+					setCharacterSet(adjectives.data);
+				}
+				break;
 			default:
 				break;
 		}
@@ -43,6 +49,7 @@ export const DisplayALPHA = React.memo((props: OwnTypes.Props) => {
 
 	useEffect(() => {
 		console.log(match.path)
+		console.log(type)
 		handleTypeSelected();
 		handleGetAllAPI();
 		// const uri = `https://japaneseapi.herokuapp.com/api/v1/${props.type}`;

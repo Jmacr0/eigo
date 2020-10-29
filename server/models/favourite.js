@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
 		Favourite.belongsToMany(models.Verb, {
 			through: 'FavouritedVerb',
 		});
-		Favourite.belongsToMany(models.Verb, {
+		Favourite.belongsToMany(models.Adjective, {
 			through: 'FavouritedAdjective',
 		});
 	};

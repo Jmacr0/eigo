@@ -4,7 +4,7 @@ export namespace DisplayALPHATypes {
 		user: any
 	}
 
-	enum Type {
+	export enum Type {
 		hiragana = 'hiragana',
 		katakana = 'katakana',
 		greetings = 'greetings',

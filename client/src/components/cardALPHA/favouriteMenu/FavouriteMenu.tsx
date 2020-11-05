@@ -9,23 +9,43 @@ export const FavouriteMenu = React.memo((props: OwnTypes.Props) => {
 	const [loadstate, setLoadstate] = useState(true);
 	const [newFavouriteName, setNewFavouriteName] = useState('');
 	const [favouriteIdsWithVerb, setFavouriteIdsWithVerb] = useState([] as number[]);
+	const [favouriteIdsWithAdjective, setFavouriteIdsWithAdjective] = useState([] as number[]);
 	const handleCheckIfFavourited = async () => {
 		setLoadstate(true);
 		if (props.anchorEl) {
 			const favouriteListKeys: any[] = [];
+			const favouriteIds: number[] = [];
 			await props.user.Favourites.forEach((favourite: any) => {
 				favouriteListKeys.push(favourite.id);
 			});
-			const { data: { Favourites } } = await API.favourite.findFavouriteVerbs({
-				favouriteId: favouriteListKeys,
-				verbId: props.selectedWord.id,
-			});
-			const favouriteIds: number[] = [];
-			await Favourites.forEach((favourite: any) => {
-				favouriteIds.push(favourite.id);
-			});
-			setFavouriteIdsWithVerb(favouriteIds);
-			setLoadstate(false);
+			switch (props.selectedWord.type) {
+				case 'verb': {
+					const { data: { Favourites } } = await API.favourite.findFavouriteVerbs({
+						favouriteId: favouriteListKeys,
+						verbId: props.selectedWord.id,
+					});
+					await Favourites.forEach((favourite: any) => {
+						favouriteIds.push(favourite.id);
+					});
+					setFavouriteIdsWithVerb(favouriteIds);
+					setLoadstate(false);
+					break;
+				}
+				case 'adjective': {
+					console.log('adjectives');
+					const { data: { Favourites } } = await API.favourite.findFavouriteAdjectives({
+						favouriteId: favouriteListKeys,
+						adjectiveId: props.selectedWord.id,
+					});
+					await Favourites.forEach((favourite: any) => {
+						favouriteIds.push(favourite.id);
+					});
+					setFavouriteIdsWithAdjective(favouriteIds);
+					setLoadstate(false);
+					break;
+				}
+				default: break;
+			}
 		}
 	};
 	const handleAddNewFavouriteChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,24 +66,49 @@ export const FavouriteMenu = React.memo((props: OwnTypes.Props) => {
 	};
 	const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const selectedFavouriteGroupId = parseInt(event.currentTarget.getAttribute('data-favourite-id') as string);
-		if (favouriteIdsWithVerb.includes(selectedFavouriteGroupId)) {
-			const newFavouriteIdsArray = [...favouriteIdsWithVerb].filter((id) => id != selectedFavouriteGroupId);
-			setFavouriteIdsWithVerb(newFavouriteIdsArray);
-			API.favourite.updateFavouriteVerbs({
-				favouriteId: selectedFavouriteGroupId,
-				verbId: props.selectedWord.id,
-				isFavourited: true,
-			});
-		} else {
-			setFavouriteIdsWithVerb([
-				...favouriteIdsWithVerb,
-				selectedFavouriteGroupId,
-			]);
-			API.favourite.updateFavouriteVerbs({
-				favouriteId: selectedFavouriteGroupId,
-				verbId: props.selectedWord.id,
-				isFavourited: false,
-			});
+		console.log(selectedFavouriteGroupId)
+		if (props.selectedWord.type === 'verb') {
+			if (favouriteIdsWithVerb.includes(selectedFavouriteGroupId)) {
+				const newFavouriteIdsArray = [...favouriteIdsWithVerb].filter((id) => id != selectedFavouriteGroupId);
+				setFavouriteIdsWithVerb(newFavouriteIdsArray);
+				console.log(props.selectedWord.id)
+				API.favourite.updateFavouriteVerb({
+					favouriteId: selectedFavouriteGroupId,
+					verbId: props.selectedWord.id,
+					isFavourited: true,
+				});
+			} else {
+				setFavouriteIdsWithVerb([
+					...favouriteIdsWithVerb,
+					selectedFavouriteGroupId,
+				]);
+				API.favourite.updateFavouriteVerb({
+					favouriteId: selectedFavouriteGroupId,
+					verbId: props.selectedWord.id,
+					isFavourited: false,
+				});
+			};
+		};
+		if (props.selectedWord.type === 'adjective') {
+			if (favouriteIdsWithAdjective.includes(selectedFavouriteGroupId)) {
+				const newFavouriteIdsArray = [...favouriteIdsWithAdjective].filter((id) => id != selectedFavouriteGroupId);
+				setFavouriteIdsWithAdjective(newFavouriteIdsArray);
+				API.favourite.updateFavouriteAdjective({
+					favouriteId: selectedFavouriteGroupId,
+					adjectiveId: props.selectedWord.id,
+					isFavourited: true,
+				});
+			} else {
+				setFavouriteIdsWithAdjective([
+					...favouriteIdsWithAdjective,
+					selectedFavouriteGroupId,
+				]);
+				API.favourite.updateFavouriteAdjective({
+					favouriteId: selectedFavouriteGroupId,
+					adjectiveId: props.selectedWord.id,
+					isFavourited: false,
+				});
+			};
 		};
 	};
 

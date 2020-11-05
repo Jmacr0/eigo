@@ -13,6 +13,7 @@ export namespace CardALPHATypes {
 	export interface SelectedWord {
 		id: string
 		word: string
+		type: string
 	}
 	export type CharacterSet = SingleSet[]
 	export interface SingleSet {

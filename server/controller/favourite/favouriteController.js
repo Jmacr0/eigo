@@ -50,7 +50,35 @@ module.exports = {
 			});
 		};
 	},
+	findFavouriteAdjective: async (req, res, next) => {
+		console.log(req.body.favouriteId, req.body.adjectiveId);
+		const favouritedAdjective = await db.Adjective.findOne({
+			where: {
+				id: req.body.adjectiveId,
+			},
+			include: [{
+				model: db.Favourite,
+				through: {
+					where: {
+						favouriteId: req.body.favouriteId,
+					},
+				},
+			}],
+		});
+		if (favouritedAdjective) {
+			res.send({
+				success: true,
+				data: favouritedAdjective,
+			});
+		} else {
+			res.send({
+				success: false,
+				message: 'Unable to find favourited verbs.',
+			});
+		};
+	},
 	updateFavouriteVerb: async (req, res, next) => {
+		console.log(req.body)
 		console.log(req.body.favouriteId, req.body.verbId, req.body.isFavourited);
 		try {
 			const selectedVerb = await db.Verb.findOne({
@@ -70,6 +98,38 @@ module.exports = {
 				await updatedFavourite.removeVerb(selectedVerb);
 			} else {
 				await updatedFavourite.addVerb(selectedVerb);
+			};
+			res.send({
+				success: true,
+				data: updatedFavourite,
+			});
+		} catch (error) {
+			res.send({
+				success: false,
+				message: error,
+			});
+		}
+	},
+	updateFavouriteAdjective: async (req, res, next) => {
+		console.log(req.body.favouriteId, req.body.adjectiveId, req.body.isFavourited);
+		try {
+			const selectedVerb = await db.Adjective.findOne({
+				where: {
+					id: req.body.adjectiveId,
+				},
+			});
+			const updatedFavourite = await db.Favourite.findOne({
+				where: {
+					id: req.body.favouriteId,
+				},
+				include: [{
+					model: db.Adjective,
+				}],
+			});
+			if (req.body.isFavourited) {
+				await updatedFavourite.removeAdjective(selectedVerb);
+			} else {
+				await updatedFavourite.addAdjective(selectedVerb);
 			};
 			res.send({
 				success: true,

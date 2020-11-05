@@ -22,9 +22,9 @@ function App() {
 		if (loggedIn) {
 			console.log('get user', loggedIn);
 			const { data } = await API.user.findUser();
-			setTimeout(() => {
-				setUser(data);
-			}, 1200);
+			// setTimeout(() => {
+			setUser(data);
+			// }, 1200);
 		} else {
 			setUser();
 		};

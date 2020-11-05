@@ -17,7 +17,8 @@ export const FavouriteDisplay = React.memo((props: OwnTypes.Props) => {
 			console.log(favourite)
 
 			const entireFavouriteSet: any = [
-				...favourite.Verbs
+				...favourite.Verbs,
+				...favourite.Adjectives,
 			];
 			setCharacterSet(entireFavouriteSet);
 		}

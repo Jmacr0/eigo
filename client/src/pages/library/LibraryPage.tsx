@@ -4,7 +4,7 @@ import { LibraryPageTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import { DisplayALPHA } from '../../components/displayALPHA/DisplayALPHA';
 
-export const LibraryPage = React.memo((props: OwnTypes.Props) => {
+const LibraryPage = React.memo((props: OwnTypes.Props) => {
 	const [type, setType] = useState('' as OwnTypes.Type);
 	const history = useHistory();
 	const match = useRouteMatch();
@@ -80,3 +80,5 @@ export const LibraryPage = React.memo((props: OwnTypes.Props) => {
 		</>
 	)
 });
+
+export default LibraryPage;

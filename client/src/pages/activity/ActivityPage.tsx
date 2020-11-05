@@ -3,7 +3,7 @@ import { ActivityPageTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import { Display } from '../../components/display/Display';
 
-export const ActivityPage = React.memo((props: OwnTypes.Props) => {
+const ActivityPage = React.memo((props: OwnTypes.Props) => {
 	const [type, setType] = useState('' as OwnTypes.Type);
 
 	const handleSelection = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -43,3 +43,5 @@ export const ActivityPage = React.memo((props: OwnTypes.Props) => {
 		</>
 	)
 });
+
+export default ActivityPage;

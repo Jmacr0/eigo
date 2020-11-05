@@ -4,7 +4,7 @@ import { AboutPageTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import { FavouriteDisplay } from '../../components/favouriteDisplay/FavouriteDisplay';
 
-export const AboutPage = React.memo((props: OwnTypes.Props) => {
+const AboutPage = React.memo((props: OwnTypes.Props) => {
 
 	return (
 		<>
@@ -21,3 +21,5 @@ export const AboutPage = React.memo((props: OwnTypes.Props) => {
 		</>
 	);
 });
+
+export default AboutPage;

@@ -14,6 +14,7 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import AddIcon from '@material-ui/icons/Add';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { teal, purple, orange } from '@material-ui/core/colors';
 
 export const color = {
@@ -43,6 +44,12 @@ export const AddNewFavouriteIcon = styled(PlaylistAddIcon)`
 
 		}
 `;
+
+export const RemoveFromFavouriteButton = styled(Chip)`
+		margin-left: auto!important;
+`;
+export const RemoveIcon = styled(DeleteForeverIcon)``;
+
 export const InputWrapper = styled.div`
 		padding: 10px;
 `;

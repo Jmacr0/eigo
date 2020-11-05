@@ -3,8 +3,9 @@ import { Route, Switch, useHistory, useRouteMatch, useLocation } from 'react-rou
 import { FavouritesPageTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import { FavouriteDisplay } from '../../components/favouriteDisplay/FavouriteDisplay';
+import { FavouriteMenu } from '../../components/cardALPHA/favouriteMenu/FavouriteMenu';
 
-export const FavouritesPage = React.memo((props: OwnTypes.Props) => {
+const FavouritesPage = React.memo((props: OwnTypes.Props) => {
 	// const [selectedFavourite, setSelectedFavourite] = useState({} as OwnTypes.Favourite);
 	const history = useHistory();
 	const match = useRouteMatch();
@@ -60,3 +61,5 @@ export const FavouritesPage = React.memo((props: OwnTypes.Props) => {
 		</>
 	);
 });
+
+export default FavouritesPage;

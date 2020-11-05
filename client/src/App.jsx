@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import { Drawer } from './components/drawer/Drawer';
 import * as OwnStyles from './Styles';
@@ -9,6 +9,7 @@ import API from './utils/api/';
 // import { FavouritesPage } from './pages/favourites/FavouritesPage';
 // import { AboutPage } from './pages/about/AboutPage';
 import { HomePage } from './pages/home/HomePage';
+const renderLoader = () => <p>loading</p>
 
 const ActivityPage = lazy(() => import('./pages/activity/ActivityPage'));
 const LibraryPage = lazy(() => import('./pages/library/LibraryPage'));
@@ -65,29 +66,31 @@ function App() {
 				onDrawerClick={handleDrawerClick}
 				onLogin={handleLogin}
 			/>
-			<Switch>
-				<Route path="/activity">
-					<ActivityPage />
-				</Route>
-				<Route path="/library">
-					<LibraryPage
-						user={user}
-					/>
-				</Route>
-				<Route path="/favourites">
-					<FavouritesPage
-						user={user}
-						onGetUser={handleGetUser}
-					/>
-				</Route>
-				<Route path="/about">
-					<AboutPage />
-				</Route>
-				<Route path="/">
-					<HomePage />
-				</Route>
-			</Switch>
-		</Router>
+			<Suspense fallback={renderLoader()}>
+				<Switch>
+					<Route path="/activity">
+						<ActivityPage />
+					</Route>
+					<Route path="/library">
+						<LibraryPage
+							user={user}
+						/>
+					</Route>
+					<Route path="/favourites">
+						<FavouritesPage
+							user={user}
+							onGetUser={handleGetUser}
+						/>
+					</Route>
+					<Route path="/about">
+						<AboutPage />
+					</Route>
+					<Route path="/">
+						<HomePage />
+					</Route>
+				</Switch>
+			</Suspense>
+		</Router >
 	);
 }
 

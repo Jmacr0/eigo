@@ -11,6 +11,7 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 		word: '',
 		type: '',
 	});
+	const [confirmRemoveFromFavourite, setConfirmRemoveFromFavourite] = useState(false);
 	const location = useLocation();
 	const handleClose = () => {
 		setAnchorEl(null);
@@ -21,7 +22,15 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 		setSelectedWord(word);
 		setAnchorEl(event.currentTarget);
 	};
+	const handleConfirmRemoveFromFavourite = (word: OwnTypes.SelectedWord) => (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+		event.stopPropagation();
+		console.log(word)
+		setSelectedWord(word);
+		setConfirmRemoveFromFavourite(confirmRemoveFromFavourite ? false : true);
+	};
+	const handleRemoveFromFavourite = () => {
 
+	};
 	useEffect(() => {
 		console.log(props.characterSet);
 		console.log(location.pathname)
@@ -57,6 +66,21 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 										label="ADD"
 										aria-controls={word.short}
 										aria-haspopup="true"
+									/>
+								}
+								{location.pathname.indexOf('favourites') !== -1 &&
+									<OwnStyles.RemoveFromFavouriteButton
+										onClick={handleConfirmRemoveFromFavourite({
+											id: word.id,
+											word: word.short,
+											type: 'verb',
+										})}
+										label="remove"
+										deleteIcon={(confirmRemoveFromFavourite && selectedWord.word === word.short) ? <OwnStyles.RemoveIcon /> : <></>}
+										onDelete={handleRemoveFromFavourite}
+										aria-controls={word.short}
+										aria-haspopup="true"
+										color={(confirmRemoveFromFavourite && selectedWord.word === word.short) ? 'secondary' : 'default'}
 									/>
 								}
 							</OwnStyles.AccordionTitle>
@@ -180,6 +204,21 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 										label="ADD"
 										aria-controls={word.short}
 										aria-haspopup="true"
+									/>
+								}
+								{location.pathname.indexOf('favourites') !== -1 &&
+									<OwnStyles.RemoveFromFavouriteButton
+										onClick={handleConfirmRemoveFromFavourite({
+											id: word.id,
+											word: word.plain,
+											type: 'adjective',
+										})}
+										label="remove"
+										deleteIcon={(confirmRemoveFromFavourite && selectedWord.word === word.plain) ? <OwnStyles.RemoveIcon /> : <></>}
+										onDelete={handleRemoveFromFavourite}
+										aria-controls={word.plain}
+										aria-haspopup="true"
+										color={(confirmRemoveFromFavourite && selectedWord.word === word.plain) ? 'secondary' : 'default'}
 									/>
 								}
 							</OwnStyles.AccordionTitle>

@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import { Drawer } from './components/drawer/Drawer';
 import * as OwnStyles from './Styles';
 import { Navbar } from './components/navbar/Navbar';
 import API from './utils/api/';
-import { ActivityPage } from './pages/activity/ActivityPage';
-import { LibraryPage } from './pages/library/LibraryPage';
-import { FavouritesPage } from './pages/favourites/FavouritesPage';
-import { AboutPage } from './pages/about/AboutPage';
+// import { ActivityPage } from './pages/activity/ActivityPage';
+// import { LibraryPage } from './pages/library/LibraryPage';
+// import { FavouritesPage } from './pages/favourites/FavouritesPage';
+// import { AboutPage } from './pages/about/AboutPage';
 import { HomePage } from './pages/home/HomePage';
+
+const ActivityPage = lazy(() => import('./pages/activity/ActivityPage'));
+const LibraryPage = lazy(() => import('./pages/library/LibraryPage'));
+const FavouritesPage = lazy(() => import('./pages/favourites/FavouritesPage'));
+const AboutPage = lazy(() => import('./pages/about/AboutPage'));
 
 function App() {
 	const [drawerStatus, setDrawerStatus] = useState(false);

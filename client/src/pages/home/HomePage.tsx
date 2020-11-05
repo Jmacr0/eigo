@@ -29,7 +29,7 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 					<OwnStyles.Redirect to="/library">Library</OwnStyles.Redirect>
 				</OwnStyles.RedirectWrapper>
 				<OwnStyles.TextWrapper>
-					Check out the library which is a repository for <em>Hiragana</em>, <em>Katakana</em>, <em>Verbs</em>, and <em>Adjectives</em>(only <em>Verbs</em> currently available.)
+					Check out the library which is a repository for <em>Verbs</em>, and <em>Adjectives</em>.
 				</OwnStyles.TextWrapper>
 			</div>
 		</>

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch } from "rea
 import { Drawer } from './components/drawer/Drawer';
 import * as OwnStyles from './Styles';
 import { Navbar } from './components/navbar/Navbar';
+import { BottomNavigation } from './components/bottomNavigation/BottomNavigation';
 import API from './utils/api/';
 // import { ActivityPage } from './pages/activity/ActivityPage';
 // import { LibraryPage } from './pages/library/LibraryPage';
@@ -91,6 +92,7 @@ function App() {
 					</Route>
 				</Switch>
 			</Suspense>
+			{/* <BottomNavigation /> */}
 		</Router >
 	);
 }

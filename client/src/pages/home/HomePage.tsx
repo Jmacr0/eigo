@@ -13,44 +13,156 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 			<OwnStyles.MainBannerWrapper>
 				<OwnStyles.MainBanner
 					container
-					alignItems="center"
+					alignItems="flex-start"
+					alignContent="space-around"
+					justify="center"
+					lg={8}
 				>
 					<OwnStyles.ImageWrapper
 						item
-						sm={8}
-						md={5}
+						sm={7}
 					>
 						<OwnStyles.Image
 							src={iPhoneImage}
 							alt=""
 						/>
 					</OwnStyles.ImageWrapper>
+					<OwnStyles.ImageWrapper
+						item
+						sm={5}
+					>
+						<OwnStyles.InfoCard>
+							<OwnStyles.InfoCardContent>
+								<OwnStyles.InfoCardTitle
+									variant="h3"
+									color="primary"
+								>
+									Welcome to EIGO
+								</OwnStyles.InfoCardTitle>
+								<h2>Home 🚧</h2>
+								<OwnStyles.TextWrapper>
+									Eigo is a Japanese language learning application. The Home page is currently under construction. Click links below to navigate existing features!
+								</OwnStyles.TextWrapper>
+								<h3>Inspiration</h3>
+								<OwnStyles.TextWrapper>
+									In pursuit of learning Japanese, Eigo comes into fruition. Moreso a supplemental tool to learning the language, Eigo provides a convenient and accessible way to study
+									Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate rerum impedit consequuntur fugit aliquid qui sint dicta nostrum pariatur natus recusandae, doloribus harum at laborum numquam ullam, unde laudantium. Temporibus.
+								</OwnStyles.TextWrapper>
+							</OwnStyles.InfoCardContent>
+						</OwnStyles.InfoCard>
+					</OwnStyles.ImageWrapper>
 				</OwnStyles.MainBanner>
 			</OwnStyles.MainBannerWrapper>
-			<div
-				style={{ textAlign: 'center', padding: '10px' }}
-			>
-				<br />
-				<br />
-				<br />
-				<br />
-				<h2>Home 🚧</h2>
-				<OwnStyles.TextWrapper>
-					Eigo is a Japanese language learning application. The Home page is currently under construction. Click links below to navigate existing features!
-					</OwnStyles.TextWrapper>
-				<OwnStyles.RedirectWrapper>
-					<OwnStyles.Redirect to="/activity">Activity</OwnStyles.Redirect>
-				</OwnStyles.RedirectWrapper>
-				<OwnStyles.TextWrapper>
-					Practice and test your knowledge with <em>Hiragana</em>, <em>Katakana</em>, <em>Verbs</em>, and <em>Adjectives</em>!
-					</OwnStyles.TextWrapper>
-				<OwnStyles.RedirectWrapper>
-					<OwnStyles.Redirect to="/library">Library</OwnStyles.Redirect>
-				</OwnStyles.RedirectWrapper>
-				<OwnStyles.TextWrapper>
-					Check out the library which is a repository for <em>Verbs</em>, and <em>Adjectives</em>.
-				</OwnStyles.TextWrapper>
-			</div>
+			<OwnStyles.SectionWrapper>
+				<OwnStyles.Section
+					container
+					direction="row-reverse"
+					alignItems="flex-start"
+					alignContent="space-around"
+					justify="center"
+					lg={8}
+				>
+					<OwnStyles.Section
+						item
+						sm={5}
+					>
+						<OwnStyles.ImageWrapper>
+							<OwnStyles.Image
+								src={iPhoneImage}
+								alt=""
+							/>
+						</OwnStyles.ImageWrapper>
+					</OwnStyles.Section>
+					<OwnStyles.Section
+						item
+						sm={7}
+					>
+						<OwnStyles.Heading
+							variant="h3"
+							color="primary"
+						>
+							Activity
+						</OwnStyles.Heading>
+						<OwnStyles.TextWrapper>
+							Practice and test your knowledge with
+							<ul>
+								<li>
+									<em>Hiragana</em>
+								</li>
+								<li>
+									<em>Katakana</em>
+								</li>
+								<li>
+									<em>Verbs</em>
+								</li>
+								<li>
+									<em>Adjectives</em>
+								</li>
+							</ul>
+							<em><b>Random</b></em> tests your ability to remember characters and words.
+							<br />
+							<br />
+							<em><b>Test</b></em> encourages not only memory, but the ability to type characters and words.
+							<br />
+							<OwnStyles.RedirectWrapper>
+								<OwnStyles.Redirect to="/activity">TRY HERE</OwnStyles.Redirect>
+							</OwnStyles.RedirectWrapper>
+						</OwnStyles.TextWrapper>
+					</OwnStyles.Section>
+				</OwnStyles.Section>
+			</OwnStyles.SectionWrapper>
+			<OwnStyles.SectionWrapper>
+				<OwnStyles.Section
+					container
+					direction="row-reverse"
+					alignItems="flex-start"
+					alignContent="space-around"
+					justify="center"
+					lg={8}
+				>
+					<OwnStyles.Section
+						item
+						sm={5}
+					>
+						<OwnStyles.ImageWrapper>
+							<OwnStyles.Image
+								src={iPhoneImage}
+								alt=""
+							/>
+						</OwnStyles.ImageWrapper>
+					</OwnStyles.Section>
+					<OwnStyles.Section
+						item
+						sm={7}
+					>
+						<OwnStyles.Heading
+							variant="h3"
+							color="primary"
+						>
+							Library
+						</OwnStyles.Heading>
+						<OwnStyles.TextWrapper>
+							Check out the library - a repository for:
+							<ul>
+								<li>
+									<em>Verbs</em>
+								</li>
+								<li>
+									<em>Adjectives</em>
+								</li>
+							</ul>
+							<em><b>Forms</b></em> provides reference for form changes in verbs & adjectives.
+							<br />
+							<br />
+							<em><b>Favourites</b></em> enables users to create a favourites list and add verbs & adjectives.
+							<br />
+							<OwnStyles.RedirectWrapper>
+								<OwnStyles.Redirect to="/library">TRY HERE</OwnStyles.Redirect>
+							</OwnStyles.RedirectWrapper>
+						</OwnStyles.TextWrapper>
+					</OwnStyles.Section>
+				</OwnStyles.Section>
+			</OwnStyles.SectionWrapper>
 		</>
 	);
 });

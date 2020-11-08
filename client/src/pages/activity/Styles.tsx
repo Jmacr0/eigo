@@ -12,6 +12,9 @@ export const SelectButton = styled(Button)`
 		border-radius: 0px!important;
 `;
 
+export const BackButton = styled(Button)`
+`;
+
 export const Title = styled(Typography)`
 
 `;

@@ -45,8 +45,7 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 								</OwnStyles.TextWrapper>
 								<h3>Inspiration</h3>
 								<OwnStyles.TextWrapper>
-									In pursuit of learning Japanese, Eigo comes into fruition. Moreso a supplemental tool to learning the language, Eigo provides a convenient and accessible way to study
-									Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate rerum impedit consequuntur fugit aliquid qui sint dicta nostrum pariatur natus recusandae, doloribus harum at laborum numquam ullam, unde laudantium. Temporibus.
+									In pursuit of learning Japanese, Eigo comes into fruition. Moreso a supplemental tool to learning the language, Eigo provides a convenient and accessible way to study on the go and within pockets of time throughout the day.
 								</OwnStyles.TextWrapper>
 							</OwnStyles.InfoCardContent>
 						</OwnStyles.InfoCard>

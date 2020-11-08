@@ -39,7 +39,9 @@ export const LogoutListItem = styled(ListItem)`
 export const DrawerListItemIcon = styled(ListItemIcon)``;
 export const DrawerListItemText = styled(ListItemText)``;
 
-export const Input = styled(TextField)``;
+export const Input = styled(TextField)`
+		visibility: hidden;
+`;
 export const LogoutButton = styled(Button)`
         border-radius: 0px!important;
 `;

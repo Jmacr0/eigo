@@ -1,6 +1,23 @@
 import styled from 'styled-components';
-import { Box, } from '@material-ui/core';
+import { Box, Container, Grid, } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import bannerImage from '../../assets/images/banner.png';
+
+export const MainBannerWrapper = styled(Container)`
+		padding-top: 70px;
+		background-image: url(${bannerImage});
+		background-origin: margin;
+		background-repeat: no-repeat;
+		background-position: center top;
+		background-color: #white;
+`;
+
+export const MainBanner = styled(Grid)``;
+export const ImageWrapper = styled(Grid)``;
+
+export const Image = styled.img`
+		width: 100%;
+`;
 
 export const TextWrapper = styled.p`
         margin: auto;

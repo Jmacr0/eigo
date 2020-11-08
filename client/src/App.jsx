@@ -56,6 +56,7 @@ function App() {
 	return (
 		<Router>
 			<Navbar
+				user={user}
 				onDrawerClick={handleDrawerClick}
 			/>
 			<Drawer

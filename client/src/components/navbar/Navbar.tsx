@@ -9,15 +9,22 @@ export const Navbar = React.memo((props: OwnTypes.Props) => {
 			position="fixed"
 		>
 			<OwnStyles.Nav>
-				<OwnStyles.IconWrapper
-					onClick={props.onDrawerClick}
-					edge="start"
-				>
-					<OwnStyles.Icon />
-				</OwnStyles.IconWrapper>
 				<OwnStyles.Redirect to="/">
-					Eigo
+					EIGO
 					</OwnStyles.Redirect>
+				{props.user ?
+					<>
+						<OwnStyles.UsernameDisplay>
+							{props.user.username}
+						</OwnStyles.UsernameDisplay>
+						<OwnStyles.IconWrapper
+							onClick={props.onDrawerClick}
+							edge="start"
+						>
+							<OwnStyles.Icon />
+						</OwnStyles.IconWrapper>
+					</> : <OwnStyles.LoginLink onClick={props.onDrawerClick} to="#!">Login</OwnStyles.LoginLink>
+				}
 			</OwnStyles.Nav>
 		</OwnStyles.Navbar>
 	)

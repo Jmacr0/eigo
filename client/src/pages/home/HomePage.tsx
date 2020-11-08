@@ -3,11 +3,30 @@ import { Route, Switch, useHistory, useRouteMatch, useLocation } from 'react-rou
 import { HomePageTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import { FavouriteDisplay } from '../../components/favouriteDisplay/FavouriteDisplay';
+import iPhoneImage from '../../assets/images/iphone-frame.png';
+import bannerImage from '../../assets/images/banner.png';
 
 export const HomePage = React.memo((props: OwnTypes.Props) => {
 
 	return (
 		<>
+			<OwnStyles.MainBannerWrapper>
+				<OwnStyles.MainBanner
+					container
+					alignItems="center"
+				>
+					<OwnStyles.ImageWrapper
+						item
+						sm={8}
+						md={5}
+					>
+						<OwnStyles.Image
+							src={iPhoneImage}
+							alt=""
+						/>
+					</OwnStyles.ImageWrapper>
+				</OwnStyles.MainBanner>
+			</OwnStyles.MainBannerWrapper>
 			<div
 				style={{ textAlign: 'center', padding: '10px' }}
 			>

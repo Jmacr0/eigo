@@ -3,7 +3,6 @@ import { FavouriteMenuTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import API from '../../../utils/api';
 import Checkbox from '@material-ui/core/Checkbox';
-import { FormCheck } from 'react-bootstrap';
 
 export const FavouriteMenu = React.memo((props: OwnTypes.Props) => {
 	const [loadstate, setLoadstate] = useState(true);
@@ -54,7 +53,8 @@ export const FavouriteMenu = React.memo((props: OwnTypes.Props) => {
 	const handleAddNewFavourite = async (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
 		event.stopPropagation();
 		event.preventDefault();
-		if (newFavouriteName) {
+		const favouriteNameExist = props.user.Favourites.filter((favourite: any) => favourite.name === newFavouriteName);
+		if (newFavouriteName && !favouriteNameExist.length) {
 			console.log(newFavouriteName);
 			const res = await API.favourite.createFavourite(newFavouriteName);
 			if (res.success) {
@@ -63,6 +63,15 @@ export const FavouriteMenu = React.memo((props: OwnTypes.Props) => {
 				setNewFavouriteName('');
 			}
 		}
+	};
+	const handleCheckIfChecked = (favourites: any) => {
+		if (props.selectedWord.type === 'verb') {
+			return favouriteIdsWithVerb.includes(favourites.id)
+		}
+		if (props.selectedWord.type === 'adjective') {
+			return favouriteIdsWithAdjective.includes(favourites.id)
+		}
+		return false;
 	};
 	const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const selectedFavouriteGroupId = parseInt(event.currentTarget.getAttribute('data-favourite-id') as string);
@@ -114,6 +123,7 @@ export const FavouriteMenu = React.memo((props: OwnTypes.Props) => {
 
 	useEffect(() => {
 		handleCheckIfFavourited();
+		console.log(props.user)
 	}, [props.user, props.anchorEl]);
 
 	return (
@@ -134,7 +144,7 @@ export const FavouriteMenu = React.memo((props: OwnTypes.Props) => {
 					{loadstate ?
 						<OwnStyles.Loader width={24} height={42} /> :
 						<Checkbox
-							checked={favouriteIdsWithVerb.includes(favourites.id)}
+							checked={handleCheckIfChecked(favourites)}
 							onChange={handleCheckboxChange}
 							name={favourites.name}
 							inputProps={{

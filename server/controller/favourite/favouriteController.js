@@ -90,10 +90,9 @@ module.exports = {
 				where: {
 					id: req.body.favouriteId,
 				},
-				include: [{
-					model: db.Verb,
-				}],
+				include: ['Verbs', 'Adjectives'],
 			});
+			console.log(updatedFavourite)
 			if (req.body.isFavourited) {
 				await updatedFavourite.removeVerb(selectedVerb);
 			} else {

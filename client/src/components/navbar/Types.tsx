@@ -1,6 +1,7 @@
 export namespace NavbarTypes {
 	export interface Props {
 		type: Type
+		user: any
 		onDrawerClick: () => void
 		onReset: () => void
 	}

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { CardALPHATypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import { FavouriteMenu } from './favouriteMenu/FavouriteMenu';
+import API from '../../utils/api';
 
 export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -12,6 +13,7 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 		type: '',
 	});
 	const [confirmRemoveFromFavourite, setConfirmRemoveFromFavourite] = useState(false);
+	const { selectedFavourite } = useParams<{ selectedFavourite: string }>();
 	const location = useLocation();
 	const handleClose = () => {
 		setAnchorEl(null);
@@ -28,8 +30,26 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 		setSelectedWord(word);
 		setConfirmRemoveFromFavourite(confirmRemoveFromFavourite ? false : true);
 	};
-	const handleRemoveFromFavourite = () => {
-
+	const handleRemoveFromFavourite = async () => {
+		console.log(selectedFavourite)
+		const favourite = props.user.Favourites.filter((favourite: any) => favourite.name === selectedFavourite);
+		const favouriteId = favourite[0].id;
+		console.log(favourite)
+		console.log(favouriteId)
+		if (selectedWord.type === 'verb') {
+			await API.favourite.updateFavouriteVerb({
+				favouriteId,
+				verbId: selectedWord.id,
+				isFavourited: true,
+			});
+		}
+		if (selectedWord.type === 'adjective') {
+			await API.favourite.updateFavouriteAdjective({
+				favouriteId,
+				adjectiveId: selectedWord.id,
+				isFavourited: true,
+			});
+		}
 	};
 	useEffect(() => {
 		console.log(props.characterSet);
@@ -50,7 +70,7 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 				// if word is a verb
 				if (word.short) {
 					return (
-						<OwnStyles.AccordionGroup key={index}>
+						<OwnStyles.AccordionGroup key={index} id={`${word.short}${word.id}`}>
 							<OwnStyles.AccordionTitle
 								expandIcon={<OwnStyles.ShowMoreIcon />}
 							>
@@ -76,7 +96,10 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 											type: 'verb',
 										})}
 										label="remove"
-										deleteIcon={(confirmRemoveFromFavourite && selectedWord.word === word.short) ? <OwnStyles.RemoveIcon /> : <></>}
+										deleteIcon={(confirmRemoveFromFavourite && selectedWord.word === word.short) ?
+											<OwnStyles.RemoveIcon
+												onClick={handleRemoveFromFavourite}
+											/> : <></>}
 										onDelete={handleRemoveFromFavourite}
 										aria-controls={word.short}
 										aria-haspopup="true"
@@ -188,7 +211,7 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 				// if word is an adjective
 				if (word.plain) {
 					return (
-						<OwnStyles.AccordionGroup key={index}>
+						<OwnStyles.AccordionGroup key={index} id={`${word.plain}${word.id}`}>
 							<OwnStyles.AccordionTitle
 								expandIcon={<OwnStyles.ShowMoreIcon />}
 							>
@@ -276,6 +299,7 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 					);
 				}
 			})}
+			{props.user && !props.characterSet.length && <p>🙅‍♀️ Nothing Found 🤷‍♂️</p>}
 			{props.user &&
 				<FavouriteMenu
 					selectedWord={selectedWord}

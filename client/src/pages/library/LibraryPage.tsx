@@ -27,6 +27,7 @@ const LibraryPage = React.memo((props: OwnTypes.Props) => {
 						<DisplayALPHA
 							type={type}
 							user={props.user}
+							onGetUser={props.onGetUser}
 						/>
 					</OwnStyles.MainDisplayWrapper>
 				</Route>

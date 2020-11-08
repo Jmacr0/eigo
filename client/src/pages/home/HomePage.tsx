@@ -10,7 +10,9 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 
 	return (
 		<>
-			<OwnStyles.MainBannerWrapper>
+			<OwnStyles.MainBannerWrapper
+				maxWidth="xl"
+			>
 				<OwnStyles.MainBanner
 					container
 					alignItems="flex-start"

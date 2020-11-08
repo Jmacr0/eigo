@@ -76,6 +76,7 @@ export const DisplayALPHA = React.memo((props: OwnTypes.Props) => {
 				<Switch>
 					<Route path={`${match.path}/:option`}>
 						<CardALPHA
+							onGetUser={props.onGetUser}
 							user={props.user}
 							characterSet={characterSet}
 						/>

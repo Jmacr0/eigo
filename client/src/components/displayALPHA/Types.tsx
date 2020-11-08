@@ -2,6 +2,7 @@ export namespace DisplayALPHATypes {
 	export interface Props {
 		type: Type
 		user: any
+		onGetUser: () => void
 	}
 
 	export enum Type {

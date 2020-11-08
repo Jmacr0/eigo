@@ -76,6 +76,7 @@ function App() {
 					<Route path="/library">
 						<LibraryPage
 							user={user}
+							onGetUser={handleGetUser}
 						/>
 					</Route>
 					<Route path="/favourites">

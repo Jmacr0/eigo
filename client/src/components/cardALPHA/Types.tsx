@@ -2,6 +2,7 @@ export namespace CardALPHATypes {
 	export interface Props {
 		characterSet: CharacterSet
 		user: any
+		onGetUser: () => void
 	}
 
 	enum Type {

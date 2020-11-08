@@ -50,6 +50,8 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 				isFavourited: true,
 			});
 		}
+		props.onGetUser();
+		setConfirmRemoveFromFavourite(false);
 	};
 	useEffect(() => {
 		console.log(props.characterSet);

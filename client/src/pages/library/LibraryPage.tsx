@@ -12,7 +12,9 @@ const LibraryPage = React.memo((props: OwnTypes.Props) => {
 		setType(event.currentTarget.value as OwnTypes.Type);
 		history.push(`${match.path}/${event.currentTarget.value}`);
 	};
-
+	const handleGoBack = () => {
+		history.goBack();
+	};
 	return (
 		<>
 			<Switch>
@@ -73,10 +75,17 @@ const LibraryPage = React.memo((props: OwnTypes.Props) => {
 							value="adjectives">
 							adjectives
 						</OwnStyles.SelectButton>
+						<OwnStyles.BackButton
+							color="secondary"
+							variant="text"
+							size="large"
+							onClick={handleGoBack}
+						>
+							back
+						</OwnStyles.BackButton>
 					</OwnStyles.ButtonDisplay>
 				</Route>
 			</Switch>
-
 		</>
 	)
 });

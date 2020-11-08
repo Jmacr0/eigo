@@ -18,6 +18,9 @@ const FavouritesPage = React.memo((props: OwnTypes.Props) => {
 		// setSelectedFavourite(selectedFavourite);
 		history.push(`${match.url}/${favouriteName}`);
 	};
+	const handleGoBack = () => {
+		history.push('/');
+	};
 
 	useEffect(() => {
 		props.onGetUser();
@@ -47,6 +50,14 @@ const FavouritesPage = React.memo((props: OwnTypes.Props) => {
 							{favourite.name}
 						</OwnStyles.SelectButton>
 					))}
+					<OwnStyles.BackButton
+						color="secondary"
+						variant="text"
+						size="large"
+						onClick={handleGoBack}
+					>
+						back
+					</OwnStyles.BackButton>
 				</OwnStyles.ButtonDisplay>
 			}
 			<Switch>
@@ -55,6 +66,7 @@ const FavouritesPage = React.memo((props: OwnTypes.Props) => {
 				>
 					<FavouriteDisplay
 						user={props.user}
+						onGetUser={props.onGetUser}
 					/>
 				</Route>
 			</Switch>

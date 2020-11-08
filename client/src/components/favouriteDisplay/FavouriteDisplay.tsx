@@ -43,6 +43,7 @@ export const FavouriteDisplay = React.memo((props: OwnTypes.Props) => {
 				<CardALPHA
 					characterSet={characterSet}
 					user={props.user}
+					onGetUser={props.onGetUser}
 				/>
 			</OwnStyles.MainDisplay>
 		</>

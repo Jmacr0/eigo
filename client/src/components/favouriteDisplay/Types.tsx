@@ -1,6 +1,7 @@
 export namespace FavouriteDisplayTypes {
 	export interface Props {
 		user: any
+		onGetUser: () => void
 	}
 
 	export type CharacterSet = SingleSet[]

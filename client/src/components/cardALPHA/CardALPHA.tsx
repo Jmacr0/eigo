@@ -64,7 +64,7 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 		console.log(props.characterSet);
 		console.log(location.pathname)
 		handleSelectedPageDisplay(currentPage);
-	}, [props.user, currentPage]);
+	}, [props.user, currentPage, props.characterSet]);
 
 	return (
 		<OwnStyles.CardDisplay

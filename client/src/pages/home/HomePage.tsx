@@ -4,6 +4,8 @@ import { HomePageTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import { FavouriteDisplay } from '../../components/favouriteDisplay/FavouriteDisplay';
 import iPhoneImage from '../../assets/images/iphone-frame.png';
+import iPhoneImageActivity from '../../assets/images/iphone-frame-activity.png';
+import iPhoneImageLibrary from '../../assets/images/iphone-frame-library.png';
 import bannerImage from '../../assets/images/banner.png';
 
 export const HomePage = React.memo((props: OwnTypes.Props) => {
@@ -15,6 +17,7 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 			>
 				<OwnStyles.MainBanner
 					container
+					item
 					alignItems="flex-start"
 					alignContent="space-around"
 					justify="center"
@@ -26,7 +29,7 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 					>
 						<OwnStyles.Image
 							src={iPhoneImage}
-							alt=""
+							alt="iphone-image-main"
 						/>
 					</OwnStyles.ImageWrapper>
 					<OwnStyles.ImageWrapper
@@ -57,6 +60,7 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 			<OwnStyles.SectionWrapper>
 				<OwnStyles.Section
 					container
+					item
 					direction="row-reverse"
 					alignItems="flex-start"
 					alignContent="space-around"
@@ -69,8 +73,8 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 					>
 						<OwnStyles.ImageWrapper>
 							<OwnStyles.Image
-								src={iPhoneImage}
-								alt=""
+								src={iPhoneImageActivity}
+								alt="iphont-image-activity"
 							/>
 						</OwnStyles.ImageWrapper>
 					</OwnStyles.Section>
@@ -115,6 +119,7 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 			<OwnStyles.SectionWrapper>
 				<OwnStyles.Section
 					container
+					item
 					direction="row-reverse"
 					alignItems="flex-start"
 					alignContent="space-around"
@@ -127,8 +132,8 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 					>
 						<OwnStyles.ImageWrapper>
 							<OwnStyles.Image
-								src={iPhoneImage}
-								alt=""
+								src={iPhoneImageLibrary}
+								alt="iphone-image-library"
 							/>
 						</OwnStyles.ImageWrapper>
 					</OwnStyles.Section>

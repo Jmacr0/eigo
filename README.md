@@ -58,23 +58,30 @@ THEN I am able to improve speaking Japanese
 
 ### Technologies ⚙
 
-The list of selected technologies comprise of some that I am comfortable with and others that are more challenging. This sets a limitation so that I do not get bogged down by all new technologies and hindering any progression.
+The list of selected technologies used, and those for future implementation
 
-*⭐⭐⭐*
+* React & Hooks
+* Typescript (frontend, with plan to intragrate backend with babel)
+* Express / NodeJS
+* mySQL / Sequelize ORM
+* Passport Authentication
+* Heroku (plan to migrate to AWS)
+* HTTPS in development with self signed cert
 
-* React
-
-*⭐⭐*
-
-* MongoDB / Mongoose
-* Passport
-
-*⭐*
-
-* Bootstrap
+Styling
+* MaterialUI
+* Styled Components
 
 ---
 
 ### Improvement / Future Plans 🔭
-
+```
+[] Integrate global types for less repetition
+[] DRY up code
+[] Make components more generic and reusable ie. word cards
+[] Continue focus on readability, extensibility
+[] Google One Tap login
+[] Optimize code (poor lighthouse and first paint)
+[] Implement Sequelize migrations to preserve exisiting database
+```
 ---

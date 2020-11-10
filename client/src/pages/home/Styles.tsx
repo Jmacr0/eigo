@@ -31,6 +31,7 @@ export const Heading = styled(Typography)`
 
 export const SectionWrapper = styled(Container)``;
 export const Section = styled(Grid)`
+margin: auto!important;
 		margin-top: 20px;
 `;
 

@@ -2,6 +2,15 @@ USE eigo_db;
 -- group and long use backticks because they are reserve keywords in SQL
 INSERT 
 INTO 
+adjectives 
+(startingLetter, `group`, english, plain, present, presentNeg, past, pastNeg) 
+VALUES 
+
+("a", "i", "new", "あたらしい", "あたらしいです", "あたらしくないです", "あたらしかった", "あたらしくなかった"),
+("a", "i", "hot", "あつい", "あついです", "あつくないです", "あつかった", "あつくなかった");
+
+INSERT 
+INTO 
 verbs 
 (startingLetter, `group`,english, short, shortPast, shortNeg, shortPastNeg, `long`, longPast, longNeg, longPastNeg, te) 
 VALUES 
@@ -14,7 +23,11 @@ VALUES
 ("a", "u", "to play", "あそぶ", "あそんだ", "あそばない", "あそばなかった", "あそびます", "あそびました", "あそびません", "あそびませんでした", "あそんで"),
 ("a", "u","to hurry", "いそぐ", "いそいだ", "いそがない", "いそがなかった", "いそぎます", "いそぎました", "いそぎません", "いそぎませんでした", "いそいで"),
 
+("a", "ru", "to open (something)", "あける", "あけた", "あけない", "あけなかった", "あけます", "あけました", "あけません", "あけませんでした", "あけて"),
+("a", "ru", "to get up", "おきる", "おきた", "おきない", "おきなかった", "おきます", "おきました", "おきません", "おきませんでした", "おきて"),
+("a", "ru", "to teach", "おしえる", "おしえた", "おしえない", "おしえなかった", "おしえます", "おしえました", "おしえません", "おしえませんでした", "おしえて"),
+("a", "ru", "to get off", "ありる", "ありた", "ありない", "ありなかった", "あります", "ありました", "ありません", "ありませんでした", "ありて"),
+
 ("m", "ru","to see", "みる", "みた", "みない", "みなかった", "みます", "みました", "みません", "みませんでした", "みて"),
 ("m", "u","to wait", "まつ", "まった", "またない", "またんかった", "まちます", "まちました", "まちません", "まちませんでした", "まって");
-
 

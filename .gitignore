@@ -31,3 +31,6 @@ secret.json
 # local SSL
 localhost.crt
 localhost.key
+
+# seeders
+/server/seeders/prod_db.sql

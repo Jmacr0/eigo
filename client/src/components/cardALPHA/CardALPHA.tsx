@@ -4,15 +4,18 @@ import { CardALPHATypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import { FavouriteMenu } from './favouriteMenu/FavouriteMenu';
 import API from '../../utils/api';
+import { Pagination } from '../pagination/Pagination';
 
 export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+	const [currentPage, setCurrentPage] = useState<number>(1);
+	const [currentPageDisplay, setCurrentPageDisplay] = useState([] as OwnTypes.SingleSet[]);
 	const [selectedWord, setSelectedWord] = useState({
 		id: '',
 		word: '',
 		type: '',
 	});
-	const [confirmRemoveFromFavourite, setConfirmRemoveFromFavourite] = useState(false);
+	const [confirmRemoveFromFavourite, setConfirmRemoveFromFavourite] = useState(false)
 	const { selectedFavourite } = useParams<{ selectedFavourite: string }>();
 	const location = useLocation();
 	const handleClose = () => {
@@ -53,10 +56,15 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 		props.onGetUser();
 		setConfirmRemoveFromFavourite(false);
 	};
+	const handleSelectedPageDisplay = (pageNumber: number) => {
+		const wordsToDisplay = props.characterSet.slice((pageNumber - 1) * 5, (pageNumber * 5));
+		setCurrentPageDisplay(wordsToDisplay);
+	};
 	useEffect(() => {
 		console.log(props.characterSet);
 		console.log(location.pathname)
-	}, [props.user]);
+		handleSelectedPageDisplay(currentPage);
+	}, [props.user, currentPage, props.characterSet]);
 
 	return (
 		<OwnStyles.CardDisplay
@@ -68,7 +76,7 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 			xs={12}
 			sm={9}
 		>
-			{props.characterSet.map((word, index) => {
+			{currentPageDisplay && currentPageDisplay.map((word, index) => {
 				// if word is a verb
 				if (word.short) {
 					return (
@@ -301,6 +309,11 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 					);
 				}
 			})}
+			{
+				props.user &&
+				props.characterSet.length
+				&& <Pagination characterSet={props.characterSet} setCurrentPage={setCurrentPage} />
+			}
 			{props.user && !props.characterSet.length && <p>🙅‍♀️ Nothing Found 🤷‍♂️</p>}
 			{props.user &&
 				<FavouriteMenu

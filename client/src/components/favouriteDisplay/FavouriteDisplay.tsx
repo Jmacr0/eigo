@@ -25,6 +25,7 @@ export const FavouriteDisplay = React.memo((props: OwnTypes.Props) => {
 	};
 
 	useEffect(() => {
+		console.log(characterSet)
 		handleCreateSet();
 	}, [props.user, characterSet.length]);
 

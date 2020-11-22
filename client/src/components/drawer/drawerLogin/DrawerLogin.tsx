@@ -175,11 +175,11 @@ export const DrawerLogin = React.memo((props: OwnTypes.Props) => {
 					>
 						{toggleLogin ? "Login" : "Sign Up"}
 					</OwnStyles.UserButton>
-					<OwnStyles.UserButton
+					<OwnStyles.SwitchUserButton
 						onClick={handleFormChange}
 					>
 						or {toggleLogin ? "Sign Up" : "Login"}
-					</OwnStyles.UserButton>
+					</OwnStyles.SwitchUserButton>
 				</OwnStyles.DrawerListItem>
 				<OwnStyles.Break />
 				<OwnStyles.DrawerListItem

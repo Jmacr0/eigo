@@ -2,9 +2,11 @@ import styled from 'styled-components';
 import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Link } from 'react-router-dom';
+import { color } from '../../utils/global/Styles';
 
 export const Navbar = styled(AppBar)`
-	height: 50px;
+	height: 55px;
+	background: ${color.primary.background.vertical}!important;
 `;
 
 export const Nav = styled(Toolbar)``;
@@ -18,7 +20,7 @@ export const IconWrapper = styled(IconButton)`
 `;
 export const Icon = styled(AccountCircleIcon)``;
 
-export const Redirect = styled(Link)`
+export const RedirectHome = styled(Link)`
 		color: white;
 		text-decoration: none;
 		margin-right: auto;
@@ -28,10 +30,25 @@ export const Redirect = styled(Link)`
 		}
 `;
 
+export const NavLinkWrapper = styled.div`
+		margin-left: auto;
+`;
+export const RedirectNavLink = styled(Link)`
+		color: white;
+		text-decoration: none;
+		margin-left: 10px;
+		margin-right: 10px;
+		transition-duration: 0.2s;
+		&:hover {
+			color: antiquewhite;
+		}
+`;
+
 export const LoginLink = styled(Link)`
 		color: white;
 		text-decoration: none;
-		margin-left: auto;
+		margin-left: 10px;
+		margin-right: 10px;
 		transition-duration: 0.2s;
 		&:hover {
 			color: antiquewhite;

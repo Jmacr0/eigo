@@ -1,15 +1,35 @@
 USE eigo_db;
 -- group and long use backticks because they are reserve keywords in SQL
 INSERT 
+IGNORE
 INTO 
 adjectives 
 (startingLetter, `group`, english, plain, present, presentNeg, past, pastNeg) 
 VALUES 
 
+("a", "i", "good", "あたらしい", "あたらしいです", "あたらしくないです", "あたらしかった", "あたらしくなかった"),
 ("a", "i", "new", "あたらしい", "あたらしいです", "あたらしくないです", "あたらしかった", "あたらしくなかった"),
-("a", "i", "hot", "あつい", "あついです", "あつくないです", "あつかった", "あつくなかった");
+("a", "i", "hot", "あつい", "あついです", "あつくないです", "あつかった", "あつくなかった"),
+("a", "i", "busy (people/days)", "いそがしい", "いそがしいです", "いそがしくないです", "いそがしかった", "いそがしくなかった"),
+
+("k", "i", "good-looking", "かっこいい", "かっこいいです", "かっこよくないです", "かっこよかった", "かっこよくなかった"),
+("k", "i", "frightening", "こわい", "こわいです", "こわくないです", "こわかった", "かっこよくなかった"),
+
+("g", "i", "healthy; energetic", "げんき", "げんきです", "げんきくないです", "げんきかった", "げんきくなかった"),
+
+("t", "i", "fun", "たのしい", "たのしいです", "たのしくないです", "たのしかった", "たのしくなかった"),
+("t", "i", "small", "ちいさい", "ちいさいです", "ちいさくないです", "ちいさかった", "ちいさくなかった"),
+("t", "i", "boring", "つまらない", "つまらないです", "つまらなくないです", "つまらなかった", "つまらなくなかった"),
+
+("k", "na", "disgusted with; to dislike", "きらい", "きらいです", "きらくないです", "きらかった", "きらくなかった"),
+("k", "na", "beautiful; clean", "きれい","きれいです", "きれくないです","きれかった", "きれくなかった"),
+
+("d", "i", "to hate", "だいきらい", "だいきらいです", "だいきらくないです", "だいきらかった", "だいきらくなかった"),
+("d", "i", "to love", "だいすきい", "だいすきいです", "だいすきくないです", "だいすきかった", "だいすきくなかった");
+
 
 INSERT 
+IGNORE
 INTO 
 verbs 
 (startingLetter, `group`,english, short, shortPast, shortNeg, shortPastNeg, `long`, longPast, longNeg, longPastNeg, te) 

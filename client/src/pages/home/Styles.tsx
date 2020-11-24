@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Box, Container, Grid, Card, CardContent, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import bannerImage from '../../assets/images/banner.png';
+import { color } from '../../utils/global/Styles';
 
 export const MainBannerWrapper = styled(Container)`
 		padding-top: 70px;
@@ -22,16 +23,19 @@ export const Image = styled.img`
 `;
 export const InfoCard = styled(Card)``;
 export const InfoCardContent = styled(CardContent)``;
-export const InfoCardTitle = styled(Typography)``;
+export const InfoCardTitle = styled(Typography)`
+		color: ${color.primary.text}!important;
+`;
 
 export const Heading = styled(Typography)`
+		color: ${color.primary.text}!important;
 		text-align: center;
 		margin-bottom: 10px!important;
 `;
 
 export const SectionWrapper = styled(Container)``;
 export const Section = styled(Grid)`
-margin: auto!important;
+		margin: auto!important;
 		margin-top: 20px;
 `;
 

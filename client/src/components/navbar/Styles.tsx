@@ -16,6 +16,8 @@ export const UsernameDisplay = styled(Typography)`
 `;
 
 export const IconWrapper = styled(IconButton)`
+		margin-left: 10px!important;	
+		margin-right: 10px!important;
 		background-color: transparent!important;
 `;
 export const Icon = styled(AccountCircleIcon)``;

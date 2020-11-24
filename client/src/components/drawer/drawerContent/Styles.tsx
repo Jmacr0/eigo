@@ -12,6 +12,7 @@ import {
 import { Skeleton } from '@material-ui/lab';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+import { color } from '../../../utils/global/Styles';
 
 export const Header = styled.div``;
 
@@ -43,5 +44,6 @@ export const Input = styled(TextField)`
 		visibility: hidden;
 `;
 export const LogoutButton = styled(Button)`
+		background: ${color.primary.background.vertical}!important;
         border-radius: 0px!important;
 `;

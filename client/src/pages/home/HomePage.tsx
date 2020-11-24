@@ -40,7 +40,6 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 							<OwnStyles.InfoCardContent>
 								<OwnStyles.InfoCardTitle
 									variant="h3"
-									color="primary"
 								>
 									Welcome to EIGO
 								</OwnStyles.InfoCardTitle>

@@ -23,9 +23,9 @@ export const Navbar = React.memo((props: OwnTypes.Props) => {
 					|
 					{props.user ?
 						<>
-							<OwnStyles.UsernameDisplay>
+							{/* <OwnStyles.UsernameDisplay>
 								{props.user.username}
-							</OwnStyles.UsernameDisplay>
+							</OwnStyles.UsernameDisplay> */}
 							<OwnStyles.IconWrapper
 								onClick={props.onDrawerClick}
 								edge="start"

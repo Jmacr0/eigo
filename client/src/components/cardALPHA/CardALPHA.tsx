@@ -310,10 +310,20 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 				}
 			})}
 			{
-				props.characterSet.length
-				&& <Pagination characterSet={props.characterSet} setCurrentPage={setCurrentPage} />
+				props.characterSet.length ?
+					<Pagination characterSet={props.characterSet} setCurrentPage={setCurrentPage} /> : ''
 			}
-			{!props.characterSet.length && setTimeout(() => <p>🙅‍♀️ Nothing Found 🤷‍♂️</p>, 500)}
+			{
+				!props.characterSet.length &&
+				<OwnStyles.CardDisplay
+					item
+					md={6}
+					style={{ padding: '15px', textAlign: 'center' }}
+				>
+					<p>🙅‍♀️ Nothing Found 🤷‍♂️</p>
+					<p>Go to the Library and start adding your favourite words!</p>
+				</OwnStyles.CardDisplay>
+			}
 			{props.user &&
 				<FavouriteMenu
 					selectedWord={selectedWord}

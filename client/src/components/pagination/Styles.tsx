@@ -3,5 +3,5 @@ import { Grid, Box, Button } from '@material-ui/core';
 import Paginator from '@material-ui/lab/Pagination';
 
 export const Pagination = styled(Paginator)`
-margin-top: 20px;
+		margin-top: 20px;
 	`;

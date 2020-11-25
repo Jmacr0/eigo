@@ -11,6 +11,7 @@ export const MainBannerWrapper = styled(Container)`
 		background-repeat: no-repeat;
 		background-position: center top;
 		background-color: #white;
+		background-size: 100% 100%;
 `;
 
 export const MainBanner = styled(Grid)`
@@ -49,7 +50,7 @@ export const RedirectWrapper = styled(Box)`
         align-items: center;
         justify-content: center;
         min-height: 70px!important;
-	min-width: 200px!important;
+		min-width: 200px!important;
         border-radius: 0px!important;
         `;
 

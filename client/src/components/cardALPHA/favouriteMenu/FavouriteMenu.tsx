@@ -54,7 +54,7 @@ export const FavouriteMenu = React.memo((props: OwnTypes.Props) => {
 		event.stopPropagation();
 		event.preventDefault();
 		const favouriteNameExist = props.user.Favourites.filter((favourite: any) => favourite.name === newFavouriteName);
-		if (newFavouriteName && !favouriteNameExist.length) {
+		if (newFavouriteName && !favouriteNameExist.length && newFavouriteName !== 'favourite') {
 			console.log(newFavouriteName);
 			const res = await API.favourite.createFavourite(newFavouriteName);
 			if (res.success) {

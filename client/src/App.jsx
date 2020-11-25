@@ -10,6 +10,7 @@ import API from './utils/api/';
 // import { FavouritesPage } from './pages/favourites/FavouritesPage';
 // import { AboutPage } from './pages/about/AboutPage';
 import { HomePage } from './pages/home/HomePage';
+import { Footer } from './components/footer/Footer';
 const renderLoader = () => <p>loading</p>
 
 const ActivityPage = lazy(() => import('./pages/activity/ActivityPage'));
@@ -68,32 +69,35 @@ function App() {
 				onDrawerClick={handleDrawerClick}
 				onLogin={handleLogin}
 			/>
-			<Suspense fallback={renderLoader()}>
-				<Switch>
-					<Route path="/activity">
-						<ActivityPage />
-					</Route>
-					<Route path="/library">
-						<LibraryPage
-							user={user}
-							onGetUser={handleGetUser}
-						/>
-					</Route>
-					<Route path="/favourites">
-						<FavouritesPage
-							user={user}
-							onGetUser={handleGetUser}
-						/>
-					</Route>
-					<Route path="/about">
-						<AboutPage />
-					</Route>
-					<Route path="/">
-						<HomePage />
-					</Route>
-				</Switch>
-			</Suspense>
+			<OwnStyles.MainDisplayWrapper>
+				<Suspense fallback={renderLoader()}>
+					<Switch>
+						<Route path="/activity">
+							<ActivityPage />
+						</Route>
+						<Route path="/library">
+							<LibraryPage
+								user={user}
+								onGetUser={handleGetUser}
+							/>
+						</Route>
+						<Route path="/favourites">
+							<FavouritesPage
+								user={user}
+								onGetUser={handleGetUser}
+							/>
+						</Route>
+						<Route path="/about">
+							<AboutPage />
+						</Route>
+						<Route path="/">
+							<HomePage />
+						</Route>
+					</Switch>
+				</Suspense>
+			</OwnStyles.MainDisplayWrapper>
 			{/* <BottomNavigation /> */}
+			<Footer />
 		</Router >
 	);
 }

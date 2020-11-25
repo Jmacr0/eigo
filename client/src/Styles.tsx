@@ -16,5 +16,5 @@ export const Title = styled(Typography)`
 `;
 
 export const MainDisplayWrapper = styled(Grid)`
-		margin-top: 100px!important;
+		min-height: 90vh;
 `;

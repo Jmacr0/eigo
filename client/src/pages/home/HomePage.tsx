@@ -6,14 +6,13 @@ import { FavouriteDisplay } from '../../components/favouriteDisplay/FavouriteDis
 import iPhoneImage from '../../assets/images/iphone-frame.png';
 import iPhoneImageActivity from '../../assets/images/iphone-frame-activity.png';
 import iPhoneImageLibrary from '../../assets/images/iphone-frame-library.png';
-import bannerImage from '../../assets/images/banner.png';
 
 export const HomePage = React.memo((props: OwnTypes.Props) => {
 
 	return (
 		<>
 			<OwnStyles.MainBannerWrapper
-				maxWidth="xl"
+				maxWidth={false}
 			>
 				<OwnStyles.MainBanner
 					container

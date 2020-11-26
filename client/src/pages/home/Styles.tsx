@@ -11,9 +11,8 @@ export const MainBannerWrapper = styled(Container)`
 		background-repeat: no-repeat;
 		background-position: center top;
 		background-color: #white;
-		background-size: 100% 100%;
+		background-size: cover;
 `;
-
 export const MainBanner = styled(Grid)`
 		margin: auto!important;
 `;

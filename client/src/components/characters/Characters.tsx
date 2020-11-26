@@ -142,11 +142,10 @@ export const Characters = React.memo((props: OwnTypes.Props): React.ReactElement
 			<OwnStyles.RandomButton
 				disabled={randomButtonDisabled}
 				variant="contained"
-				color="primary"
 				size="large"
 				onClick={handleRandom}>
 				random
-				</OwnStyles.RandomButton>
+			</OwnStyles.RandomButton>
 		</>
 	);
 });

@@ -29,6 +29,7 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 						<OwnStyles.Image
 							src={iPhoneImage}
 							alt="iphone-image-main"
+							data-aos="fade-left" data-aos-duration="1000"
 						/>
 					</OwnStyles.ImageWrapper>
 					<OwnStyles.ImageWrapper

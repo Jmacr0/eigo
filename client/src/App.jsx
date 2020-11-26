@@ -1,5 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch } from "react-router-dom";
+import AOS from 'aos';
 import { Drawer } from './components/drawer/Drawer';
 import * as OwnStyles from './Styles';
 import { Navbar } from './components/navbar/Navbar';
@@ -46,6 +47,7 @@ function App() {
 		setLoggedIn(toggle);
 	};
 	useEffect(() => {
+		AOS.init();
 		handleCheckIfLoggedIn();
 	}, []);
 

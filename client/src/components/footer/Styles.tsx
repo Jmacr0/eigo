@@ -21,3 +21,8 @@ export const Text = styled(Typography)`
 	color: ${color.dark.text}!important;
 	text-align: center!important;
 `;
+export const Anchor = styled.a`
+		text-decoration: none;
+		color: white!important;
+		font-weight: bold;
+`;

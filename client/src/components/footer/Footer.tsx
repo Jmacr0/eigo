@@ -25,7 +25,7 @@ export const Footer = React.memo((props: OwnTypes.Props) => {
 							Eigo is an ongoing personal project.
 						</OwnStyles.Text>
 						<OwnStyles.Text>
-							Check out the repository <a href="https://github.com/jmacr0/eigo" target="_blank">here</a>
+							Check out the repository <OwnStyles.Anchor href="https://github.com/jmacr0/eigo" target="_blank">here</OwnStyles.Anchor>
 						</OwnStyles.Text>
 					</OwnStyles.InfoWrapper>
 				</OwnStyles.InfoWrapper>

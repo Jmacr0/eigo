@@ -50,9 +50,14 @@ export const RedirectWrapper = styled(Box)`
         justify-content: center;
         min-height: 70px!important;
 		min-width: 200px!important;
-        border-radius: 0px!important;
-        `;
+		border-radius: 5px!important;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		background: ${color.secondary.background.vertical}!important;
+		`;
 
 export const Redirect = styled(Link)`
-        text-decoration: none;
+		text-decoration: none;		
+		color: white!important;
+		font-weight: bold;
 `;

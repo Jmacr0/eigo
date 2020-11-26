@@ -16,7 +16,9 @@ export const MainBannerWrapper = styled(Container)`
 export const MainBanner = styled(Grid)`
 		margin: auto!important;
 `;
-export const ImageWrapper = styled(Grid)``;
+export const ImageWrapper = styled(Grid)`
+		overflow-x: hidden;
+`;
 
 export const Image = styled.img`
 		width: 100%;

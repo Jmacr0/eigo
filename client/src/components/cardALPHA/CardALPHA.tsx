@@ -5,11 +5,13 @@ import * as OwnStyles from './Styles';
 import { FavouriteMenu } from './favouriteMenu/FavouriteMenu';
 import API from '../../utils/api';
 import { Pagination } from '../pagination/Pagination';
+import { FilterBar } from '../filterBar/FilterBar';
 
 export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const [currentPageDisplay, setCurrentPageDisplay] = useState([] as OwnTypes.SingleSet[]);
+	const [displayNumber, setDisplayNumber] = useState<number>(5);
 	const [selectedWord, setSelectedWord] = useState({
 		id: '',
 		word: '',
@@ -57,14 +59,17 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 		setConfirmRemoveFromFavourite(false);
 	};
 	const handleSelectedPageDisplay = (pageNumber: number) => {
-		const wordsToDisplay = props.characterSet.slice((pageNumber - 1) * 5, (pageNumber * 5));
+		const wordsToDisplay = props.characterSet.slice((pageNumber - 1) * displayNumber, (pageNumber * displayNumber));
 		setCurrentPageDisplay(wordsToDisplay);
 	};
+	const handleNumberToDisplay = (displayNumber: number) => {
+		setDisplayNumber(displayNumber);
+	}
 	useEffect(() => {
 		console.log(props.characterSet);
-		console.log(location.pathname)
+		console.log(location.pathname);
 		handleSelectedPageDisplay(currentPage);
-	}, [props.user, currentPage, props.characterSet]);
+	}, [props.user, currentPage, props.characterSet, displayNumber]);
 
 	return (
 		<OwnStyles.CardDisplay
@@ -76,6 +81,9 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 			xs={12}
 			sm={9}
 		>
+			<FilterBar
+				onNumberToDisplay={handleNumberToDisplay}
+			/>
 			{currentPageDisplay && currentPageDisplay.map((word, index) => {
 				// if word is a verb
 				if (word.short) {

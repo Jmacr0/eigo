@@ -12,7 +12,7 @@ export const Loader = styled(Skeleton)``;
 export const RandomButton = styled(Button)`
 		min-width: 200px;
 		color: white!important;
-		background: ${color.primary.background.vertical}!important;
+		background: ${color.primary.background.flat}!important;
 		&:disabled {
 			color: rgba(16, 16, 16, 0.3)!important;
 			background: #e0e0e0!important;

@@ -22,39 +22,19 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 					justify="center"
 					lg={8}
 				>
-					<OwnStyles.ImageWrapper
+					<OwnStyles.MainTextBox
 						item
-						sm={7}
+						sm={8}
 					>
-						<OwnStyles.Image
-							src={iPhoneImage}
-							alt="iphone-image-main"
-							data-aos="fade-left"
-							data-aos-duration="1000"
-						/>
-					</OwnStyles.ImageWrapper>
-					<OwnStyles.ImageWrapper
-						item
-						sm={5}
-					>
-						<OwnStyles.InfoCard>
-							<OwnStyles.InfoCardContent>
-								<OwnStyles.InfoCardTitle
-									variant="h3"
-								>
-									Welcome to EIGO
-								</OwnStyles.InfoCardTitle>
-								<h2>Home 🚧</h2>
-								<OwnStyles.TextWrapper>
-									Eigo is a Japanese language learning application. The Home page is currently under construction. Click links below to navigate existing features!
-								</OwnStyles.TextWrapper>
-								<h3>Inspiration</h3>
-								<OwnStyles.TextWrapper>
-									In pursuit of learning Japanese, Eigo comes into fruition. As a supplemental tool to learning the language, Eigo provides a convenient and accessible way to study on the go and within pockets of time throughout the day.
-								</OwnStyles.TextWrapper>
-							</OwnStyles.InfoCardContent>
-						</OwnStyles.InfoCard>
-					</OwnStyles.ImageWrapper>
+						<OwnStyles.MainText
+							variant="h2"
+						>
+							the exciting japanese learning app for on the go.
+						</OwnStyles.MainText>
+						<OwnStyles.GetStartedButton>
+							GET STARTED
+						</OwnStyles.GetStartedButton>
+					</OwnStyles.MainTextBox>
 				</OwnStyles.MainBanner>
 			</OwnStyles.MainBannerWrapper>
 			<OwnStyles.SectionWrapper>

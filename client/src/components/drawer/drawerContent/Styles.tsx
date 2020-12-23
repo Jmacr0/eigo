@@ -44,6 +44,6 @@ export const Input = styled(TextField)`
 		visibility: hidden;
 `;
 export const LogoutButton = styled(Button)`
-		background: ${color.primary.background.vertical}!important;
+		background: ${color.primary.background.flat}!important;
         border-radius: 0px!important;
 `;

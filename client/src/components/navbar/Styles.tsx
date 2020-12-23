@@ -6,7 +6,7 @@ import { color } from '../../utils/global/Styles';
 
 export const Navbar = styled(AppBar)`
 	height: 55px;
-	background: ${color.primary.background.vertical}!important;
+	background: ${color.dark.background}!important;
 `;
 
 export const Nav = styled(Toolbar)``;

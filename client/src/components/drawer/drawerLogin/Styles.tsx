@@ -35,7 +35,7 @@ export const DrawerListItemText = styled(ListItemText)``;
 export const Input = styled(TextField)``;
 export const UserButton = styled(Button)`
 		border-radius: 0px!important;
-		background: ${color.primary.background.vertical}!important;
+		background: ${color.primary.background.flat}!important;
 `;
 
 export const SwitchUserButton = styled(Button)`

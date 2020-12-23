@@ -7,6 +7,7 @@ export const Navbar = React.memo((props: OwnTypes.Props) => {
 	return (
 		<OwnStyles.Navbar
 			position="fixed"
+			elevation={0}
 		>
 			<OwnStyles.Nav>
 				<OwnStyles.RedirectHome to="/">

@@ -4,7 +4,6 @@ import AddIcon from '@material-ui/icons/Add';
 import { color } from '../../utils/global/Styles';
 
 export const FilterWrapper = styled(Grid)`
-	margin: 10px;
 	min-height: 30px;
 	width: 100%;
 	`;
@@ -12,12 +11,16 @@ export const FilterWrapper = styled(Grid)`
 export const FilterBar = styled(Paper)`
 	height: 100%;
 	width: 100%;
+	margin: 10px;
 	padding: 10px;
 `;
 
 export const Wrapper = styled(Grid)`
 	`;
 
+export const SearchWrapper = styled(Grid)`
+	margin-left: auto!important;	
+`;
 export const Title = styled(Typography)`
 margin-right: 10px!important;
 `;

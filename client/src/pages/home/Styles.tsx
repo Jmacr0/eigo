@@ -5,8 +5,7 @@ import bannerImage from '../../assets/images/banner.png';
 import { color } from '../../utils/global/Styles';
 
 export const MainBannerWrapper = styled(Container)`
-		padding-top: 70px;
-		height: 100vh;
+		min-height: 100vh;
 		background: ${color.dark.background};
 `;
 // MainBannerWrapper Background Image Styles
@@ -19,10 +18,10 @@ export const MainBannerWrapper = styled(Container)`
 
 export const MainBanner = styled(Grid)`
 		margin: auto!important;
+		height: 100%!important;
 `;
 
 export const MainTextBox = styled(Grid)`
-		margin-top: 30px!important;
 		padding: 20px;
 `;
 

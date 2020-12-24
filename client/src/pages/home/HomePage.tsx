@@ -17,7 +17,8 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 				<OwnStyles.MainBanner
 					container
 					item
-					alignItems="flex-start"
+					direction="row"
+					alignItems="center"
 					alignContent="space-around"
 					justify="center"
 					lg={8}

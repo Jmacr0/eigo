@@ -1,5 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch } from "react-router-dom";
+import { createMuiTheme, responsiveFontSizes, MuiThemeProvider } from '@material-ui/core';
 import AOS from 'aos';
 import { Drawer } from './components/drawer/Drawer';
 import './index.css';
@@ -19,6 +20,9 @@ const ActivityPage = lazy(() => import('./pages/activity/ActivityPage'));
 const LibraryPage = lazy(() => import('./pages/library/LibraryPage'));
 const FavouritesPage = lazy(() => import('./pages/favourites/FavouritesPage'));
 const AboutPage = lazy(() => import('./pages/about/AboutPage'));
+
+let theme = createMuiTheme();
+theme = responsiveFontSizes(theme);
 
 function App() {
 	const [drawerStatus, setDrawerStatus] = useState(false);
@@ -59,49 +63,53 @@ function App() {
 	}, [loggedIn]);
 
 	return (
-		<Router>
-			<Navbar
-				user={user}
-				onDrawerClick={handleDrawerClick}
-			/>
-			<Drawer
-				loggedIn={loggedIn}
-				user={user}
-				setUser={setUser}
-				drawerStatus={drawerStatus}
-				onDrawerClick={handleDrawerClick}
-				onLogin={handleLogin}
-			/>
-			<OwnStyles.MainDisplayWrapper>
-				<Suspense fallback={renderLoader()}>
-					<Switch>
-						<Route path="/activity">
-							<ActivityPage />
-						</Route>
-						<Route path="/library">
-							<LibraryPage
-								user={user}
-								onGetUser={handleGetUser}
-							/>
-						</Route>
-						<Route path="/favourites">
-							<FavouritesPage
-								user={user}
-								onGetUser={handleGetUser}
-							/>
-						</Route>
-						<Route path="/about">
-							<AboutPage />
-						</Route>
-						<Route path="/">
-							<HomePage />
-						</Route>
-					</Switch>
-				</Suspense>
-			</OwnStyles.MainDisplayWrapper>
-			{/* <BottomNavigation /> */}
-			<Footer />
-		</Router >
+		<MuiThemeProvider
+			theme={theme}
+		>
+			<Router>
+				<Navbar
+					user={user}
+					onDrawerClick={handleDrawerClick}
+				/>
+				<Drawer
+					loggedIn={loggedIn}
+					user={user}
+					setUser={setUser}
+					drawerStatus={drawerStatus}
+					onDrawerClick={handleDrawerClick}
+					onLogin={handleLogin}
+				/>
+				<OwnStyles.MainDisplayWrapper>
+					<Suspense fallback={renderLoader()}>
+						<Switch>
+							<Route path="/activity">
+								<ActivityPage />
+							</Route>
+							<Route path="/library">
+								<LibraryPage
+									user={user}
+									onGetUser={handleGetUser}
+								/>
+							</Route>
+							<Route path="/favourites">
+								<FavouritesPage
+									user={user}
+									onGetUser={handleGetUser}
+								/>
+							</Route>
+							<Route path="/about">
+								<AboutPage />
+							</Route>
+							<Route path="/">
+								<HomePage />
+							</Route>
+						</Switch>
+					</Suspense>
+				</OwnStyles.MainDisplayWrapper>
+				{/* <BottomNavigation /> */}
+				<Footer />
+			</Router >
+		</MuiThemeProvider>
 	);
 }
 

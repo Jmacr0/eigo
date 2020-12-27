@@ -48,11 +48,17 @@ export const RedirectNavLink = styled(Link)`
 
 export const LoginLink = styled(Link)`
 		color: white;
+		border: 2px solid ${color.dark.text};
+		border-radius: 2px;
 		text-decoration: none;
 		margin-left: 10px;
 		margin-right: 10px;
+		padding: 5px;
+		padding-left: 10px;
+		padding-right: 10px;
 		transition-duration: 0.2s;
 		&:hover {
 			color: antiquewhite;
+			border-color: antiquewhite;
 		}
 `;

@@ -17,11 +17,9 @@ export const Navbar = React.memo((props: OwnTypes.Props) => {
 					<OwnStyles.RedirectNavLink to="/activity">
 						Activity
 					</OwnStyles.RedirectNavLink>
-					|
 					<OwnStyles.RedirectNavLink to="/library">
 						Library
 					</OwnStyles.RedirectNavLink>
-					|
 					{props.user ?
 						<>
 							{/* <OwnStyles.UsernameDisplay>

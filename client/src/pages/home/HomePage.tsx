@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Route, Switch, useHistory, useRouteMatch, useLocation } from 'react-router-dom';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { HomePageTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import { FavouriteDisplay } from '../../components/favouriteDisplay/FavouriteDisplay';
@@ -8,7 +10,29 @@ import iPhoneImageActivity from '../../assets/images/iphone-frame-activity.png';
 import iPhoneImageLibrary from '../../assets/images/iphone-frame-library.png';
 
 export const HomePage = React.memo((props: OwnTypes.Props) => {
-
+	const theme = useTheme();
+	const matches = useMediaQuery(theme.breakpoints.up('sm'));
+	const [currentStep, setCurrentStep] = useState(0);
+	const [prevStep, setPrevStep] = useState(0);
+	const findOutMoreRef = useRef<HTMLHeadingElement>({} as HTMLHeadingElement)
+	const handleStepperClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+		const clickedButton = event.currentTarget.value;
+		if (clickedButton === 'next') {
+			const newStep = currentStep >= 2 ? currentStep : currentStep + 1;
+			setPrevStep(currentStep);
+			setCurrentStep(newStep);
+		}
+		if (clickedButton === 'back') {
+			const newStep = currentStep <= 0 ? currentStep : currentStep - 1;
+			setPrevStep(currentStep);
+			setCurrentStep(newStep);
+		}
+	}
+	const handleFindOutMoreClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+		const clickedButton = event.currentTarget;
+		console.log(clickedButton);
+		findOutMoreRef.current.scrollIntoView({ behavior: "smooth" });
+	}
 	return (
 		<>
 			<OwnStyles.MainBannerWrapper
@@ -17,28 +41,161 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 				<OwnStyles.MainBanner
 					container
 					item
-					direction="row"
+					direction="column"
 					alignItems="center"
-					alignContent="space-around"
+					alignContent="flex-start"
 					justify="center"
 					lg={8}
 				>
-					<OwnStyles.MainTextBox
+					<OwnStyles.SimpleGrid
+						container
 						item
-						sm={8}
+						direction="row"
+						alignItems="center"
+						alignContent="space-around"
+						justify="center"
 					>
-						<OwnStyles.MainText
-							variant="h2"
-						>
-							the exciting japanese learning app for on the go.
-						</OwnStyles.MainText>
-						<OwnStyles.GetStartedButton>
-							GET STARTED
+						{currentStep !== 0 && matches ?
+							<OwnStyles.StepperButton
+								value="back"
+								onClick={handleStepperClick}
+							>
+								<OwnStyles.StepperBackIcon />
+							</OwnStyles.StepperButton> :
+							<OwnStyles.StepperButton
+								disabled
+							/>
+						}
+						{currentStep === 0 &&
+							<OwnStyles.MainTextBox
+								item
+								sm={8}
+								data-aos={prevStep !== 0 ? 'fade-right' : 'fade-left'}
+								data-aos-duration="1000"
+							>
+								<OwnStyles.MainText
+									variant="h2"
+								>
+									the exciting japanese learning app for on the go. EIGO.
+								</OwnStyles.MainText>
+								<OwnStyles.GetStartedButton
+									value="next"
+									onClick={handleStepperClick}
+									endIcon={<OwnStyles.GetStartedButtonIcon />}
+								>
+									GET STARTED
 						</OwnStyles.GetStartedButton>
-					</OwnStyles.MainTextBox>
+								<OwnStyles.FindOutMoreWrapper>
+									<OwnStyles.FindOutMoreButton
+										onClick={handleFindOutMoreClick}
+									>
+										Find out more...
+						</OwnStyles.FindOutMoreButton>
+								</OwnStyles.FindOutMoreWrapper>
+							</OwnStyles.MainTextBox>
+						}
+						{currentStep === 1 &&
+							<OwnStyles.MainTextBox
+								item
+								sm={8}
+								data-aos={prevStep > 1 ? 'fade-right' : 'fade-left'}
+								data-aos-duration="1000"
+							>
+								<OwnStyles.MainText
+									variant="h2"
+								>
+									Activity lets you test your ability to memorize characters, words, and sayings.
+						</OwnStyles.MainText>
+								<OwnStyles.StepperUpWrapper
+									container
+									item
+									direction="row"
+									alignItems="center"
+									alignContent="space-around"
+									justify="center"
+								>
+									<OwnStyles.StepperUpIcon />
+								</OwnStyles.StepperUpWrapper>
+							</OwnStyles.MainTextBox>
+						}
+						{currentStep === 2 &&
+							<OwnStyles.MainTextBox
+								item
+								sm={8}
+								data-aos={prevStep > 2 ? 'fade-right' : 'fade-left'}
+								data-aos-duration="1000"
+							>
+								<OwnStyles.MainText
+									variant="h2"
+								>
+									Library lets you search for words and includes their various forms all in one repository... like a library!
+						</OwnStyles.MainText>
+								<OwnStyles.StepperUpWrapper
+									container
+									item
+									direction="row"
+									alignItems="center"
+									alignContent="space-around"
+									justify="center"
+								>
+									<OwnStyles.StepperUpIcon />
+								</OwnStyles.StepperUpWrapper>
+							</OwnStyles.MainTextBox>
+						}
+						{currentStep !== 2 && matches ?
+							<OwnStyles.StepperButton
+								value="next"
+								onClick={handleStepperClick}
+							>
+								<OwnStyles.StepperForwardIcon />
+							</OwnStyles.StepperButton> :
+							<OwnStyles.StepperButton
+								disabled
+							/>
+						}
+					</OwnStyles.SimpleGrid>
+					<OwnStyles.Stepper
+						variant="dots"
+						steps={3}
+						position="static"
+						activeStep={currentStep}
+						nextButton={
+							<></>
+						}
+						backButton={
+							<></>
+						}
+					/>
+					<h2
+						ref={findOutMoreRef}
+					/>
 				</OwnStyles.MainBanner>
 			</OwnStyles.MainBannerWrapper>
 			<OwnStyles.SectionWrapper>
+				<OwnStyles.Section
+					container
+					item
+					direction="column"
+					alignItems="flex-start"
+					alignContent="space-around"
+					justify="center"
+					md={8}
+				>
+					<OwnStyles.SectionHeading
+						variant="h3"
+						gutterBottom
+					>
+						What is EIGO?
+					</OwnStyles.SectionHeading>
+					<OwnStyles.SectionText
+						variant="body1"
+						gutterBottom
+					>
+						EIGO is a Japanese Language Learning Tool targeted for people on the go. Users are able to utilize small pockets of time throughout their day by doing short activities that help memorize characters, words, and phrases.
+					</OwnStyles.SectionText>
+				</OwnStyles.Section>
+			</OwnStyles.SectionWrapper>
+			{/* <OwnStyles.SectionWrapper>
 				<OwnStyles.Section
 					container
 					item
@@ -149,7 +306,7 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 						</OwnStyles.TextWrapper>
 					</OwnStyles.Section>
 				</OwnStyles.Section>
-			</OwnStyles.SectionWrapper>
+			</OwnStyles.SectionWrapper> */}
 		</>
 	);
 });

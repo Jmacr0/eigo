@@ -11,8 +11,11 @@ export const color = {
 	},
 	secondary: {
 		background: {
-			vertical: 'linear-gradient(0deg, rgba(249,200,0,1) 0%,rgba(255,210,47,1) 100%);',
-			horizontal: 'linear-gradient(90deg, rgba(249,200,0,1) 0%,rgba(255,210,47,1) 100%);',
+			flat: 'rgba(249,200,0,1)',
+			gradient: {
+				vertical: 'linear-gradient(0deg, rgba(249,200,0,1) 0%,rgba(255,210,47,1) 100%)',
+				horizontal: 'linear-gradient(90deg, rgba(249,200,0,1) 0%,rgba(255,210,47,1) 100%)',
+			}
 		}
 	},
 	dark: {

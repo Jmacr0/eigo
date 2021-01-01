@@ -4,16 +4,22 @@ import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { HomePageTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
+import { HomePageCard } from '../../components/homePageCard/HomePageCard';
+
 import { FavouriteDisplay } from '../../components/favouriteDisplay/FavouriteDisplay';
 import iPhoneImage from '../../assets/images/iphone-frame.png';
 import iPhoneImageActivity from '../../assets/images/iphone-frame-activity.png';
 import iPhoneImageLibrary from '../../assets/images/iphone-frame-library.png';
+import sakeBarrelsImage from '../../assets/images/sake-barrels.jpg';
+import ramenBarImage from '../../assets/images/ramen-bar.jpg';
+import libraryImage from '../../assets/images/library.jpg';
 
 export const HomePage = React.memo((props: OwnTypes.Props) => {
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.up('sm'));
 	const [currentStep, setCurrentStep] = useState(0);
 	const [prevStep, setPrevStep] = useState(0);
+	const [currentFeatureDisplayStep, setCurrentFeatureDisplayStep] = useState(0);
 	const findOutMoreRef = useRef<HTMLHeadingElement>({} as HTMLHeadingElement)
 	const handleStepperClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		const clickedButton = event.currentTarget.value;
@@ -32,6 +38,11 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 		const clickedButton = event.currentTarget;
 		console.log(clickedButton);
 		findOutMoreRef.current.scrollIntoView({ behavior: "smooth" });
+	}
+	const handleFeaturesButtonClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+		const clickedButton = parseInt(event.currentTarget.value);
+		setCurrentFeatureDisplayStep(clickedButton);
+		console.log(clickedButton);
 	}
 	return (
 		<>
@@ -114,7 +125,12 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 									alignContent="space-around"
 									justify="center"
 								>
-									<OwnStyles.StepperUpIcon />
+									<OwnStyles.StepperLinkButton
+										to="/activity"
+									>
+										ACTIVITY
+									</OwnStyles.StepperLinkButton>
+									{/* <OwnStyles.StepperUpIcon /> */}
 								</OwnStyles.StepperUpWrapper>
 							</OwnStyles.MainTextBox>
 						}
@@ -138,11 +154,16 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 									alignContent="space-around"
 									justify="center"
 								>
-									<OwnStyles.StepperUpIcon />
+									<OwnStyles.StepperLinkButton
+										to="/library"
+									>
+										LIBRARY
+									</OwnStyles.StepperLinkButton>
+									{/* <OwnStyles.StepperUpIcon /> */}
 								</OwnStyles.StepperUpWrapper>
 							</OwnStyles.MainTextBox>
 						}
-						{currentStep !== 2 && matches ?
+						{currentStep === 1 && matches ?
 							<OwnStyles.StepperButton
 								value="next"
 								onClick={handleStepperClick}
@@ -188,72 +209,107 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 						What is EIGO?
 					</OwnStyles.SectionHeading>
 					<OwnStyles.SectionText
-						variant="body1"
+						variant="h5"
 						gutterBottom
 					>
 						EIGO is a Japanese Language Learning Tool targeted for people on the go. Users are able to utilize small pockets of time throughout their day by doing short activities that help memorize characters, words, and phrases.
 					</OwnStyles.SectionText>
 				</OwnStyles.Section>
 			</OwnStyles.SectionWrapper>
-			{/* <OwnStyles.SectionWrapper>
+			<OwnStyles.SectionWrapperBeige
+				maxWidth={false}
+			>
 				<OwnStyles.Section
 					container
 					item
-					direction="row-reverse"
-					alignItems="flex-start"
+					direction="column"
+					alignItems="center"
 					alignContent="space-around"
 					justify="center"
-					lg={8}
+					xl={8}
 				>
-					<OwnStyles.Section
+					<OwnStyles.SimpleGrid
+						container
 						item
-						sm={5}
+						direction="row"
+						alignItems="center"
+						alignContent="space-around"
+						justify="center"
 					>
-						<OwnStyles.ImageWrapper>
-							<OwnStyles.Image
-								src={iPhoneImageActivity}
-								alt="iphont-image-activity"
-							/>
-						</OwnStyles.ImageWrapper>
-					</OwnStyles.Section>
-					<OwnStyles.Section
-						item
-						sm={7}
-					>
-						<OwnStyles.Heading
-							variant="h3"
-							color="primary"
+						<OwnStyles.FeaturesButtonGroup
+							disableElevation
 						>
-							Activity
-						</OwnStyles.Heading>
-						<OwnStyles.TextWrapper>
-							Practice and test your knowledge with
-							<ul>
-								<li>
-									<em>Hiragana</em>
-								</li>
-								<li>
-									<em>Katakana</em>
-								</li>
-								<li>
-									<em>Verbs</em>
-								</li>
-								<li>
-									<em>Adjectives</em>
-								</li>
-							</ul>
-							<em><b>Random</b></em> tests your ability to remember characters and words.
-							<br />
-							<br />
-							<em><b>Test</b></em> encourages not only memory, but the ability to type characters and words.
-							<br />
-							<OwnStyles.RedirectWrapper>
-								<OwnStyles.Redirect to="/activity">TRY HERE</OwnStyles.Redirect>
-							</OwnStyles.RedirectWrapper>
-						</OwnStyles.TextWrapper>
-					</OwnStyles.Section>
+							<OwnStyles.FeaturesButton
+								value={0}
+								className={currentFeatureDisplayStep === 0 ? 'active' : ''}
+								onClick={handleFeaturesButtonClick}
+							>
+								MEMORIZE
+							</OwnStyles.FeaturesButton>
+							<OwnStyles.FeaturesButton
+								value={1}
+								className={currentFeatureDisplayStep === 1 ? 'active' : ''}
+								onClick={handleFeaturesButtonClick}
+							>
+								CHALLENGE
+							</OwnStyles.FeaturesButton>
+							<OwnStyles.FeaturesButton
+								value={2}
+								className={currentFeatureDisplayStep === 2 ? 'active' : ''}
+								onClick={handleFeaturesButtonClick}
+							>
+								REFERENCE
+							</OwnStyles.FeaturesButton>
+						</OwnStyles.FeaturesButtonGroup>
+					</OwnStyles.SimpleGrid>
+					<OwnStyles.SimpleGrid
+						container
+						item
+						direction="row"
+						alignItems="center"
+						alignContent="space-around"
+						justify="center"
+						spacing={2}
+					>
+						{currentFeatureDisplayStep === 0 &&
+							<OwnStyles.SimpleGrid
+								item
+								sm={4}
+							>
+								<HomePageCard
+									title="Memorize"
+									body="Use the flash cards to help memorize characters (hiragana, katakana) and words (verbs, adjectives). A paired hidden answer card is provided, and can be revealed with a click!"
+									image={sakeBarrelsImage}
+								/>
+							</OwnStyles.SimpleGrid>
+						}
+						{currentFeatureDisplayStep === 1 &&
+							<OwnStyles.SimpleGrid
+								item
+								sm={4}
+							>
+								<HomePageCard
+									title="Practice"
+									body="Challenge yourself with the test mode and see how much you can remember. Similar to the flash cards, a hidden answer card is provided and can be revealed!"
+									image={ramenBarImage}
+								/>
+							</OwnStyles.SimpleGrid>
+						}
+						{currentFeatureDisplayStep === 2 &&
+							<OwnStyles.SimpleGrid
+								item
+								sm={4}
+							>
+								<HomePageCard
+									title="Library"
+									body="Visit the vast library of vocabulary (たんご) as reference or to discover new words! Also included are the many forms that each word may have (e.g. masu form 〜ます)."
+									image={libraryImage}
+								/>
+							</OwnStyles.SimpleGrid>
+						}
+					</OwnStyles.SimpleGrid>
 				</OwnStyles.Section>
-			</OwnStyles.SectionWrapper>
+			</OwnStyles.SectionWrapperBeige>
 			<OwnStyles.SectionWrapper>
 				<OwnStyles.Section
 					container
@@ -262,7 +318,7 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 					alignItems="flex-start"
 					alignContent="space-around"
 					justify="center"
-					lg={8}
+					md={8}
 				>
 					<OwnStyles.Section
 						item
@@ -272,6 +328,8 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 							<OwnStyles.Image
 								src={iPhoneImageLibrary}
 								alt="iphone-image-library"
+								data-aos="fade-left"
+								data-aos-duration="500"
 							/>
 						</OwnStyles.ImageWrapper>
 					</OwnStyles.Section>
@@ -279,14 +337,13 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 						item
 						sm={7}
 					>
-						<OwnStyles.Heading
-							variant="h3"
-							color="primary"
+						<OwnStyles.SectionHeading
+							variant="h4"
 						>
-							Library
-						</OwnStyles.Heading>
-						<OwnStyles.TextWrapper>
-							Check out the library - a repository for:
+							Create your Favourites!
+						</OwnStyles.SectionHeading>
+						<OwnStyles.SectionText>
+							Creating an account lets you make and save a favourites list:
 							<ul>
 								<li>
 									<em>Verbs</em>
@@ -303,10 +360,10 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 							<OwnStyles.RedirectWrapper>
 								<OwnStyles.Redirect to="/library">TRY HERE</OwnStyles.Redirect>
 							</OwnStyles.RedirectWrapper>
-						</OwnStyles.TextWrapper>
+						</OwnStyles.SectionText>
 					</OwnStyles.Section>
 				</OwnStyles.Section>
-			</OwnStyles.SectionWrapper> */}
+			</OwnStyles.SectionWrapper>
 		</>
 	);
 });

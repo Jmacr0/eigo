@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Box, Button, Container, Grid, Card, CardContent, Typography, MobileStepper } from '@material-ui/core';
+import { Box, Button, ButtonGroup, Container, Grid, Card, CardContent, Typography, MobileStepper } from '@material-ui/core';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
@@ -114,6 +114,18 @@ export const StepperUpIcon = styled(ArrowDropUpIcon)`
 		animation: blinker 1s linear infinite;
 `;
 
+export const StepperLinkButton = styled(Link)`
+		margin-top: 40px!important;
+		padding: 10px!important;
+		font-size: x-large!important;
+		border: 4px solid ${color.dark.text}!important;
+		border-radius: 10px!important;
+		padding-left: 40px!important;		
+		padding-right: 40px!important;
+		color: ${color.dark.text}!important;
+		text-decoration: none;	
+`;
+
 export const ImageWrapper = styled(Grid)`
 		overflow-x: hidden;
 `;
@@ -135,6 +147,10 @@ export const Heading = styled(Typography)`
 `;
 
 export const SectionWrapper = styled(Container)``;
+export const SectionWrapperBeige = styled(Container)`
+		background: antiquewhite!important;
+`;
+
 export const Section = styled(Grid)`
 		margin: auto!important;
 		margin-top: 20px!important;
@@ -159,11 +175,22 @@ export const RedirectWrapper = styled(Box)`
 		border-radius: 5px!important;
 		margin-top: 10px;
 		margin-bottom: 10px;
-		background: ${color.secondary.background.vertical}!important;
+		background: ${color.secondary.background.flat}!important;
 		`;
 
 export const Redirect = styled(Link)`
 		text-decoration: none;		
 		color: white!important;
-		font-weight: bold;
+		font-weight: bold;		
+`;
+export const FeaturesButtonGroup = styled(ButtonGroup)`
+		margin-top: 20px;
+`;
+export const FeaturesButton = styled(Button)`
+		border-radius: 0px!important;
+		background: white!important;
+		&.active {
+			background: ${color.dark.background}!important;
+			color: white;
+		}
 `;

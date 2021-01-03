@@ -18,6 +18,9 @@ const ActivityPage = React.memo((props: OwnTypes.Props) => {
 		history.goBack();
 	};
 
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	});
 	return (
 		<>
 			{!type &&

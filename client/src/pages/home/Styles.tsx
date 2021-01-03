@@ -149,14 +149,34 @@ export const Heading = styled(Typography)`
 export const SectionWrapper = styled(Container)``;
 export const SectionWrapperBeige = styled(Container)`
 		background: antiquewhite!important;
-`;
+		padding-top: 30px!important; 
+		padding-bottom: 30px!important; 
+		`;
 
 export const Section = styled(Grid)`
 		margin: auto!important;
 		margin-top: 20px!important;
 `;
+export const ImageStripWrapper = styled(Grid)`
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;  
+		background-image: url(${props => props.theme.image});
+		min-height: 20vh!important;
+
+`;
+export const ImageStrip = styled.img`
+		margin-top: 20px!important;
+		margin-bottom: 20px!important;
+		min-height: 20vh!important;
+		width: 100%!important;
+`
 export const SectionHeading = styled(Typography)`
 		color: ${color.dark.background}!important;
+`;
+export const RandomWord = styled(Typography)`
+		color: ${color.dark.text}!important;
+		letter-spacing: 10px!important;
 `;
 export const SectionText = styled(Typography)`
 		color: ${color.dark.background}!important;

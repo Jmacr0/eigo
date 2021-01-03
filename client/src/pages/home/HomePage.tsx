@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Route, Switch, useHistory, useRouteMatch, useLocation } from 'react-router-dom';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useSwipeable } from 'react-swipeable';
 import { HomePageTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import { HomePageCard } from '../../components/homePageCard/HomePageCard';
@@ -13,6 +14,7 @@ import iPhoneImageLibrary from '../../assets/images/iphone-frame-library.png';
 import sakeBarrelsImage from '../../assets/images/sake-barrels.jpg';
 import ramenBarImage from '../../assets/images/ramen-bar.jpg';
 import libraryImage from '../../assets/images/library.jpg';
+import { selectRandomWord } from '../../utils/api/randomWordAPI';
 
 export const HomePage = React.memo((props: OwnTypes.Props) => {
 	const theme = useTheme();
@@ -20,6 +22,7 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 	const [currentStep, setCurrentStep] = useState(0);
 	const [prevStep, setPrevStep] = useState(0);
 	const [currentFeatureDisplayStep, setCurrentFeatureDisplayStep] = useState(0);
+	const [randomWord, setRandomWord] = useState('');
 	const findOutMoreRef = useRef<HTMLHeadingElement>({} as HTMLHeadingElement)
 	const handleStepperClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		const clickedButton = event.currentTarget.value;
@@ -44,6 +47,30 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 		setCurrentFeatureDisplayStep(clickedButton);
 		console.log(clickedButton);
 	}
+	const swipeHandlers = useSwipeable({
+		onSwiped: (eventData) => console.log(`User Swiped ${eventData.dir}!`, eventData),
+		onSwipedLeft: (eventData) => {
+			const newStep = currentStep >= 2 ? currentStep : currentStep + 1;
+			setPrevStep(currentStep);
+			setCurrentStep(newStep);
+			console.log(`User Swiped ${eventData.dir}!`, eventData)
+		},
+		onSwipedRight: (eventData) => {
+			const newStep = currentStep <= 0 ? currentStep : currentStep - 1;
+			setPrevStep(currentStep);
+			setCurrentStep(newStep);
+			console.log(`User Swiped ${eventData.dir}!`, eventData)
+		},
+	});
+	OwnStyles.ImageStripWrapper.defaultProps = {
+		theme: {
+			image: `${currentFeatureDisplayStep === 0 ? sakeBarrelsImage :
+				currentFeatureDisplayStep === 1 ? ramenBarImage : libraryImage}`
+		},
+	}
+	useEffect(() => {
+		setRandomWord(selectRandomWord());
+	}, []);
 	return (
 		<>
 			<OwnStyles.MainBannerWrapper
@@ -65,6 +92,7 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 						alignItems="center"
 						alignContent="space-around"
 						justify="center"
+						{...swipeHandlers}
 					>
 						{currentStep !== 0 && matches ?
 							<OwnStyles.StepperButton
@@ -280,6 +308,7 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 									title="Memorize"
 									body="Use the flash cards to help memorize characters (hiragana, katakana) and words (verbs, adjectives). A paired hidden answer card is provided, and can be revealed with a click!"
 									image={sakeBarrelsImage}
+									link="activity"
 								/>
 							</OwnStyles.SimpleGrid>
 						}
@@ -292,6 +321,7 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 									title="Practice"
 									body="Challenge yourself with the test mode and see how much you can remember. Similar to the flash cards, a hidden answer card is provided and can be revealed!"
 									image={ramenBarImage}
+									link="activity"
 								/>
 							</OwnStyles.SimpleGrid>
 						}
@@ -302,8 +332,9 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 							>
 								<HomePageCard
 									title="Library"
-									body="Visit the vast library of vocabulary (たんご) as reference or to discover new words! Also included are the many forms that each word may have (e.g. masu form 〜ます)."
+									body="Visit the vast library of vocabulary (たんご) as reference, or to discover new words! Also included are the many forms that each word may have (e.g. masu form 〜ます)."
 									image={libraryImage}
+									link="library"
 								/>
 							</OwnStyles.SimpleGrid>
 						}
@@ -339,11 +370,15 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 					>
 						<OwnStyles.SectionHeading
 							variant="h4"
+							gutterBottom
 						>
 							Create your Favourites!
 						</OwnStyles.SectionHeading>
-						<OwnStyles.SectionText>
-							Creating an account lets you make and save a favourites list:
+						<OwnStyles.SectionText
+							variant="h6"
+							gutterBottom
+						>
+							<em><b>Favourites</b></em>  enables registered users to create a favourites list and add:
 							<ul>
 								<li>
 									<em>Verbs</em>
@@ -352,14 +387,91 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 									<em>Adjectives</em>
 								</li>
 							</ul>
-							<em><b>Forms</b></em> provides reference for form changes in verbs & adjectives.
+							{/* <em><b>Forms</b></em> provides reference for form changes in verbs & adjectives.
 							<br />
+							<br /> */}
+							<em><b>Multiple</b></em> favourites can be created to organize certain words together.
 							<br />
-							<em><b>Favourites</b></em> enables users to create a favourites list and add verbs & adjectives.
-							<br />
-							<OwnStyles.RedirectWrapper>
+							{/* <OwnStyles.RedirectWrapper>
 								<OwnStyles.Redirect to="/library">TRY HERE</OwnStyles.Redirect>
-							</OwnStyles.RedirectWrapper>
+							</OwnStyles.RedirectWrapper> */}
+						</OwnStyles.SectionText>
+					</OwnStyles.Section>
+				</OwnStyles.Section>
+			</OwnStyles.SectionWrapper>
+			<OwnStyles.SectionWrapperBeige
+				disableGutters
+				maxWidth={false}
+			>
+				<OwnStyles.ImageStripWrapper
+					container
+					item
+					direction="row"
+					alignItems="flex-start"
+					alignContent="space-around"
+					justify="center"
+				>
+					<OwnStyles.RandomWord
+						variant="h3"
+					>
+						{randomWord}
+					</OwnStyles.RandomWord>
+				</OwnStyles.ImageStripWrapper>
+			</OwnStyles.SectionWrapperBeige>
+			<OwnStyles.SectionWrapper>
+				<OwnStyles.Section
+					container
+					item
+					direction="row"
+					alignItems="flex-start"
+					alignContent="space-around"
+					justify="center"
+					md={8}
+				>
+					<OwnStyles.Section
+						item
+						sm={5}
+					>
+						<OwnStyles.ImageWrapper>
+							<OwnStyles.Image
+								src={iPhoneImageLibrary}
+								alt="iphone-image-library"
+								data-aos="fade-left"
+								data-aos-duration="500"
+							/>
+						</OwnStyles.ImageWrapper>
+					</OwnStyles.Section>
+					<OwnStyles.Section
+						item
+						sm={7}
+					>
+						<OwnStyles.SectionHeading
+							variant="h4"
+							gutterBottom
+						>
+							Learn different form variations
+						</OwnStyles.SectionHeading>
+						<OwnStyles.SectionText
+							variant="h6"
+							gutterBottom
+						>
+							<em><b>Form</b></em> variations can be tricky! The library features the most common form variations for:
+							<ul>
+								<li>
+									<em>Verbs</em>
+								</li>
+								<li>
+									<em>Adjectives</em>
+								</li>
+							</ul>
+							This provides a place to use as a reference guide.
+							<br />
+							<br />
+							<em><b>Search</b></em> lets you find a specific word!
+							<br />
+							{/* <OwnStyles.RedirectWrapper>
+								<OwnStyles.Redirect to="/library">TRY HERE</OwnStyles.Redirect>
+							</OwnStyles.RedirectWrapper> */}
 						</OwnStyles.SectionText>
 					</OwnStyles.Section>
 				</OwnStyles.Section>

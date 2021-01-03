@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
 import { LibraryPageTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
@@ -15,6 +15,10 @@ const LibraryPage = React.memo((props: OwnTypes.Props) => {
 	const handleGoBack = () => {
 		history.goBack();
 	};
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	});
 	return (
 		<>
 			<Switch>

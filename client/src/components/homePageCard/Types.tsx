@@ -3,6 +3,7 @@ export namespace HomePageCardTypes {
 		image?: string
 		title?: string
 		body?: string
+		link?: string
 		// type: Type
 		// option: string
 		// characterSet: CharacterSet

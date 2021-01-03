@@ -20,7 +20,9 @@ export const Footer = React.memo((props: OwnTypes.Props) => {
 						md={6}
 					>
 						<OwnStyles.Text>EIGO</OwnStyles.Text>
-						<OwnStyles.Text>jmacro.dev</OwnStyles.Text>
+						<OwnStyles.Text>
+							<OwnStyles.Anchor href="https://jmacro.dev/" target="_blank">jmacro.dev</OwnStyles.Anchor>
+						</OwnStyles.Text>
 						<OwnStyles.Text>
 							Eigo is an ongoing personal project.
 						</OwnStyles.Text>

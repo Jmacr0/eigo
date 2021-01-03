@@ -48,18 +48,15 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 		console.log(clickedButton);
 	}
 	const swipeHandlers = useSwipeable({
-		onSwiped: (eventData) => console.log(`User Swiped ${eventData.dir}!`, eventData),
 		onSwipedLeft: (eventData) => {
 			const newStep = currentStep >= 2 ? currentStep : currentStep + 1;
 			setPrevStep(currentStep);
 			setCurrentStep(newStep);
-			console.log(`User Swiped ${eventData.dir}!`, eventData)
 		},
 		onSwipedRight: (eventData) => {
 			const newStep = currentStep <= 0 ? currentStep : currentStep - 1;
 			setPrevStep(currentStep);
 			setCurrentStep(newStep);
-			console.log(`User Swiped ${eventData.dir}!`, eventData)
 		},
 	});
 	OwnStyles.ImageStripWrapper.defaultProps = {

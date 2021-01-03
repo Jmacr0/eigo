@@ -16,5 +16,5 @@ export const Title = styled(Typography)`
 `;
 
 export const MainDisplayWrapper = styled(Grid)`
-		min-height: 90vh;
+		min-height: 100vh;
 `;

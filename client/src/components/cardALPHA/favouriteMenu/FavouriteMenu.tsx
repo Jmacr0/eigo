@@ -78,7 +78,7 @@ export const FavouriteMenu = React.memo((props: OwnTypes.Props) => {
 		console.log(selectedFavouriteGroupId)
 		if (props.selectedWord.type === 'verb') {
 			if (favouriteIdsWithVerb.includes(selectedFavouriteGroupId)) {
-				const newFavouriteIdsArray = [...favouriteIdsWithVerb].filter((id) => id != selectedFavouriteGroupId);
+				const newFavouriteIdsArray = [...favouriteIdsWithVerb].filter((id) => id !== selectedFavouriteGroupId);
 				setFavouriteIdsWithVerb(newFavouriteIdsArray);
 				console.log(props.selectedWord.id)
 				API.favourite.updateFavouriteVerb({
@@ -100,7 +100,7 @@ export const FavouriteMenu = React.memo((props: OwnTypes.Props) => {
 		};
 		if (props.selectedWord.type === 'adjective') {
 			if (favouriteIdsWithAdjective.includes(selectedFavouriteGroupId)) {
-				const newFavouriteIdsArray = [...favouriteIdsWithAdjective].filter((id) => id != selectedFavouriteGroupId);
+				const newFavouriteIdsArray = [...favouriteIdsWithAdjective].filter((id) => id !== selectedFavouriteGroupId);
 				setFavouriteIdsWithAdjective(newFavouriteIdsArray);
 				API.favourite.updateFavouriteAdjective({
 					favouriteId: selectedFavouriteGroupId,

@@ -1,6 +1,5 @@
-export namespace FilterBarTypes {
+export namespace SearchTypes {
 	export interface Props {
-		onNumberToDisplay: (displayNumber: number) => void
 		onSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 	}
 

@@ -6,7 +6,7 @@ import { color } from '../../utils/global/Styles';
 
 export const Navbar = styled(AppBar)`
 	height: 55px;
-	background: ${color.primary.background.vertical}!important;
+	background: ${color.dark.background}!important;
 `;
 
 export const Nav = styled(Toolbar)``;
@@ -48,11 +48,17 @@ export const RedirectNavLink = styled(Link)`
 
 export const LoginLink = styled(Link)`
 		color: white;
+		border: 2px solid ${color.dark.text};
+		border-radius: 2px;
 		text-decoration: none;
 		margin-left: 10px;
 		margin-right: 10px;
+		padding: 5px;
+		padding-left: 10px;
+		padding-right: 10px;
 		transition-duration: 0.2s;
 		&:hover {
 			color: antiquewhite;
+			border-color: antiquewhite;
 		}
 `;

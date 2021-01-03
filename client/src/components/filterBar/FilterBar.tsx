@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Card } from '../card/Card';
 import { FilterBarTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
-import { Button } from 'react-bootstrap';
+import { Search } from './search/Search';
 
 export const FilterBar = React.memo((props: OwnTypes.Props) => {
 	const [value, setValue] = useState(1);
@@ -23,7 +22,7 @@ export const FilterBar = React.memo((props: OwnTypes.Props) => {
 			// alignItems="center"
 			>
 				<OwnStyles.FilterBar
-					elevation={3}
+					elevation={1}
 				>
 					<OwnStyles.Wrapper
 						container
@@ -52,6 +51,13 @@ export const FilterBar = React.memo((props: OwnTypes.Props) => {
 									<OwnStyles.ButtonSingle onClick={handleOnClick} value={20}>20</OwnStyles.ButtonSingle>
 								</OwnStyles.ButtonGroupWrapper>
 							</OwnStyles.Wrapper>
+							<OwnStyles.SearchWrapper
+								item
+							>
+								<Search
+									onSearchChange={props.onSearchChange}
+								/>
+							</OwnStyles.SearchWrapper>
 						</OwnStyles.Wrapper>
 					</OwnStyles.Wrapper>
 				</OwnStyles.FilterBar>

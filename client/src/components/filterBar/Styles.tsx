@@ -28,5 +28,5 @@ margin-right: 10px!important;
 export const ButtonGroupWrapper = styled(ButtonGroup)``;
 export const ButtonSingle = styled(Button)`
 	color: white!important;
-	background: ${color.primary.background.vertical}!important;
+	background: ${color.primary.background.gradient.vertical}!important;
 `; 

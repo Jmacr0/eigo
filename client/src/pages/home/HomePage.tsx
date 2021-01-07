@@ -110,7 +110,7 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 								data-aos-duration="1000"
 							>
 								<OwnStyles.MainText
-									variant="h2"
+									variant="h3"
 								>
 									the exciting japanese learning app for on the go. EIGO.
 								</OwnStyles.MainText>
@@ -138,7 +138,7 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 								data-aos-duration="1000"
 							>
 								<OwnStyles.MainText
-									variant="h2"
+									variant="h3"
 								>
 									Activity lets you test your ability to memorize characters, words, and sayings.
 						</OwnStyles.MainText>
@@ -167,7 +167,7 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 								data-aos-duration="1000"
 							>
 								<OwnStyles.MainText
-									variant="h2"
+									variant="h3"
 								>
 									Library lets you search for words and includes their various forms all in one repository... like a library!
 						</OwnStyles.MainText>

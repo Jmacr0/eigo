@@ -11,6 +11,20 @@ export const SelectButton = styled(Button)`
 		min-width: 200px!important;
 		border-radius: 0px!important;
 `;
+export const VerbButton = styled(Button)`
+		min-height: 70px!important;
+		min-width: 200px!important;
+		border-radius: 0px!important;
+		background-color: green!important;
+		color: white!important;
+`;
+export const AdjectiveButton = styled(Button)`
+		min-height: 70px!important;
+		min-width: 200px!important;
+		border-radius: 0px!important;
+		background-color: purple!important;
+		color: white!important;
+`;
 export const BackButton = styled(Button)`
 `;
 export const Title = styled(Typography)`

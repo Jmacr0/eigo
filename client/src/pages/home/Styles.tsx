@@ -175,7 +175,7 @@ export const SectionHeading = styled(Typography)`
 		color: ${color.dark.background}!important;
 `;
 export const RandomWord = styled(Typography)`
-		color: ${color.dark.text}!important;
+		color: antiquewhite!important;
 		letter-spacing: 10px!important;
 `;
 export const SectionText = styled(Typography)`

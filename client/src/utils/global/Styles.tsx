@@ -21,5 +21,9 @@ export const color = {
 	dark: {
 		text: 'rgba(176, 176, 176)',
 		background: 'rgba(16, 21, 36,1)',
+	},
+	basic: {
+		green: 'rgb(0, 204, 0)',
+		sky: 'rgb(102, 153, 255)',
 	}
 };

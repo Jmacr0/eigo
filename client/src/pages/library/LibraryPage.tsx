@@ -21,6 +21,46 @@ const LibraryPage = React.memo((props: OwnTypes.Props) => {
 	});
 	return (
 		<>
+			<OwnStyles.LibraryGrid
+				container
+				item
+				direction="column"
+				alignItems="center"
+				alignContent="flex-start"
+				justify="center"
+			>
+				<OwnStyles.LibraryGrid
+					container
+					item
+					direction="row"
+					alignItems="center"
+					alignContent="flex-start"
+					justify="flex-start"
+				>
+					<OwnStyles.LibraryGrid
+						item
+						xs={3}
+					>
+						<OwnStyles.BackIconWrapper
+							onClick={handleGoBack}
+						>
+							<OwnStyles.BackIcon
+								fontSize="large"
+							/>
+						</OwnStyles.BackIconWrapper>
+					</OwnStyles.LibraryGrid>
+					<OwnStyles.LibraryGrid
+						item
+						xs={6}
+					>
+						<OwnStyles.Title
+							variant="h2"
+						>
+							Library
+			</OwnStyles.Title>
+					</OwnStyles.LibraryGrid>
+				</OwnStyles.LibraryGrid>
+			</OwnStyles.LibraryGrid>
 			<Switch>
 				<Route path={`${match.path}/:type`}>
 					<OwnStyles.MainDisplayWrapper
@@ -56,14 +96,14 @@ const LibraryPage = React.memo((props: OwnTypes.Props) => {
 							value="adjectives">
 							adjectives
 						</OwnStyles.AdjectiveButton>
-						<OwnStyles.BackButton
+						{/* <OwnStyles.BackButton
 							color="secondary"
 							variant="text"
 							size="large"
 							onClick={handleGoBack}
 						>
 							back
-						</OwnStyles.BackButton>
+						</OwnStyles.BackButton> */}
 					</OwnStyles.ButtonDisplay>
 				</Route>
 			</Switch>

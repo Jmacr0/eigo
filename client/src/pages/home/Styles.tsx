@@ -29,7 +29,7 @@ export const SimpleGrid = styled(Grid)``;
 export const MainTextBox = styled(Grid)`
 		min-height: 70vh!important;
 		padding: 20px;
-		overflow: hidden!important;
+		overflow-x: hidden!important;
 `;
 
 export const MainText = styled(Typography)`
@@ -174,9 +174,15 @@ export const ImageStrip = styled.img`
 export const SectionHeading = styled(Typography)`
 		color: ${color.dark.background}!important;
 `;
+export const RandomWordWrapper = styled(Grid)`
+		padding: 10px!important;
+		background-color: rgba(250,235,215 ,0.7 )!important;
+		border-radius: 5px!important;
+`;
 export const RandomWord = styled(Typography)`
-		color: antiquewhite!important;
+		color: ${color.dark.background}!important;
 		letter-spacing: 10px!important;
+		text-align: center;
 `;
 export const SectionText = styled(Typography)`
 		color: ${color.dark.background}!important;

@@ -3,11 +3,15 @@ import { Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
 import { LibraryPageTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import { DisplayALPHA } from '../../components/displayALPHA/DisplayALPHA';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const LibraryPage = React.memo((props: OwnTypes.Props) => {
 	const [type, setType] = useState('' as OwnTypes.Type);
 	const history = useHistory();
 	const match = useRouteMatch();
+	const theme = useTheme();
+	const matches = useMediaQuery(theme.breakpoints.up('sm'));
 	const handleSelection = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		setType(event.currentTarget.value as OwnTypes.Type);
 		history.push(`${match.path}/${event.currentTarget.value}`);
@@ -29,6 +33,7 @@ const LibraryPage = React.memo((props: OwnTypes.Props) => {
 				alignContent="flex-start"
 				justify="center"
 			>
+				{!matches && 8}
 				<OwnStyles.LibraryGrid
 					container
 					item
@@ -41,13 +46,13 @@ const LibraryPage = React.memo((props: OwnTypes.Props) => {
 						item
 						xs={3}
 					>
-						<OwnStyles.BackIconWrapper
+						{/* <OwnStyles.BackIconWrapper
 							onClick={handleGoBack}
 						>
 							<OwnStyles.BackIcon
 								fontSize="large"
 							/>
-						</OwnStyles.BackIconWrapper>
+						</OwnStyles.BackIconWrapper> */}
 					</OwnStyles.LibraryGrid>
 					<OwnStyles.LibraryGrid
 						item
@@ -82,28 +87,28 @@ const LibraryPage = React.memo((props: OwnTypes.Props) => {
 						justify="center"
 						alignItems="center"
 					>
-						<OwnStyles.VerbButton
+						<OwnStyles.SelectButton
 							disableElevation
 							variant="contained"
 							onClick={handleSelection}
 							value="verbs">
 							verbs
-							</OwnStyles.VerbButton>
-						<OwnStyles.AdjectiveButton
+							</OwnStyles.SelectButton>
+						<OwnStyles.SelectButton
 							disableElevation
 							variant="contained"
 							onClick={handleSelection}
 							value="adjectives">
 							adjectives
-						</OwnStyles.AdjectiveButton>
-						{/* <OwnStyles.BackButton
+						</OwnStyles.SelectButton>
+						<OwnStyles.BackButton
 							color="secondary"
 							variant="text"
 							size="large"
 							onClick={handleGoBack}
 						>
 							back
-						</OwnStyles.BackButton> */}
+						</OwnStyles.BackButton>
 					</OwnStyles.ButtonDisplay>
 				</Route>
 			</Switch>

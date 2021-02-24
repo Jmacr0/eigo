@@ -89,6 +89,7 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 						alignItems="center"
 						alignContent="space-around"
 						justify="center"
+						style={{ overflowX: 'hidden' }}
 						{...swipeHandlers}
 					>
 						{currentStep !== 0 && matches ?
@@ -408,11 +409,17 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 					alignContent="space-around"
 					justify="center"
 				>
-					<OwnStyles.RandomWord
-						variant="h3"
+					<OwnStyles.RandomWordWrapper
+						item
+						md={8}
+						style={{ backgroundColor: 'white' }}
 					>
-						{randomWord}
-					</OwnStyles.RandomWord>
+						<OwnStyles.RandomWord
+							variant="h3"
+						>
+							{randomWord}
+						</OwnStyles.RandomWord>
+					</OwnStyles.RandomWordWrapper>
 				</OwnStyles.ImageStripWrapper>
 			</OwnStyles.SectionWrapperBeige>
 			<OwnStyles.SectionWrapper>

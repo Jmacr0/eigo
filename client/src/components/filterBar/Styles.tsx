@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { Grid, Paper, ButtonGroup, Button, Typography } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import { color } from '../../utils/global/Styles';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 export const FilterWrapper = styled(Grid)`
 	min-height: 30px;
@@ -29,4 +31,7 @@ export const ButtonGroupWrapper = styled(ButtonGroup)``;
 export const ButtonSingle = styled(Button)`
 	color: white!important;
 	background: ${color.primary.background.gradient.vertical}!important;
-`; 
+`;
+
+export const DropDown = styled(Select)``;
+export const DropDownItem = styled(MenuItem)``;

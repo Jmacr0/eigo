@@ -38,9 +38,7 @@ export const FilterBar = React.memo((props: OwnTypes.Props) => {
 							<OwnStyles.Wrapper
 								item
 							>
-								<OwnStyles.Title>
-									Display
-								</OwnStyles.Title>
+								<OwnStyles.DisplayIcon />
 							</OwnStyles.Wrapper>
 							<OwnStyles.Wrapper
 								item

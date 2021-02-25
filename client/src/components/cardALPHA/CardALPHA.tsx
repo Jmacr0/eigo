@@ -69,9 +69,6 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 	const handleNumberToDisplay = (displayNumber: number) => {
 		setDisplayNumber(displayNumber);
 	}
-	const hasdh = React.useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-
-	}, [currentPageDisplay]);
 
 	const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const input = event.currentTarget.value;

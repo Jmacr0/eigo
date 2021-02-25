@@ -24,7 +24,7 @@ export const Footer = React.memo((props: OwnTypes.Props) => {
 							<OwnStyles.Anchor href="https://jmacro.dev/" target="_blank">jmacro.dev</OwnStyles.Anchor>
 						</OwnStyles.Text>
 						<OwnStyles.Text>
-							Eigo is an ongoing personal project.
+							Eigo is a Japanese Learning Web App designed as a supplement to, or stand alone resource in learning Japanese.
 						</OwnStyles.Text>
 						<OwnStyles.Text>
 							Check out the repository <OwnStyles.Anchor href="https://github.com/jmacr0/eigo" target="_blank">here</OwnStyles.Anchor>

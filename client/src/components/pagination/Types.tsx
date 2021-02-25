@@ -2,6 +2,7 @@ export namespace PaginationTypes {
 	export interface Props {
 		characterSet: CharacterSet
 		setCurrentPage: (pageNumber: number) => void
+		filterNumber: number
 	}
 
 	enum Type {

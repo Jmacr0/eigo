@@ -12,7 +12,7 @@ export const Pagination = React.memo((props: OwnTypes.Props) => {
 	}
 	return (
 		<>
-			<OwnStyles.Pagination count={Math.ceil(props.characterSet.length / 5)} defaultPage={1} onChange={handleChange} color="primary" />
+			<OwnStyles.Pagination count={Math.ceil(props.characterSet.length / props.filterNumber)} defaultPage={1} onChange={handleChange} color="primary" />
 		</>
 	);
 });

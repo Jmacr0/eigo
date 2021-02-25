@@ -77,12 +77,13 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 			loading: true,
 		});
 		handleSelectedPageDisplay(currentPage);
-		const newWordsToDisplay = currentPageDisplay.filter(word => {
+		let newWordsToDisplay = props.characterSet.filter(word => {
 			return word.english.includes(input);
 			// if (word.english.includes(input)) {
 			// 	console.log(word);
 			// }
 		});
+		newWordsToDisplay = newWordsToDisplay.slice(0, displayNumber);
 		setCurrentPageDisplay(newWordsToDisplay);
 		setSearchWord({
 			...searchWord,
@@ -353,7 +354,11 @@ export const CardALPHA = React.memo((props: OwnTypes.Props) => {
 			)}
 			{
 				props.characterSet.length ?
-					<Pagination characterSet={props.characterSet} setCurrentPage={setCurrentPage} /> : ''
+					<Pagination
+						characterSet={props.characterSet}
+						setCurrentPage={setCurrentPage}
+						filterNumber={displayNumber}
+					/> : ''
 			}
 			{
 				!props.characterSet.length &&

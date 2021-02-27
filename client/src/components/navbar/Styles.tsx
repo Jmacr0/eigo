@@ -20,7 +20,9 @@ export const IconWrapper = styled(IconButton)`
 		margin-right: 10px!important;
 		background-color: transparent!important;
 `;
-export const Icon = styled(AccountCircleIcon)``;
+export const Icon = styled(AccountCircleIcon)`
+		color: ${color.dark.text};
+`;
 
 export const RedirectHome = styled(Link)`
 		color: white;

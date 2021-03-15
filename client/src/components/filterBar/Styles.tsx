@@ -25,7 +25,7 @@ export const SearchWrapper = styled(Grid)`
 	margin-left: auto!important;	
 `;
 export const Title = styled(Typography)`
-margin-right: 10px!important;
+	margin-right: 10px!important;
 `;
 
 export const ButtonGroupWrapper = styled(ButtonGroup)``;
@@ -38,5 +38,15 @@ export const DisplayIcon = styled(ListIcon)`
 	margin-right: 10px;
 `;
 
-export const DropDown = styled(Select)``;
-export const DropDownItem = styled(MenuItem)``;
+export const DropDown = styled(Select)`
+	border: 2px solid ${color.dark.text};
+	border-radius: 2px;
+	&.MuiInput-underline {
+
+	}
+`;
+export const DropDownItem = styled(MenuItem)`
+
+padding-left: 7px!important;
+padding-right: 15px!important;
+`;

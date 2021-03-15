@@ -30,6 +30,7 @@ export const AdjectiveButton = styled(Button)`
 		color: white!important;
 `;
 export const BackButton = styled(Button)`
+	color: red;
 `;
 export const BackIconWrapper = styled(IconButton)`
 margin-top: 60px!important;

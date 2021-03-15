@@ -146,7 +146,9 @@ export const Heading = styled(Typography)`
 		font-family: Lobster!important;
 `;
 
-export const SectionWrapper = styled(Container)``;
+export const SectionWrapper = styled(Container)`
+		margin-bottom: 2rem!important;
+`;
 export const SectionWrapperBeige = styled(Container)`
 		background: antiquewhite!important;
 		padding-top: 30px!important; 
@@ -157,6 +159,14 @@ export const Section = styled(Grid)`
 		margin: auto!important;
 		margin-top: 20px!important;
 `;
+export const SectionBeige = styled(Grid)`
+		background: antiquewhite!important;
+		margin: auto!important;
+		margin-top: 40px!important;
+		margin-bottom: 40px!important;
+		border-radius: 10px;
+		padding: 1rem;
+		`;
 export const ImageStripWrapper = styled(Grid)`
 		background-repeat: no-repeat;
 		background-attachment: fixed;
@@ -186,6 +196,7 @@ export const RandomWord = styled(Typography)`
 `;
 export const SectionText = styled(Typography)`
 		color: ${color.dark.background}!important;
+		font-weight: 200!important;
 `;
 export const TextWrapper = styled.p`
         margin: auto;

@@ -113,7 +113,7 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 								<OwnStyles.MainText
 									variant="h3"
 								>
-									the exciting japanese learning app for on the go. EIGO.
+									The exciting japanese learning app for on the go. EIGO.
 								</OwnStyles.MainText>
 								<OwnStyles.GetStartedButton
 									value="next"
@@ -343,61 +343,28 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 				<OwnStyles.Section
 					container
 					item
-					direction="row-reverse"
+					direction="column"
 					alignItems="flex-start"
 					alignContent="space-around"
 					justify="center"
 					md={8}
 				>
-					<OwnStyles.Section
-						item
-						sm={5}
+					<OwnStyles.SectionText
+						variant="h5"
+						gutterBottom
 					>
-						<OwnStyles.ImageWrapper>
-							<OwnStyles.Image
-								src={iPhoneImageLibrary}
-								alt="iphone-image-library"
-								data-aos="fade-left"
-								data-aos-duration="500"
-							/>
-						</OwnStyles.ImageWrapper>
-					</OwnStyles.Section>
-					<OwnStyles.Section
-						item
-						sm={7}
+						The word 'Eigo' means 'English' in Japanese. As we use English to learn Japanese the name is a play on the word meaning.
+					</OwnStyles.SectionText>
+					<hr />
+					<OwnStyles.SectionText
+						variant="h5"
+						gutterBottom
 					>
-						<OwnStyles.SectionHeading
-							variant="h4"
-							gutterBottom
-						>
-							Create your Favourites!
-						</OwnStyles.SectionHeading>
-						<OwnStyles.SectionText
-							variant="h6"
-							gutterBottom
-						>
-							<em><b>Favourites</b></em>  enables registered users to create a favourites list and add:
-							<ul>
-								<li>
-									<em>Verbs</em>
-								</li>
-								<li>
-									<em>Adjectives</em>
-								</li>
-							</ul>
-							{/* <em><b>Forms</b></em> provides reference for form changes in verbs & adjectives.
-							<br />
-							<br /> */}
-							<em><b>Multiple</b></em> favourites can be created to organize certain words together.
-							<br />
-							{/* <OwnStyles.RedirectWrapper>
-								<OwnStyles.Redirect to="/library">TRY HERE</OwnStyles.Redirect>
-							</OwnStyles.RedirectWrapper> */}
-						</OwnStyles.SectionText>
-					</OwnStyles.Section>
+						Powered as a Progressive Web App (PWA), Eigo can be used like a native application on mobile by downloading to homescreen.
+					</OwnStyles.SectionText>
 				</OwnStyles.Section>
 			</OwnStyles.SectionWrapper>
-			<OwnStyles.SectionWrapperBeige
+			<OwnStyles.SectionWrapper
 				disableGutters
 				maxWidth={false}
 			>
@@ -409,7 +376,109 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 					alignContent="space-around"
 					justify="center"
 				>
-					<OwnStyles.RandomWordWrapper
+					<OwnStyles.SectionBeige
+						container
+						item
+						direction="row"
+						alignItems="flex-start"
+						alignContent="space-around"
+						justify="center"
+						md={8}
+					>
+						<OwnStyles.Section
+							item
+							sm={5}
+						>
+							<OwnStyles.ImageWrapper>
+								<OwnStyles.Image
+									src={iPhoneImageLibrary}
+									alt="iphone-image-library"
+									data-aos="fade-left"
+									data-aos-duration="500"
+								/>
+							</OwnStyles.ImageWrapper>
+						</OwnStyles.Section>
+						<OwnStyles.Section
+							item
+							sm={7}
+						>
+							<OwnStyles.SectionHeading
+								variant="h4"
+								gutterBottom
+							>
+								Learn different form variations
+						</OwnStyles.SectionHeading>
+							<OwnStyles.SectionText
+								variant="h6"
+								gutterBottom
+							>
+								<em><b>Form</b></em> variations can be tricky! The library features the most common form variations for:
+							<ul>
+									<li>
+										<em>Verbs</em>
+									</li>
+									<li>
+										<em>Adjectives</em>
+									</li>
+								</ul>
+							This provides a place to use as a reference guide.
+							<br />
+								<br />
+								<em><b>Search</b></em> lets you find a specific word!
+							<br />
+								{/* <OwnStyles.RedirectWrapper>
+								<OwnStyles.Redirect to="/library">TRY HERE</OwnStyles.Redirect>
+							</OwnStyles.RedirectWrapper> */}
+							</OwnStyles.SectionText>
+						</OwnStyles.Section>
+						<OwnStyles.Section
+							item
+							sm={5}
+						>
+							<OwnStyles.ImageWrapper>
+								<OwnStyles.Image
+									src={iPhoneImageLibrary}
+									alt="iphone-image-library"
+									data-aos="fade-left"
+									data-aos-duration="500"
+								/>
+							</OwnStyles.ImageWrapper>
+						</OwnStyles.Section>
+						<OwnStyles.Section
+							item
+							sm={7}
+						>
+							<OwnStyles.SectionHeading
+								variant="h4"
+								gutterBottom
+							>
+								Create your Favourites!
+						</OwnStyles.SectionHeading>
+							<OwnStyles.SectionText
+								variant="h6"
+								gutterBottom
+							>
+								<em><b>Favourites</b></em>  enables registered users to create a favourites list and add:
+							<ul>
+									<li>
+										<em>Verbs</em>
+									</li>
+									<li>
+										<em>Adjectives</em>
+									</li>
+								</ul>
+								{/* <em><b>Forms</b></em> provides reference for form changes in verbs & adjectives.
+							<br />
+							<br /> */}
+								<em><b>Multiple</b></em> favourites can be created to organize certain words together.
+							<br />
+								{/* <OwnStyles.RedirectWrapper>
+								<OwnStyles.Redirect to="/library">TRY HERE</OwnStyles.Redirect>
+							</OwnStyles.RedirectWrapper> */}
+							</OwnStyles.SectionText>
+						</OwnStyles.Section>
+					</OwnStyles.SectionBeige>
+					{/* <OwnStyles.RandomWordWrapper
 						item
 						md={8}
 						style={{ backgroundColor: 'white' }}
@@ -419,9 +488,9 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 						>
 							{randomWord}
 						</OwnStyles.RandomWord>
-					</OwnStyles.RandomWordWrapper>
+					</OwnStyles.RandomWordWrapper> */}
 				</OwnStyles.ImageStripWrapper>
-			</OwnStyles.SectionWrapperBeige>
+			</OwnStyles.SectionWrapper>
 			<OwnStyles.SectionWrapper>
 				<OwnStyles.Section
 					container
@@ -432,52 +501,6 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 					justify="center"
 					md={8}
 				>
-					<OwnStyles.Section
-						item
-						sm={5}
-					>
-						<OwnStyles.ImageWrapper>
-							<OwnStyles.Image
-								src={iPhoneImageLibrary}
-								alt="iphone-image-library"
-								data-aos="fade-left"
-								data-aos-duration="500"
-							/>
-						</OwnStyles.ImageWrapper>
-					</OwnStyles.Section>
-					<OwnStyles.Section
-						item
-						sm={7}
-					>
-						<OwnStyles.SectionHeading
-							variant="h4"
-							gutterBottom
-						>
-							Learn different form variations
-						</OwnStyles.SectionHeading>
-						<OwnStyles.SectionText
-							variant="h6"
-							gutterBottom
-						>
-							<em><b>Form</b></em> variations can be tricky! The library features the most common form variations for:
-							<ul>
-								<li>
-									<em>Verbs</em>
-								</li>
-								<li>
-									<em>Adjectives</em>
-								</li>
-							</ul>
-							This provides a place to use as a reference guide.
-							<br />
-							<br />
-							<em><b>Search</b></em> lets you find a specific word!
-							<br />
-							{/* <OwnStyles.RedirectWrapper>
-								<OwnStyles.Redirect to="/library">TRY HERE</OwnStyles.Redirect>
-							</OwnStyles.RedirectWrapper> */}
-						</OwnStyles.SectionText>
-					</OwnStyles.Section>
 				</OwnStyles.Section>
 			</OwnStyles.SectionWrapper>
 		</>

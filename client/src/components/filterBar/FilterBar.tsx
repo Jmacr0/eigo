@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { FilterBarTypes as OwnTypes } from './Types';
 import * as OwnStyles from './Styles';
 import { Search } from './search/Search';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 export const FilterBar = React.memo((props: OwnTypes.Props) => {
+	const theme = useTheme();
+	const matches = useMediaQuery(theme.breakpoints.up('sm'));
 	const [value, setValue] = useState(5);
 	const handleOnChange = (event: React.ChangeEvent<{ value: unknown }>) => {
 		console.log(event.target.value as number);
@@ -35,11 +39,13 @@ export const FilterBar = React.memo((props: OwnTypes.Props) => {
 							direction="row"
 							alignItems="center"
 						>
-							<OwnStyles.Wrapper
-								item
-							>
-								<OwnStyles.DisplayIcon />
-							</OwnStyles.Wrapper>
+							{matches &&
+								<OwnStyles.Wrapper
+									item
+								>
+									<OwnStyles.DisplayIcon />
+								</OwnStyles.Wrapper>
+							}
 							<OwnStyles.Wrapper
 								item
 							>

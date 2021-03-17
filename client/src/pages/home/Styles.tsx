@@ -9,7 +9,7 @@ import { color } from '../../utils/global/Styles';
 
 export const MainBannerWrapper = styled(Container)`
 		min-height: 100vh;
-		background: ${color.dark.background};
+		background: ${color.dark.gradient.vertical};
 `;
 // MainBannerWrapper Background Image Styles
 // background-image: url(${bannerImage});
@@ -52,23 +52,23 @@ export const GetStartedButtonIcon = styled(ArrowForwardIosIcon)`
 	@keyframes blinker {
 		0% { opacity: 1.0; }
 		50% { opacity: 0.0; }
-		100% { opacity: 1.0; }
-   	}
+		100% { opacity: 1.0; } 	
+	}
     animation: blinker 1s linear infinite;
 `;
 
 export const FindOutMoreWrapper = styled(Grid)`
-	   margin-top: 20px;
-	   width: 100%!important;
-	   display: flex!important;
-	   justify-content: center!important;
+		margin-top: 20px;
+		width: 100%!important;
+		display: flex!important;
+		justify-content: center!important;
 `;
 export const FindOutMoreButton = styled(Button)`
 	color: ${color.dark.text}!important;
 `;
 
-export const Stepper = styled(MobileStepper)`		
-		background: ${color.dark.background}!important;
+export const Stepper = styled(MobileStepper)`
+		background: transparent!important;
 		.MuiMobileStepper-dot {
 			transition-duration: 0.2s;
 			background-color: ${color.primary.background.flat}!important;
@@ -196,7 +196,7 @@ export const RandomWord = styled(Typography)`
 `;
 export const SectionText = styled(Typography)`
 		color: ${color.dark.background}!important;
-		font-weight: 200!important;
+		font-weight: 300!important;
 `;
 export const TextWrapper = styled.p`
         margin: auto;

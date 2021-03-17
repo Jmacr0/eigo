@@ -478,17 +478,6 @@ export const HomePage = React.memo((props: OwnTypes.Props) => {
 							</OwnStyles.SectionText>
 						</OwnStyles.Section>
 					</OwnStyles.SectionBeige>
-					{/* <OwnStyles.RandomWordWrapper
-						item
-						md={8}
-						style={{ backgroundColor: 'white' }}
-					>
-						<OwnStyles.RandomWord
-							variant="h3"
-						>
-							{randomWord}
-						</OwnStyles.RandomWord>
-					</OwnStyles.RandomWordWrapper> */}
 				</OwnStyles.ImageStripWrapper>
 			</OwnStyles.SectionWrapper>
 			<OwnStyles.SectionWrapper>

@@ -71,14 +71,14 @@ export const DrawerContent = React.memo((props: OwnTypes.Props) => {
 						{showConfirmLogout ? "Confirm" : "Logout"}
 					</OwnStyles.LogoutButton>
 					{showConfirmLogout &&
-						<OwnStyles.LogoutButton
+						<OwnStyles.CancelButton
 							variant="text"
 							color={showConfirmLogout ? "secondary" : "primary"}
 							disableElevation
 							onClick={() => setShowConfirmLogout((showConfirmLogout ? false : true))}
 						>
 							Cancel
-						</OwnStyles.LogoutButton>
+						</OwnStyles.CancelButton>
 					}
 				</OwnStyles.LogoutListItem>
 				<OwnStyles.Break />

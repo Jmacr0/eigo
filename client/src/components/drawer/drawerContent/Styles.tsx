@@ -37,7 +37,9 @@ export const LogoutListItem = styled(ListItem)`
 		background-color: transparent!important;
 		cursor: auto!important;
 `;
-export const DrawerListItemIcon = styled(ListItemIcon)``;
+export const DrawerListItemIcon = styled(ListItemIcon)`
+		color: ${color.dark.text}!important;
+`;
 export const DrawerListItemText = styled(ListItemText)``;
 
 export const Input = styled(TextField)`
@@ -46,4 +48,10 @@ export const Input = styled(TextField)`
 export const LogoutButton = styled(Button)`
 		background: ${color.primary.background.flat}!important;
         border-radius: 0px!important;
+		color: ${color.dark.text};
+`;
+export const CancelButton = styled(Button)`
+		background: transparent!important;
+        border-radius: 0px!important;
+		color: ${color.dark.text}!important;
 `;
